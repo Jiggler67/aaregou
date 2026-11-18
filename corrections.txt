@@ -1,0 +1,11 @@
+# Manuelle Korrekturen zu den Spielberichten aus dem Matchcenter.
+# Diese Datei wird beim automatischen Daten-Update nicht überschrieben.
+# REN|Spiel-ID|Minute|Name im Matchcenter|richtiger Name
+# ADD|Spiel-ID|Minute;Typ;Seite;Name  (Minute leer = unbekannt; Typ G/P/OG; Seite H/A)
+#   Tore werden nur ergänzt, solange im Matchcenter Torschützen dieses Teams fehlen.
+# Burgdorf a - Goldstern a (18.10.2026): Tor 73' war Joachim Bischoff
+REN|4341287|73|Jan Keller|Joachim Bischoff
+# Goldstern a - Köniz a 3:1 (24.10.2026): Torschützen Goldstern
+ADD|4341222|;G;H;Leo Baumann
+ADD|4341222|;G;H;Joachim Bischoff
+ADD|4341222|;G;H;Joachim Bischoff
