@@ -304,12 +304,31 @@ function teamOf(name) {
 function parseDate(d, t) { const [dd, mm, yy] = d.split(".").map(Number); const [h, mi] = (t || "0:0").split(":").map(Number); return new Date(yy, mm - 1, dd, h || 0, mi || 0); }
 function parseEv(s) {
   if (!s) return [];
-  return s.split("~").filter(Boolean).map(e => { const [m, t, side, who] = e.split(";"); const [b, x] = m.split("+").map(Number); return {m, sort:b + (x || 0) / 100, t, s:side, who}; })
+  return s.split("~").filter(Boolean).map(evOne)
     .filter(e => e.t !== "S" || e.who.includes(">")).sort((a, b) => a.sort - b.sort);
+}
+function evOne(e) { const [m, t, side, who] = e.split(";"); const [b, x] = (m || "").split("+").map(Number); return {m:m || "", sort:m ? b + (x || 0) / 100 : 999, t, s:side, who}; }
+function minTxt(e) { return e.m ? e.m + "'" : ""; }
+/* Manuelle Korrekturen (corrections.txt): REN|Spiel|Minute|alt|neu, ADD|Spiel|Minute;Typ;Seite;Name */
+function parseCorr(txt) {
+  const C = {ren:{}, add:{}};
+  (txt || "").split("\n").forEach(l => { l = l.trim(); if (!l || l[0] === "#") return; const p = l.split("|");
+    if (p[0] === "REN" && p.length >= 5) (C.ren[p[1]] = C.ren[p[1]] || []).push({m:p[2], from:p[3], to:p[4]});
+    else if (p[0] === "ADD" && p.length >= 3) (C.add[p[1]] = C.add[p[1]] || []).push(evOne(p[2])); });
+  return C;
+}
+function applyCorr(g, C) {
+  (C.ren[g.tg] || []).forEach(r => g.ev.forEach(e => { if ((!r.m || e.m === r.m) && e.who && e.who.includes(r.from)) e.who = e.who.replace(r.from, r.to); }));
+  const adds = C.add[g.tg]; if (!adds || g.gh === null) return;
+  const isGoal = e => e.t === "G" || e.t === "P" || e.t === "OG";
+  adds.forEach(a => { const need = a.s === "H" ? g.gh : g.ga; const have = g.ev.filter(e => isGoal(e) && e.s === a.s).length;
+    if (have < need) { a.fix = true; g.ev.push(a); } });
+  g.ev.sort((a, b) => a.sort - b.sort);
 }
 function roundKind(name) { return /Frühjahr|Frühling|Rückrunde/i.test(name) ? "fj" : /Herbst|Vorrunde/i.test(name) ? "hb" : "x"; }
 
-function parse(txt, logoTxt) {
+function parse(txt, logoTxt, corrTxt) {
+  const C = parseCorr(corrTxt);
   logoTxt.trim().split("\n").forEach(l => { const i = l.indexOf("="); if (i > 0) S.logos[l.slice(0, i)] = "data:image/webp;base64," + l.slice(i + 1); });
   let league = null, round = null, cup = null;
   txt.trim().split("\n").forEach(line => {
@@ -329,6 +348,7 @@ function parse(txt, logoTxt) {
       if (cup) { g.comp = cup.key; g.round = p[15]; cup.games.push(g); }
       else { g.comp = league.key; g.round = round.name; g.rkind = round.kind; round.games.push(g); }
       g.played = g.gh !== null;
+      applyCorr(g, C);
       const goals = g.ev.filter(e => e.t === "G" || e.t === "P" || e.t === "OG");
       g.complete = !g.played || g.forfait || (goals.filter(e => e.s === "H").length === g.gh && goals.filter(e => e.s === "A").length === g.ga);
       S.games.push(g);
@@ -687,12 +707,12 @@ function evRow(e) {
   else if (e.t === "S") { const [o, i] = e.who.split(">"); icon = '<span class="ic sub">⇄</span>'; main = esc(i); sub = "für " + esc(o); }
   const side = e.s === "A" ? "A" : "H";
   const inner = side === "H" ? `<span class="txt">${main}<small>${sub}</small></span>${icon}` : `${icon}<span class="txt">${main}<small>${sub}</small></span>`;
-  return `<li><span class="ev ${side}">${inner}</span><span class="min">${e.m}'</span></li>`;
+  return `<li><span class="ev ${side}">${inner}</span><span class="min">${minTxt(e)}</span></li>`;
 }
 function viewGame(tg) {
   const g = S.games.find(x => x.tg === tg); if (!g) return false;
   const info = COMP_INFO[g.comp]; const h = g.H, a = g.A;
-  const goals = side => g.ev.filter(e => (e.t === "G" || e.t === "P" || e.t === "OG") && e.s === side).map(e => `${esc(e.who)} ${e.m}'${e.t === "P" ? " (P)" : e.t === "OG" ? " (ET)" : ""}`).join("<br>");
+  const goals = side => g.ev.filter(e => (e.t === "G" || e.t === "P" || e.t === "OG") && e.s === side).map(e => `${esc(e.who)} ${minTxt(e)}${e.t === "P" ? " (P)" : e.t === "OG" ? " (ET)" : ""}`).join("<br>");
   let tl = "", ht = false;
   g.ev.forEach(e => { if (!ht && e.sort > 45.5) { tl += `<li class="sep"><span>Pause${g.ht ? " · " + g.ht : ""}</span></li>`; ht = true; } tl += evRow(e); });
   if (g.ev.length && !ht) tl += `<li class="sep"><span>Schluss</span></li>`;
@@ -766,8 +786,8 @@ document.addEventListener("click", e => {
 });
 document.addEventListener("change", e => { const s = e.target.closest("select[data-teamfilter]"); if (s) { LSTATE.team = LSTATE.team || {}; LSTATE.team[s.dataset.teamfilter] = s.value; rerender(); } });
 
-Promise.all([fetch("data.txt", {cache:"no-store"}).then(r => { if (!r.ok) throw new Error(r.status); return r.text(); }), fetch("logos.txt").then(r => r.ok ? r.text() : "").catch(() => "")])
-  .then(([d, l]) => { parse(d, l); window.addEventListener("hashchange", route); route(); })
+Promise.all([fetch("data.txt", {cache:"no-store"}).then(r => { if (!r.ok) throw new Error(r.status); return r.text(); }), fetch("logos.txt").then(r => r.ok ? r.text() : "").catch(() => ""), fetch("corrections.txt", {cache:"no-store"}).then(r => r.ok ? r.text() : "").catch(() => "")])
+  .then(([d, l, c]) => { parse(d, l, c); window.addEventListener("hashchange", route); route(); })
   .catch(err => { document.getElementById("app").innerHTML = `<div class="loading">Die Daten konnten nicht geladen werden (${esc(err.message)}). Bitte Seite neu laden.</div>`; });
 </script>
 </body>
