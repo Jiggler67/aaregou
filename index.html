@@ -728,7 +728,7 @@ function topCards(games, key) {
 }
 function leagueHead(key, tab) {
   const info = COMP_INFO[key];
-  const tabs = [["", "Übersicht"], ["-tabelle", "Tabelle"], ["-spiele", "Spiele"], ["-stats", "Statistiken"]];
+  const tabs = [["", "Übersicht"], ["-tabelle", "Tabelle"], ["-chancen", "Chancen"], ["-spiele", "Spiele"], ["-stats", "Statistiken"]];
   return hero(`${esc(info.name)} 2026/27`, [`<a href="#${key}">${esc(info.short)}</a>`]) +
     `<nav class="subnav">${tabs.map(([s, n]) => `<a href="#${key}${s}" class="${tab === s ? "on" : ""}">${n}</a>`).join("")}</nav>`;
 }
@@ -736,6 +736,17 @@ function springBanner(key) {
   const l = S.leagues[key];
   if (l.hasSpring) return "";
   return `<div class="banner"><span>ℹ️</span><span><b>Frühjahrsrunde 2027:</b> Der FVBJ hat die Gruppeneinteilung und den Spielplan noch nicht publiziert. Sobald sie im Matchcenter stehen, erscheinen sie hier automatisch als Standard-Ansicht. Bis dahin siehst du die abgeschlossene Herbstrunde.</span></div>`;
+}
+function strengthTable(key) {
+  const teams = [...new Set(S.leagues[key].rounds.flatMap(r => r.table.map(x => x.t)))];
+  const played = t => S.games.filter(g => g.played && !g.forfait && (g.H === t || g.A === t)).length;
+  const rows = teams.map(t => ({t, elo:t.elo, sp:played(t)})).sort((a, b) => b.elo - a.elo);
+  const hi = rows[0].elo, lo = rows[rows.length - 1].elo, span = Math.max(hi - lo, 1);
+  return `<div class="tbl-wrap"><table><thead><tr><th>#</th><th class="team">Team</th><th class="hide-sm barcell">Stärke</th><th>Wert</th><th>Sp</th></tr></thead><tbody>${rows.map((x, i) => `<tr class="clk" data-href="#team-${x.t.id}"><td class="rank"><span>${i + 1}</span></td>
+    <td class="team"><span class="t">${crest(x.t)}${teamLink(x.t, x.t.name)}</span></td>
+    <td class="hide-sm barcell"><div class="bar" style="width:${Math.round((x.elo - lo) / span * 100)}%"></div></td>
+    <td class="pts">${Math.round(x.elo)}</td><td>${x.sp}</td></tr>`).join("")}</tbody></table></div>
+    <p class="note">Jedes Team startet mit einem Wert nach Liga-Stärke; Siege gegen starke Gegner heben ihn, Niederlagen senken ihn (ein Elo-Modell). Höher = stärker.</p>`;
 }
 function viewLeague(key, tab) {
   const l = S.leagues[key]; const r = leagueRound(key); const info = COMP_INFO[key];
@@ -754,10 +765,14 @@ function viewLeague(key, tab) {
         </div>
       </div>`;
   } else if (tab === "-tabelle") {
+    body = `${springBanner(key)}<section class="card acc"><div class="sec-head"><h2>Tabelle · ${esc(r.name)}</h2>${roundChips(key)}</div>${standings(key, r)}</section>`;
+  } else if (tab === "-chancen") {
     const lo = leagueOdds(key, r);
-    body = `${springBanner(key)}<section class="card acc"><div class="sec-head"><h2>Tabelle · ${esc(r.name)}</h2>${roundChips(key)}</div>${standings(key, r)}</section>` +
-      (lo ? `<section class="card"><div class="sec-head"><h2>Prognose Schlussrang</h2><span class="sub">${lo.open} Spiele offen · Schätzung aus allen bisherigen Resultaten</span></div>
-        <div class="tbl-wrap"><table><thead><tr><th class="team">Team</th><th>Ø Rang</th><th class="hide-sm">Ø Punkte</th><th>Platz 1</th>${lo.z.up ? "<th>Aufstieg</th>" : ""}${lo.z.down ? "<th>Abstieg</th>" : ""}</tr></thead><tbody>${lo.rows.map(x => `<tr class="clk" data-href="#team-${x.t.id}"><td class="team"><span class="t">${crest(x.t, "sm")}${teamLink(x.t)}</span></td><td>${x.rank.toFixed(1)}</td><td class="hide-sm">${x.pts.toFixed(1)}</td>${pcCell(x.first, true)}${lo.z.up ? pcCell(x.up, true) : ""}${lo.z.down ? pcCell(x.down, true) : ""}</tr>`).join("")}</tbody></table></div></section>` : "");
+    body = `${springBanner(key)}
+      <section class="card acc"><div class="sec-head"><h2>Stärke-Rangliste</h2><span class="sub">Spielstärke aus allen bisherigen Resultaten dieser Saison</span></div>${strengthTable(key)}</section>` +
+      (lo ? `<section class="card acc"><div class="sec-head"><h2>Prognose Schlussrang</h2><span class="sub">${lo.open} Spiele offen · ${esc(r.name)}</span></div>
+        <div class="tbl-wrap"><table><thead><tr><th>#</th><th class="team">Team</th><th>Ø Rang</th><th class="hide-sm">Ø Punkte</th><th>Platz 1</th>${lo.z.up ? "<th>Aufstieg</th>" : ""}${lo.z.down ? "<th>Abstieg</th>" : ""}</tr></thead><tbody>${lo.rows.map((x, i) => `<tr class="clk" data-href="#team-${x.t.id}"><td class="rank"><span>${i + 1}</span></td><td class="team"><span class="t">${crest(x.t, "sm")}${teamLink(x.t)}</span></td><td>${x.rank.toFixed(1)}</td><td class="hide-sm">${x.pts.toFixed(1)}</td>${pcCell(x.first, true)}${lo.z.up ? pcCell(x.up, true) : ""}${lo.z.down ? pcCell(x.down, true) : ""}</tr>`).join("")}</tbody></table></div><p class="note">Durchschnitt aus 4000 simulierten Saisonverläufen. Schätzung, keine Gewähr.</p></section>`
+       : `<section class="card"><p class="empty">Sobald der Spielplan der Frühjahrsrunde publiziert ist, erscheint hier die Prognose für den Schlussrang (Platz 1, Aufstieg, Abstieg).</p></section>`);
   } else if (tab === "-spiele") {
     const sel = LSTATE.team?.[key] ?? "";
     const list = r.games.filter(g => sel === "" || g.H.id === +sel || g.A.id === +sel);
@@ -1072,7 +1087,7 @@ function route() {
   const h = (location.hash || "#start").slice(1);
   let nav = "start";
   document.title = "Aaregou · Junioren B FVBJ 2026/27";
-  const m = h.match(/^(yl|promo)(-tabelle|-spiele|-stats|-teams|-hb|-fj)?$/);
+  const m = h.match(/^(yl|promo)(-tabelle|-chancen|-spiele|-stats|-teams|-hb|-fj)?$/);
   const pm = h.match(/^spieler-(\d+)-(.+)$/);
   if (m) {
     nav = m[1];
