@@ -133,6 +133,8 @@ h3{font-family:var(--font-display);font-weight:700;font-size:18px;margin:0}
 .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
 .chip[disabled]{opacity:.45;cursor:not-allowed}
 .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:0 18px 12px}
+.toolbar.statview{border-top:1px solid var(--line);padding-top:12px}
+.toolbar.statview .chip{font-size:14px;padding:6px 14px}
 .toolbar .lbl{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 select{font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 10px}
 .banner{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;border:1px dashed var(--accent);border-radius:12px;background:var(--accent-soft);font-size:14px}
@@ -784,22 +786,15 @@ function records(games) {
     const k = e.who + "|" + t.id; if (!c.has(k)) c.set(k, {name:e.who, t, g, n:0}); c.get(k).n++; }); per.push(...c.values()); });
   per.sort((a, b) => b.n - a.n || a.g.date - b.g.date);
   R.multi = per[0]; R.multiTies = per[0] ? per.filter(o => o.n === per[0].n).length - 1 : 0;
-  // Joker: Tore von Spielern, die nicht in der Startelf standen (Aufstellung, sonst Wechsel im Spielbericht)
-  const jk = new Map();
-  pl.forEach(g => g.ev.forEach(e => { if (e.t !== "G" && e.t !== "P") return; const t = evTeam(g, e); if (!t) return;
-    const side = t === g.H ? "H" : "A"; const L = g.lu && g.lu[side];
-    const sub = L ? L.bench.some(p => p.name === e.who) && !L.start.some(p => p.name === e.who) : g.ev.some(x => x.t === "S" && evNames(x)[1] === e.who && evTeam(g, x) === t && x.sort <= e.sort);
-    if (!sub) return; const k = e.who + "|" + t.id; if (!jk.has(k)) jk.set(k, {name:e.who, t, n:0}); jk.get(k).n++; }));
-  R.joker = [...jk.values()].sort((a, b) => b.n - a.n)[0];
   const goals = []; pl.forEach(g => g.ev.forEach(e => { if ((e.t === "G" || e.t === "P") && e.m) goals.push({g, e, t:evTeam(g, e)}); }));
   goals.sort((a, b) => a.e.sort - b.e.sort || a.g.date - b.g.date);
   R.fast = goals[0]; R.late = [...goals].sort((a, b) => b.e.sort - a.e.sort || a.g.date - b.g.date)[0];
   R.fastTies = R.fast ? goals.filter(x => x.e.sort === R.fast.e.sort).length - 1 : 0; R.lateTies = R.late ? goals.filter(x => x.e.sort === R.late.e.sort).length - 1 : 0;
   const teams = new Map();
-  games.filter(g => g.played).forEach(g => [g.H, g.A].forEach(t => { if (!teams.has(t)) teams.set(t, []); teams.get(t).push(resFor(g, t)); }));
+  games.filter(g => g.played).forEach(g => [g.H, g.A].forEach(t => { if (!teams.has(t)) teams.set(t, []); teams.get(t).push({r:resFor(g, t), ga:t === g.H ? g.ga : g.gh, f:g.forfait}); }));
   const streak = ok => { let best = null; teams.forEach((rs, t) => { let cur = 0, mx = 0; rs.forEach(r => { cur = ok(r) ? cur + 1 : 0; mx = Math.max(mx, cur); });
     if (mx && (!best || mx > best.n || (mx === best.n && isOurs(t) && !isOurs(best.t)))) best = {t, n:mx}; }); return best; };
-  R.win = streak(r => r === "S"); R.unb = streak(r => r !== "N");
+  R.win = streak(o => o.r === "S"); R.unb = streak(o => o.r !== "N"); R.clean = streak(o => o.ga === 0 && !o.f);
   R.total = pl.reduce((a, g) => a + g.gh + g.ga, 0); R.count = pl.length;
   return R;
 }
@@ -814,10 +809,10 @@ function recordTiles(R) {
   const more = n => n ? ` · ${n} weitere gleich` : "";
   if (R.multi) t.push(tile("Meiste Tore in einem Spiel", `#spiel-${R.multi.g.tg}`, R.multi.n, "Tore", esc(R.multi.name),
     `${esc(R.multi.t.short)} gegen ${esc(opp(R.multi.g, R.multi.t).short)}${more(R.multiTies)}`));
-  if (R.joker) t.push(tile("Bester Joker", playerHref(R.joker.name, R.joker.t), R.joker.n, R.joker.n === 1 ? "Tor" : "Tore", esc(R.joker.name), `${esc(R.joker.t.short)} · nach Einwechslung`));
   if (R.fast) t.push(tile("Schnellstes Tor", `#spiel-${R.fast.g.tg}`, minTxt(R.fast.e), "", esc(R.fast.e.who), `${esc(R.fast.t.short)} gegen ${esc(opp(R.fast.g, R.fast.t).short)}${more(R.fastTies)}`));
   if (R.late) t.push(tile("Spätestes Tor", `#spiel-${R.late.g.tg}`, minTxt(R.late.e), "", esc(R.late.e.who), `${esc(R.late.t.short)} gegen ${esc(opp(R.late.g, R.late.t).short)}${more(R.lateTies)}`));
   if (R.win) t.push(tile("Längste Siegesserie", isOurs(R.win.t) ? `#team-${R.win.t.id}` : "", R.win.n, "Siege", esc(R.win.t.short), "in Folge"));
+  if (R.clean) t.push(tile("Ohne Gegentor in Folge", isOurs(R.clean.t) ? `#team-${R.clean.t.id}` : "", R.clean.n, "Spiele", esc(R.clean.t.short), "zu null gespielt"));
   if (R.unb) t.push(tile("Ungeschlagen in Folge", isOurs(R.unb.t) ? `#team-${R.unb.t.id}` : "", R.unb.n, "Spiele", esc(R.unb.t.short), "ohne Niederlage"));
   return `<div class="recs">${t.join("")}</div>`;
 }
@@ -835,12 +830,16 @@ function statsBlock(o) {
   const scopeName = comp === "cup" || isCup(comp) ? "ganze Saison" : {fj:"Frühjahrsrunde", hb:"Herbstrunde", all:"ganze Saison"}[scope];
   const R = games.length ? records(games) : null;
   const ny = cards.reduce((a, c) => a + c.y, 0), nr = cards.reduce((a, c) => a + c.yr + c.r, 0);
-  return `<section class="card"><div class="sec-head"><h2>Auswahl</h2><span class="sub">${games.length} gespielte Spiele · ${esc(scopeName)}</span></div><div class="toolbar">${compChips}${scopeChips}</div></section>
-    ${games.length ? `
-    <section class="card acc"><div class="sec-head"><h2>Torschützen</h2><span class="sub">${sc.length} Spieler${inc ? ` · in ${inc} Spielen fehlen Torschützen im Matchcenter` : ""}</span></div>${scorerTable(sc.slice(0, 40), {full:true, comps:!o.fixedComp})}</section>
-    <section class="card"><div class="sec-head"><h2>Gelbe und rote Karten</h2><span class="sub">${ny} Verwarnungen · ${nr} Ausschlüsse</span></div>${cards.length ? `<div class="split">${[cards.slice(0, 10), cards.slice(10, 20)].filter(x => x.length).map(x => cardTable(x, true)).join("")}</div>` : '<p class="empty">Keine Karten erfasst.</p>'}</section>
-    <section class="card"><div class="sec-head"><h2>Spieler im Trend</h2><span class="sub">Tore in den letzten 3 Spielen des Teams</span></div>${trendTable(trendPlayers(games).filter(x => x.n > 0).slice(0, 10))}</section>
-    <section class="card"><div class="sec-head"><h2>Rekorde</h2><span class="sub">${R.total} Tore in ${R.count} Spielen · Ø ${(R.total / Math.max(R.count, 1)).toFixed(2)} pro Spiel</span></div>${recordTiles(R)}</section>` : '<section class="card"><p class="empty">Für diese Auswahl gibt es noch keine gespielten Spiele.</p></section>'}`;
+  const view = STATS.view || "tore";
+  const views = [["tore", "Torschützen"], ["karten", "Karten"], ["trend", "Spieler im Trend"], ["rekorde", "Rekorde"]];
+  const sec = {
+    tore: () => `<section class="card acc"><div class="sec-head"><h2>Torschützen</h2><span class="sub">${sc.length} Spieler${inc ? ` · in ${inc} Spielen fehlen Torschützen im Matchcenter` : ""}</span></div>${scorerTable(sc.slice(0, 40), {full:true, comps:!o.fixedComp})}</section>`,
+    karten: () => `<section class="card acc"><div class="sec-head"><h2>Gelbe und rote Karten</h2><span class="sub">${ny} Verwarnungen · ${nr} Ausschlüsse</span></div>${cards.length ? `<div class="split">${[cards.slice(0, 10), cards.slice(10, 20)].filter(x => x.length).map(x => cardTable(x, true)).join("")}</div>` : '<p class="empty">Keine Karten erfasst.</p>'}</section>`,
+    trend: () => `<section class="card acc"><div class="sec-head"><h2>Spieler im Trend</h2><span class="sub">Tore in den letzten 3 Spielen des Teams</span></div>${trendTable(trendPlayers(games).filter(x => x.n > 0).slice(0, 20))}</section>`,
+    rekorde: () => `<section class="card acc"><div class="sec-head"><h2>Rekorde</h2><span class="sub">${R.total} Tore in ${R.count} Spielen · Ø ${(R.total / Math.max(R.count, 1)).toFixed(2)} pro Spiel</span></div>${recordTiles(R)}</section>`};
+  return `<section class="card"><div class="sec-head"><h2>Auswahl</h2><span class="sub">${games.length} gespielte Spiele · ${esc(scopeName)}</span></div><div class="toolbar">${compChips}${scopeChips}</div>
+      <div class="toolbar statview"><span class="lbl">Statistik</span><div class="chips" data-statview>${views.map(([k, n]) => `<button type="button" class="chip ${view === k ? "on" : ""}" data-v="${k}">${n}</button>`).join("")}</div></div></section>
+    ${games.length ? sec[view]() : '<section class="card"><p class="empty">Für diese Auswahl gibt es noch keine gespielten Spiele.</p></section>'}`;
 }
 function viewStats() {
   app().innerHTML = `<div>${hero("Statistiken", ["Statistiken"])}<div class="grid">${statsBlock({comp:STATS.comp, scope:STATS.scope})}</div></div>` + foot();
@@ -850,17 +849,19 @@ function viewStats() {
 function viewCup(tab) {
   const eq = S.cups.eq, bcj = S.cups.bcj;
   const rounds = [...new Set(eq.games.map(g => g.round))];
-  const tabs = [["", "Runden"], ["-stats", "Torschützen"]];
+  const tabs = [["", "Runden"], ["-chancen", "Chancen"], ["-stats", "Torschützen"]];
   let body;
   if (tab === "") {
-    const od = cupOdds();
-    const oddsCard = od ? `<section class="card acc"><div class="sec-head"><h2>Chancen</h2><span class="sub">Schätzung aus allen bisherigen Resultaten · ab ${esc(od.round)}</span></div>
-      <div class="tbl-wrap"><table><thead><tr><th class="team">Team</th>${od.stages.map((n, i) => `<th class="${i > 0 && i < od.stages.length - 1 ? "hide-sm" : ""}">${STAGE[n] || n}</th>`).join("")}</tr></thead><tbody>${od.rows.map(r => `<tr class="${isOurs(r.t) ? "clk" : ""}" ${isOurs(r.t) ? `data-href="#team-${r.t.id}"` : ""}><td class="team"><span class="t">${crest(r.t, "sm")}${teamLink(r.t)}</span></td>${r.p.map((v, i) => pcCell(v, i === r.p.length - 1).replace('class="pc', `class="${i > 0 && i < r.p.length - 1 ? "hide-sm " : ""}pc`)).join("")}</tr>`).join("")}</tbody></table></div></section>` : "";
-    body = oddsCard + `<section class="card acc"><div class="sec-head"><h2>Runden</h2><span class="sub">K.-o.-Modus, Junioren B aller Stärkeklassen</span></div>
+    body = `<section class="card acc"><div class="sec-head"><h2>Runden</h2><span class="sub">K.-o.-Modus, Junioren B aller Stärkeklassen</span></div>
         <div class="matches">${[...rounds].reverse().map(r => { const gs = eq.games.filter(g => g.round === r); if (!gs.length) return "";
           return `<div class="mday"><span>${esc(r)} · ${fmtDate(gs[0])}</span><span>${gs.every(g => !g.played) ? "noch offen" : gs.length + " Spiele"}</span></div>` + gs.map(g => g.played ? matchRow(g, {date:true}) : withProb(g, {date:true})).join(""); }).join("")}</div></section>
       <section class="card"><div class="sec-head"><h2>${compTag("bcj", true)} Cup BCJ · Junioren B</h2><span class="sub">nur Spiele der Promotion-Teams</span></div>
         <div class="matches compact">${[...new Set(bcj.games.map(g => g.round))].reverse().map(r => `<div class="mday"><span>${esc(r)}</span></div>` + bcj.games.filter(g => g.round === r).map(g => matchRow(g)).join("")).join("")}</div></section>`;
+  } else if (tab === "-chancen") {
+    const od = cupOdds();
+    const oddsCard = od ? `<section class="card acc"><div class="sec-head"><h2>Chancen</h2><span class="sub">Schätzung aus allen bisherigen Resultaten · ab ${esc(od.round)}</span></div>
+      <div class="tbl-wrap"><table><thead><tr><th class="team">Team</th>${od.stages.map((n, i) => `<th class="${i > 0 && i < od.stages.length - 1 ? "hide-sm" : ""}">${STAGE[n] || n}</th>`).join("")}</tr></thead><tbody>${od.rows.map(r => `<tr class="${isOurs(r.t) ? "clk" : ""}" ${isOurs(r.t) ? `data-href="#team-${r.t.id}"` : ""}><td class="team"><span class="t">${crest(r.t, "sm")}${teamLink(r.t)}</span></td>${r.p.map((v, i) => pcCell(v, i === r.p.length - 1).replace('class="pc', `class="${i > 0 && i < r.p.length - 1 ? "hide-sm " : ""}pc`)).join("")}</tr>`).join("")}</tbody></table></div></section>` : "";
+    body = oddsCard || '<section class="card"><p class="empty">Im Cup sind im Moment keine Spiele offen.</p></section>';
   } else {
     const sc = scorers([...eq.games, ...bcj.games].filter(g => g.played));
     body = `<section class="card acc"><div class="sec-head"><h2>Cup-Torschützen</h2><span class="sub">EQUIP.Lab Berner Cup und Cup BCJ</span></div>
@@ -934,7 +935,7 @@ function playerGames(t, name) {
   const out = [];
   S.games.forEach(g => { if (g.H !== t && g.A !== t) return; const side = g.H === t ? "H" : "A"; const L = g.lu && g.lu[side];
     const st = L && L.start.find(p => p.name === name), bn = L && L.bench.find(p => p.name === name);
-    const evs = g.ev.filter(e => evTeam(g, e) === t && evNames(e).includes(name));
+    const evs = g.ev.filter(e => e.t !== "S" && evTeam(g, e) === t && evNames(e).includes(name));
     if (st) out.push({g, role:"start", p:st, evs});
     else if (bn && !bn.out) out.push({g, role:"sub", p:bn, evs});
     else if (evs.length && !(bn && bn.out)) out.push({g, role:"", p:null, evs});
@@ -951,7 +952,7 @@ function viewPlayer(tid, name) {
   const lg = goals.filter(x => !isCup(x.g.comp)).length, cup = goals.length - lg;
   const nr = (list.slice().reverse().find(x => x.p) || {}).p?.nr;
   document.title = `${name} · Aaregou`;
-  const rows = list.map(x => { const role = x.role === "start" ? `<span class="role">Startelf${x.p.pos ? " · " + esc(x.p.pos) : ""}${x.p.cap ? " · Captain" : ""}</span>` : x.role === "sub" && !x.evs.some(e => e.t === "S") ? '<span class="role">Eingewechselt</span>' : "";
+  const rows = list.map(x => { const role = x.role === "start" ? `<span class="role">Startelf${x.p.pos ? " · " + esc(x.p.pos) : ""}${x.p.cap ? " · Captain" : ""}</span>` : x.role === "sub" ? '<span class="role">Ersatzbank</span>' : "";
     return matchRow(x.g, {comp:true, me:t}).replace('class="m"', 'class="m has-pev"') + `<div class="pev">${role}${x.evs.sort((a, b) => a.sort - b.sort).map(e => evChip(e, name)).join("")}</div>`; }).join("");
   app().innerHTML = `<div class="${info.color}">${hero(esc(name), [isOurs(t) ? `<a href="#team-${t.id}">${esc(t.short)}</a>` : esc(t.short), "Spieler"], `${esc(t.name)}${nr ? " · Nr. " + esc(nr) : ""} · Saison 2026/27`)}
     ${isOurs(t) ? `<a class="back" href="#team-${t.id}">‹ ${esc(t.short)}</a>` : ""}
@@ -967,7 +968,7 @@ function viewPlayer(tid, name) {
 }
 function buildPlayers() {
   const P = new Map();
-  S.games.forEach(g => g.ev.forEach(e => { const t = evTeam(g, e); if (!t) return;
+  S.games.forEach(g => g.ev.forEach(e => { const t = evTeam(g, e); if (!t || e.t === "S") return;
     evNames(e).forEach(n => { if (!n) return; const k = t.id + "|" + n; if (!P.has(k)) P.set(k, {name:n, t, goals:0, q:norm(n)});
       if ((e.t === "G" || e.t === "P") && g.played) P.get(k).goals++; }); }));
   S.games.forEach(g => g.lu && ["H", "A"].forEach(sd => { const L = g.lu[sd]; if (!L) return; const t = sd === "H" ? g.H : g.A;
@@ -1078,7 +1079,7 @@ function route() {
     if (m[2] === "-hb" || m[2] === "-fj") { const r = S.leagues[m[1]].rounds.find(x => x.kind === m[2].slice(1)); if (r) LSTATE.round[m[1]] = r.name; viewLeague(m[1], ""); }
     else viewLeague(m[1], m[2] || "");
   }
-  else if (h === "cup" || h === "cup-stats") { nav = "cup"; viewCup(h === "cup" ? "" : "-stats"); }
+  else if (h === "cup" || h === "cup-stats" || h === "cup-chancen") { nav = "cup"; viewCup(h.slice(3)); }
   else if (h === "stats") { nav = "stats"; viewStats(); }
   else if (h === "teams") { viewTeams(); }
   else if (h.startsWith("team-") && viewTeam(+h.slice(5))) { const t = S.teams[+h.slice(5)]; nav = [...t.leagues][0]; }
@@ -1095,6 +1096,7 @@ document.addEventListener("click", e => {
   const box = b.parentElement;
   if (box.dataset.league) { LSTATE.round[box.dataset.league] = b.dataset.round; rerender(); }
   else if ("statcomp" in box.dataset) { STATS.comp = b.dataset.v; rerender(); }
+  else if ("statview" in box.dataset) { STATS.view = b.dataset.v; rerender(); }
   else if ("statscope" in box.dataset) { if (box.dataset.statscope) { LSTATE.scope = LSTATE.scope || {}; LSTATE.scope[box.dataset.statscope] = b.dataset.v; } else STATS.scope = b.dataset.v; rerender(); }
   else if ("teamf" in box.dataset) { TSTATE.filter = b.dataset.v; rerender(); }
 });
