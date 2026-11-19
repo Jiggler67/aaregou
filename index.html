@@ -33,10 +33,7 @@ a{color:inherit}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:4px}
 .wrap{max-width:1140px;margin:0 auto;padding:0 16px}
-/* Wettbewerbe nur noch als kleine Kennfarbe (Punkte, Etiketten) */
-.c-promo{--tagc:#0a7a46;--tagbg:#e4f4ec}
-.c-yl{--tagc:#1d5fd1;--tagbg:#e6eefc}
-.c-cup,.c-eq,.c-bcj{--tagc:#b4520b;--tagbg:#fcefe4}
+
 
 /* Kopf */
 .topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:5}
@@ -47,7 +44,6 @@ button{font:inherit;color:inherit}
 .nav a{padding:7px 11px;border-radius:8px;text-decoration:none;font-weight:600;color:rgba(255,255,255,.72);font-size:14.5px;box-shadow:inset 0 -2px 0 transparent}
 .nav a:hover{background:rgba(255,255,255,.08);color:#fff}
 .nav a.on{color:#fff;background:rgba(255,255,255,.1);box-shadow:inset 0 -2px 0 var(--accent-hi)}
-.nav a .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--tagc);margin-right:6px;vertical-align:1px;box-shadow:0 0 0 1.5px rgba(255,255,255,.85)}
 .topbar :focus-visible{outline-color:#fff}
 /* Suche */
 .search{position:relative;flex:0 1 250px;min-width:180px}
@@ -88,8 +84,8 @@ h3{font-family:var(--font-display);font-weight:700;font-size:18px;margin:0}
 .note{margin:0;padding:11px 18px;font-size:13px;color:var(--muted);background:var(--panel);border-top:1px solid var(--line)}
 .note a{color:var(--ink)}
 .empty{padding:16px 18px;color:var(--muted);margin:0}
-.tag{display:inline-block;font-family:var(--font-body);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:5px;background:var(--tagbg,var(--navy-soft));color:var(--tagc,var(--navy));white-space:nowrap;vertical-align:middle}
-.tag.solid{background:var(--tagc,var(--navy));color:#fff}
+.tag{display:inline-block;font-family:var(--font-body);font-size:12px;font-weight:600;line-height:1.35;padding:0 7px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);white-space:nowrap;vertical-align:middle}
+.tag.solid{background:var(--navy);border-color:var(--navy);color:#fff}
 
 /* Startmenü */
 .start-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -97,8 +93,7 @@ h3{font-family:var(--font-display);font-weight:700;font-size:18px;margin:0}
 .comp{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;text-decoration:none;transition:border-color .15s, box-shadow .15s}
 .comp:hover{border-color:var(--accent);box-shadow:0 6px 22px rgba(13,43,62,.1)}
 .comp-top{padding:18px 18px 14px;display:grid;gap:6px;background:var(--navy);color:#fff}
-.comp-top .kicker{font-size:12px;font-weight:700;color:var(--accent-hi);text-transform:uppercase;letter-spacing:.7px;display:flex;align-items:center;gap:7px}
-.comp-top .kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--tagc,var(--accent-hi));box-shadow:0 0 0 1.5px rgba(255,255,255,.85)}
+.comp-top .kicker{font-size:12px;font-weight:700;color:var(--accent-hi);text-transform:uppercase;letter-spacing:.7px}
 .comp-top .name{font-family:var(--font-display);font-weight:800;font-size:28px;line-height:1}
 .comp-top .state{font-size:13.5px;color:rgba(255,255,255,.72)}
 .comp-top .state b{color:#fff}
@@ -111,7 +106,7 @@ h3{font-family:var(--font-display);font-weight:700;font-size:18px;margin:0}
 .mini .t{display:flex;align-items:center;gap:8px}
 .comp-foot{padding:12px 18px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--accent);font-size:14px}
 .comp-foot .go{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center}
-.start-extra{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.start-extra{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
 @media (max-width:920px){.start-extra{grid-template-columns:minmax(0,1fr)}}
 .quick{display:flex;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;background:#fff}
 .quick:hover{border-color:var(--accent)}
@@ -188,7 +183,7 @@ th.strp{color:#c4271b}
 .m:last-child{border-bottom:0}
 .m:hover{background:var(--panel)}
 .m .time{font-size:12.5px;color:var(--muted);line-height:1.25}
-.m .time .tag{margin-top:3px;font-size:9.5px;padding:1px 5px}
+.m .time .tag{margin-top:3px;font-size:11px;padding:0 6px}
 .m .h{display:flex;align-items:center;justify-content:flex-end;gap:8px;text-align:right;min-width:0}
 .m .a{display:flex;align-items:center;gap:8px;min-width:0}
 .m .nm{overflow-wrap:break-word;line-height:1.2;min-width:0}
@@ -203,7 +198,8 @@ th.strp{color:#c4271b}
 .compact .m .time,.compact .m .chev{display:none}
 
 /* Top-Karten */
-.tops{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:0 18px 18px}
+.tops{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:0 18px 18px}
+@media (max-width:1100px){.tops{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:880px){.tops{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.tops{grid-template-columns:minmax(0,1fr)}}
 .top{border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:8px;text-decoration:none}
@@ -213,6 +209,42 @@ a.top:hover{border-color:var(--accent)}
 .top .who{font-weight:600;line-height:1.2;min-width:0}
 .top .who small{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
 .top .val{font-family:var(--font-display);font-weight:800;font-size:28px;line-height:1;color:var(--accent)}
+/* Prognose */
+.pbar{display:grid;grid-template-columns:86px minmax(0,1fr) 66px minmax(0,1fr) 26px;gap:10px;align-items:center;padding:0 18px 10px;margin-top:-4px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.pbar .ph{text-align:right}.pbar .pb{grid-column:3;height:6px;border-radius:3px;background:var(--line);overflow:hidden;display:flex}
+.pbar .pb i{display:block;height:100%;background:var(--accent)}.pbar .pb i.d{background:#c5ced8}.pbar .pb i.a{background:var(--navy)}
+.pbar b{color:var(--ink);font-weight:700}
+.pbar .lbl{grid-column:1;font-size:11px;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+@media (max-width:540px){.pbar{grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr);padding:0 12px 10px}.pbar .lbl{display:none}.pbar .pb{grid-column:2}}
+.matches .m.has-pbar{border-bottom:0}
+.p3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border-top:1px solid var(--line)}
+.p3 div{background:#fff;padding:12px 18px;text-align:center}
+.p3 b{display:block;font-family:var(--font-display);font-size:26px;line-height:1.1;color:var(--navy)}
+.p3 div.hi b{color:var(--accent)}
+.p3 span{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+td.pc{font-variant-numeric:tabular-nums;color:var(--muted)}
+td.pc.hi{color:var(--ink);font-weight:700}
+td.pc .pcb{display:inline-block;height:5px;border-radius:3px;background:var(--accent);vertical-align:middle;margin-right:6px;opacity:.85}
+/* Aufstellung */
+.lineups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+@media (max-width:760px){.lineups{grid-template-columns:minmax(0,1fr)}}
+.lineups > div + div{border-left:1px solid var(--line)}
+@media (max-width:760px){.lineups > div + div{border-left:0;border-top:1px solid var(--line)}}
+.lu-head{display:flex;align-items:center;gap:10px;padding:12px 18px;font-weight:700}
+.lu-sub{padding:6px 18px;font-size:11.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lu-row{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 18px;border-bottom:1px solid var(--line);text-decoration:none}
+.lu-row:last-child{border-bottom:0}
+a.lu-row:hover{background:var(--panel)}
+.lu-row .nr{font-family:var(--font-display);font-weight:700;color:var(--muted);text-align:right}
+.lu-row .nm{line-height:1.2;font-weight:600}
+.lu-row .nm small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.lu-row .ev{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap;justify-content:flex-end}
+.lu-row .ev span{display:inline-flex;align-items:center;gap:3px}
+.lu-row .ev .ic.ball{width:13px;height:13px;border-width:2px}.lu-row .ev .ic.ball::after{width:4px;height:4px}
+.lu-row .ev .ic.card-y,.lu-row .ev .ic.card-r{width:9px;height:12px}
+.lu-row.out{opacity:.5}
+.arr-in{color:var(--win);font-weight:800}.arr-out{color:var(--loss);font-weight:800}
+.role{display:inline-block;font-size:12px;color:var(--muted)}
 /* Rekorde */
 .split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1px;background:var(--line)}
 .split > *{background:#fff}
@@ -303,9 +335,9 @@ a.rec:hover{border-color:var(--accent)}
     <a class="brand" href="#start"><span class="brand-mark">A</span>Aaregou</a>
     <nav class="nav" aria-label="Hauptnavigation">
       <a href="#start" data-nav="start">Start</a>
-      <a href="#yl" data-nav="yl" class="c-yl"><span class="dot"></span>Youth League B</a>
-      <a href="#promo" data-nav="promo" class="c-promo"><span class="dot"></span>Promotion B</a>
-      <a href="#cup" data-nav="cup" class="c-cup"><span class="dot"></span>Cup</a>
+      <a href="#yl" data-nav="yl">Youth League B</a>
+      <a href="#promo" data-nav="promo">Promotion B</a>
+      <a href="#cup" data-nav="cup">Cup</a>
       <a href="#stats" data-nav="stats">Statistiken</a>
     </nav>
     <div class="search" role="search"><input id="q" type="search" placeholder="Team oder Spieler suchen" autocomplete="off" aria-label="Team oder Spieler suchen"><div class="sres" id="sres" hidden></div></div>
@@ -319,10 +351,10 @@ a.rec:hover{border-color:var(--accent)}
 <script>
 /* ============ Daten laden ============ */
 const COMP_INFO = {
-  yl: {name:"BRACK.CH Youth League B", short:"Youth League B", color:"c-yl", zones:{down:2}},
-  promo: {name:"Junioren B Promotion", short:"Promotion B", color:"c-promo", zones:{up:2, down:3}},
-  eq: {name:"EQUIP.Lab Berner Cup – Junioren B", short:"Cup", color:"c-cup"},
-  bcj: {name:"Cup BCJ – Junioren B", short:"Cup BCJ", color:"c-bcj"}
+  yl: {name:"BRACK.CH Youth League B", short:"Youth League B", tag:"Youth League", color:"c-yl", zones:{down:2}},
+  promo: {name:"Junioren B Promotion", short:"Promotion B", tag:"Promotion", color:"c-promo", zones:{up:2, down:3}},
+  eq: {name:"EQUIP.Lab Berner Cup – Junioren B", short:"Cup", tag:"Cup", color:"c-cup"},
+  bcj: {name:"Cup BCJ – Junioren B", short:"Cup BCJ", tag:"Cup BCJ", color:"c-bcj"}
 };
 const SHORT = {
   "FC Aarberg":"Aarberg","FC Azzurri Bienne a":"Azzurri Bienne","FC Goldstern a":"Goldstern","FC Ins Müntschemier":"Ins Müntschemier","FC Köniz a":"Köniz",
@@ -336,7 +368,7 @@ const MC = "https://matchcenter.fvbj-afbj.ch/default.aspx?oid=6&lng=1&ln=&v=0&tg
 const WD = ["So","Mo","Di","Mi","Do","Fr","Sa"];
 const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
 
-const S = {updated:null, leagues:{}, cups:{}, games:[], teams:[], teamByName:new Map(), logos:{}};
+const S = {updated:null, leagues:{}, cups:{}, games:[], teams:[], teamByName:new Map(), logos:{}, pl:{}, pos:[], lu:{}};
 
 function teamOf(name) {
   if (S.teamByName.has(name)) return S.teamByName.get(name);
@@ -352,7 +384,7 @@ function parseEv(s) {
   return s.split("~").filter(Boolean).map(evOne)
     .filter(e => e.t !== "S" || e.who.includes(">")).sort((a, b) => a.sort - b.sort);
 }
-function evOne(e) { const [m, t, side, who] = e.split(";"); const [b, x] = (m || "").split("+").map(Number); return {m:m || "", sort:m ? b + (x || 0) / 100 : 999, t, s:side, who}; }
+function evOne(e) { const [m, t, side, who] = e.split(";"); const [b, x] = (m || "").split("+").map(Number); return {m:m || "", sort:!m ? 999 : b === 45 && x ? 45 + x / 100 : b + (x || 0), t, s:side, who}; }
 function minTxt(e) { return e.m ? e.m + "'" : ""; }
 /* Manuelle Korrekturen (corrections.txt): REN|Spiel|Minute|alt|neu, ADD|Spiel|Minute;Typ;Seite;Name */
 function parseCorr(txt) {
@@ -385,6 +417,11 @@ function parse(txt, logoTxt, corrTxt) {
       round.table.push({rank:+p[1], t, sp:+p[3], s:+p[4], u:+p[5], n:+p[6], strp:+p[7], gf:+p[8], ga:+p[9], pts:+p[10]}); }
     else if (p[0] === "CUP") { cup = S.cups[p[1]] = {key:p[1], name:p[2], games:[]}; league = null; }
     else if (p[0] === "LOGOS") { p[1].split(";").forEach(x => { const [n, id] = x.split("="); const t = S.teamByName.get(n) || teamOf(n); t.logoId = id; }); }
+    else if (p[0] === "PL") S.pl[p[1]] = {nr:p[2], name:p[3]};
+    else if (p[0] === "POS") S.pos = p[1].split(";");
+    else if (p[0] === "LU") { const ent = (str, st) => (str || "").split(",").filter(Boolean).map(x => { const m = x.match(/^([0-9a-z]+)(?:\.([0-9a-z]+))?(?:#(\d+))?(!)?(\*)?$/); if (!m || !S.pl[m[1]]) return null;
+        return {name:S.pl[m[1]].name, nr:m[3] || S.pl[m[1]].nr, pos:m[2] !== undefined ? S.pos[parseInt(m[2], 36)] || "" : "", cap:!!m[4], out:!!m[5], start:st}; }).filter(Boolean);
+      (S.lu[p[1]] = S.lu[p[1]] || {})[p[2]] = {start:ent(p[3], true), bench:ent(p[4], false)}; }
     else if (p[0] === "G") {
       const date = parseDate(p[2], p[3]);
       const g = {tg:p[1], dstr:p[2], time:p[3], date, wd:WD[date.getDay()], H:teamOf(p[4]), A:teamOf(p[5]),
@@ -401,11 +438,82 @@ function parse(txt, logoTxt, corrTxt) {
   });
   S.teams.forEach(t => { if (t.logoId && S.logos[t.logoId]) t.logo = S.logos[t.logoId]; });
   S.games.sort((a, b) => a.date - b.date);
+  S.games.forEach(g => { g.lu = S.lu[g.tg] || null; });
+  computeRatings();
   Object.values(S.leagues).forEach(l => {
     l.current = [...l.rounds].reverse().find(r => r.kind === "fj" && r.games.length) || [...l.rounds].reverse().find(r => r.games.length) || l.rounds[0];
     l.hasSpring = l.rounds.some(r => r.kind === "fj" && r.games.length);
   });
 }
+
+/* ============ Prognosen (Elo-Modell aus allen bisherigen Resultaten) ============ */
+const LEVEL = {"YL B":1650, "Jun.B P":1500, "Jun.B 1/S":1400, "Jun.B 2/S":1300, "Jun.B 3/S":1200};
+const HOME_ADV = 35;
+function computeRatings() {
+  S.teams.forEach(t => { t.elo = t.leagues.has("yl") ? 1650 : t.leagues.has("promo") ? 1500 : null; });
+  S.games.forEach(g => [[g.H, g.htag], [g.A, g.atag]].forEach(([t, tag]) => { if (t.elo == null && LEVEL[tag]) t.elo = LEVEL[tag]; }));
+  S.teams.forEach(t => { if (t.elo == null) t.elo = 1350; t.elo0 = t.elo; });
+  S.games.filter(g => g.played && !g.forfait).forEach(g => {
+    const E = 1 / (1 + Math.pow(10, -((g.H.elo + HOME_ADV) - g.A.elo) / 400));
+    const res = g.gh > g.ga ? 1 : g.gh < g.ga ? 0 : 0.5; const gd = Math.abs(g.gh - g.ga);
+    const G = Math.min(gd <= 1 ? 1 : gd === 2 ? 1.5 : (11 + gd) / 8, 2.5);
+    const d = 32 * G * (res - E); g.H.elo += d; g.A.elo -= d;
+  });
+}
+function predict(h, a) {
+  const d = (h.elo + HOME_ADV) - a.elo; const E = 1 / (1 + Math.pow(10, -d / 400));
+  const pD = Math.min(0.26 * Math.exp(-Math.pow(d / 260, 2)), 1.6 * Math.min(E, 1 - E));
+  return {h:E - pD / 2, d:pD, a:1 - E - pD / 2, adv:E};
+}
+const pct = x => Math.round(x * 100) + " %";
+// fester Zufalls-Startwert: gleiche Daten ergeben immer dieselben Prozentwerte
+const seeded = (a = 20262027) => () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+function probRow(g, cup) {
+  const p = predict(g.H, g.A);
+  if (cup) return `<div class="pbar"><span class="lbl">Weiter</span><span class="ph"><b>${pct(p.adv)}</b></span><span class="pb"><i style="width:${p.adv * 100}%"></i><i class="a" style="width:${(1 - p.adv) * 100}%"></i></span><span><b>${pct(1 - p.adv)}</b></span><span></span></div>`;
+  return `<div class="pbar"><span class="lbl">Prognose</span><span class="ph">Sieg <b>${pct(p.h)}</b></span><span class="pb"><i style="width:${p.h * 100}%"></i><i class="d" style="width:${p.d * 100}%"></i><i class="a" style="width:${p.a * 100}%"></i></span><span><b>${pct(p.a)}</b> Sieg · ${pct(p.d)} remis</span><span></span></div>`;
+}
+const withProb = (g, opt = {}) => matchRow(g, opt).replace('class="m"', 'class="m has-pbar"') + probRow(g, isCup(g.comp));
+const STAGE = {16:"Achtelfinal", 8:"Viertelfinal", 4:"Halbfinal", 2:"Final", 1:"Cupsieg"};
+function cupOdds(N = 10000) {
+  if (S._cupOdds !== undefined) return S._cupOdds;
+  const eq = S.cups.eq; if (!eq) return null; const rnd = seeded();
+  const rounds = [...new Set(eq.games.map(g => g.round))];
+  const cur = rounds.find(r => eq.games.some(g => g.round === r && !g.played)); if (!cur) return null;
+  const gs = eq.games.filter(g => g.round === cur);
+  const teams = gs.flatMap(g => [g.H, g.A]);
+  const stages = []; for (let n = gs.length; n >= 1; n = Math.floor(n / 2)) { stages.push(n); if (n === 1) break; }
+  const cnt = new Map(teams.map(t => [t, stages.map(() => 0)]));
+  for (let i = 0; i < N; i++) {
+    let alive = gs.map(g => g.played ? winner(g) : (rnd() < predict(g.H, g.A).adv ? g.H : g.A));
+    let st = 0;
+    while (true) {
+      alive.forEach(t => cnt.get(t)[st]++);
+      if (alive.length <= 1) break;
+      for (let k = alive.length - 1; k > 0; k--) { const j = Math.floor(rnd() * (k + 1)); [alive[k], alive[j]] = [alive[j], alive[k]]; }
+      const nx = []; for (let k = 0; k + 1 < alive.length; k += 2) nx.push(rnd() < predict(alive[k], alive[k + 1]).adv ? alive[k] : alive[k + 1]);
+      if (alive.length % 2) nx.push(alive[alive.length - 1]);
+      alive = nx; st++;
+    }
+  }
+  return S._cupOdds = {round:cur, stages, rows:teams.map(t => ({t, p:cnt.get(t).map(c => c / N)})).sort((a, b) => b.p[b.p.length - 1] - a.p[a.p.length - 1] || b.p[0] - a.p[0])};
+}
+function leagueOdds(key, r, N = 4000) {
+  const open = r.games.filter(g => !g.played); if (!open.length || !r.table.length) return null; const rnd = seeded();
+  const z = COMP_INFO[key].zones || {}; const n = r.table.length;
+  const base = r.table.map(x => ({t:x.t, pts:x.pts, gd:x.gf - x.ga, strp:x.strp}));
+  const idx = new Map(base.map((b, i) => [b.t, i]));
+  const acc = base.map(() => ({rank:0, up:0, down:0, pts:0, first:0}));
+  const pr = open.map(g => ({h:idx.get(g.H), a:idx.get(g.A), p:predict(g.H, g.A)})).filter(x => x.h != null && x.a != null);
+  for (let i = 0; i < N; i++) {
+    const cur = base.map(b => ({...b}));
+    pr.forEach(({h, a, p}) => { const u = rnd(); if (u < p.h) { cur[h].pts += 3; cur[h].gd++; cur[a].gd--; } else if (u < p.h + p.d) { cur[h].pts++; cur[a].pts++; } else { cur[a].pts += 3; cur[a].gd++; cur[h].gd--; } });
+    const order = cur.map((c, k) => k).sort((x, y) => cur[y].pts - cur[x].pts || cur[x].strp - cur[y].strp || cur[y].gd - cur[x].gd || x - y);
+    order.forEach((k, pos) => { const A = acc[k]; A.rank += pos + 1; A.pts += cur[k].pts; if (pos === 0) A.first++; if (z.up && pos < z.up) A.up++; if (z.down && pos >= n - z.down) A.down++; });
+  }
+  return {open:open.length, rows:base.map((b, k) => ({t:b.t, rank:acc[k].rank / N, pts:acc[k].pts / N, first:acc[k].first / N, up:acc[k].up / N, down:acc[k].down / N})).sort((a, b) => a.rank - b.rank), z};
+}
+const pcCell = (v, hi) => `<td class="pc ${v >= 0.5 && hi ? "hi" : ""}">${v < 0.005 ? "–" : v > 0.995 ? "100 %" : `<span class="pcb" style="width:${Math.max(3, v * 40)}px"></span>${pct(v)}`}</td>`;
 
 /* ============ Helfer ============ */
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -417,7 +525,9 @@ const playerHref = (name, t) => `#spieler-${t.id}-${encodeURIComponent(name)}`;
 const evTeam = (g, e) => { let t = e.s === "H" ? g.H : e.s === "A" ? g.A : null; if (t && e.t === "OG") t = t === g.H ? g.A : g.H; return t; };
 const evNames = e => e.t === "S" ? e.who.split(">").map(x => x.trim()) : [String(e.who || "").trim()];
 const norm = x => String(x).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-const compTag = (c, solid) => `<span class="tag ${solid ? "solid" : ""} ${COMP_INFO[c].color}">${esc(COMP_INFO[c].short)}</span>`;
+const compTag = (c, solid) => `<span class="tag ${solid ? "solid" : ""}">${esc(COMP_INFO[c].tag)}</span>`;
+const COMP_ORDER = ["yl", "promo", "eq", "bcj"];
+const byComp = arr => [...arr].sort((a, b) => COMP_ORDER.indexOf(a) - COMP_ORDER.indexOf(b));
 const isCup = c => c === "eq" || c === "bcj";
 function winner(g) {
   if (!g.played) return null;
@@ -518,6 +628,7 @@ function viewStart() {
       <div class="comp-foot"><span>Tabelle, Spiele, Statistik</span><span class="go">›</span></div></a>`;
   };
   const eq = S.cups.eq; const rounds = [...new Set(eq.games.map(g => g.round))];
+  if (S.fav === undefined) { const od = cupOdds(); S.fav = od ? od.rows[0] : null; }
   const nextR = rounds.find(r => eq.games.some(g => g.round === r && !g.played)) || rounds[rounds.length - 1];
   const nextG = eq.games.filter(g => g.round === nextR);
 
@@ -525,7 +636,7 @@ function viewStart() {
       <div class="comp-top"><span class="kicker">Cup · ganze Saison</span><span class="name">EQUIP.Lab Berner Cup</span><span class="state"><b>${esc(nextR)}</b>${nextG[0] ? " am " + fmtDate(nextG[0]) : ""}</span></div>
       <div class="comp-body"><div class="sub" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">${esc(nextR)} · ${nextG.length} Spiele</div>
       <table class="mini"><tbody>${nextG.slice(0, 4).map(g => `<tr><td><span class="t">${crest(g.H, "sm")}${esc(g.H.short)}</span></td><td style="text-align:center;color:var(--muted)">–</td><td><span class="t" style="justify-content:flex-end">${esc(g.A.short)}${crest(g.A, "sm")}</span></td></tr>`).join("")}</tbody></table></div>
-      <div class="comp-foot"><span>Runden, Resultate, Torschützen</span><span class="go">›</span></div></a>`;
+      <div class="comp-foot"><span>${S.fav ? `Favorit: ${esc(S.fav.t.short)} ${pct(S.fav.p[S.fav.p.length - 1])}` : "Runden, Resultate, Torschützen"}</span><span class="go">›</span></div></a>`;
   const upcoming = S.games.filter(g => !g.played).slice(0, 6);
   const recent = [...S.games].filter(g => g.played).reverse().slice(0, 6);
   app().innerHTML = hero("Junioren B · FVBJ 2026/27", [], `Wähle einen Wettbewerb · Stand <b>${fmtStamp(S.updated)}</b>`) + `
@@ -533,7 +644,6 @@ function viewStart() {
       <div class="start-grid">${card("yl")}${card("promo")}${cupCard}</div>
       <div class="start-extra">
         <a class="quick" href="#stats"><span class="ico">∑</span><span><b>Statistiken</b><small>Torschützen, Karten und Rekorde über alle Wettbewerbe</small></span></a>
-        <a class="quick" href="#yl-hb"><span class="ico">H</span><span><b>Herbstrunde 2026</b><small>Schlusstabellen und Resultate</small></span></a>
       </div>
       <div class="grid-half">
         <section class="card"><div class="sec-head"><h2>Nächste Spiele</h2></div><div class="matches">${upcoming.length ? gamesByDay(upcoming, {comp:true}) : '<p class="empty">Winterpause: Keine Spiele angesetzt.</p>'}</div></section>
@@ -581,23 +691,42 @@ function scorerTable(list, opt = {}) {
     list.map(s => `<tr class="clk" data-href="${playerHref(s.name, s.t)}"><td class="rank">${s.rank}</td>
       <td class="team"><span class="t">${crest(s.t, "sm")}<span class="pl">${esc(s.name)}<small>${esc(s.t.short)}</small></span></span></td>
       ${opt.full ? `<td class="hide-sm barcell"><div class="bar" style="width:${Math.round(s.goals / max * 100)}%"></div></td><td>${s.games.size}</td><td>${s.pens || ""}</td>` : ""}
-      ${opt.comps ? `<td class="hide-sm">${[...s.comps].map(c => compTag(c)).join(" ")}</td>` : ""}
+      ${opt.comps ? `<td class="hide-sm">${byComp(s.comps).map(c => compTag(c)).join(" ")}</td>` : ""}
       <td class="pts">${s.goals}</td></tr>`).join("")}</tbody></table></div>`;
+}
+function trendPlayers(games) {
+  const byTeam = new Map();
+  games.filter(g => g.played && !g.forfait).sort((a, b) => a.date - b.date).forEach(g => [g.H, g.A].forEach(t => { if (!isOurs(t)) return; if (!byTeam.has(t)) byTeam.set(t, []); byTeam.get(t).push(g); }));
+  const out = [];
+  byTeam.forEach((list, t) => { const last = list.slice(-3); const m = new Map();
+    last.forEach((g, i) => g.ev.forEach(e => { if ((e.t !== "G" && e.t !== "P") || evTeam(g, e) !== t) return; if (!m.has(e.who)) m.set(e.who, {name:e.who, t, n:0, per:last.map(() => 0), games:last}); const o = m.get(e.who); o.n++; o.per[i]++; }));
+    out.push(...m.values()); });
+  return rank(out.sort((a, b) => b.n - a.n || b.per[b.per.length - 1] - a.per[a.per.length - 1] || a.name.localeCompare(b.name, "de")), "n");
+}
+function trendTable(list) {
+  if (!list.length) return '<p class="empty">Keine Torschützen erfasst.</p>';
+  const opp = (g, t) => t === g.H ? g.A : g.H;
+  return `<div class="tbl-wrap"><table><thead><tr><th>#</th><th class="team">Spieler</th><th class="hide-sm">Letzte 3 Spiele</th><th>Tore</th></tr></thead><tbody>${list.map(s => `<tr class="clk" data-href="${playerHref(s.name, s.t)}"><td class="rank">${s.rank}</td>
+    <td class="team"><span class="t">${crest(s.t, "sm")}<span class="pl">${esc(s.name)}<small>${esc(s.t.short)}</small></span></span></td>
+    <td class="hide-sm"><span class="form">${s.per.map((x, i) => `<span class="fm ${x ? "S" : "U"}" title="gegen ${esc(opp(s.games[i], s.t).short)}, ${s.games[i].dstr}">${x}</span>`).join("")}</span></td>
+    <td class="pts">${s.n}</td></tr>`).join("")}</tbody></table></div>`;
 }
 function topCards(games, key) {
   const sc = scorers(games); const ts = teamStats(games, true);
   if (!sc.length || !ts.length) return "";
   const byGF = [...ts].sort((a, b) => b.gf - a.gf)[0], byGA = [...ts].sort((a, b) => a.ga / a.sp - b.ga / b.sp)[0], byCS = [...ts].sort((a, b) => b.cs - a.cs)[0];
+  const tr = trendPlayers(games)[0];
   const card = (lbl, href, t, who, sub, val, unit) => `<a class="top" href="${href}"><span class="lbl">${lbl}</span><span class="row">${crest(t, "md")}<span class="who">${esc(who)}<small>${esc(sub)}</small></span></span><span class="val">${val}<small>${unit}</small></span></a>`;
   return `<div class="tops">${[
-    card("Torschützenkönig", `#${key}-stats`, sc[0].t, sc[0].name, sc[0].t.short, sc[0].goals, "Tore"),
+    card("Torschützenkönig", playerHref(sc[0].name, sc[0].t), sc[0].t, sc[0].name, sc[0].t.short, sc[0].goals, "Tore"),
+    tr ? card("Spieler im Trend", playerHref(tr.name, tr.t), tr.t, tr.name, tr.t.short, tr.n, "Tore in 3 Spielen") : "",
     card("Offensive", `#team-${byGF.t.id}`, byGF.t, byGF.t.short, "meiste Tore", byGF.gf, "Tore"),
     card("Defensive", `#team-${byGA.t.id}`, byGA.t, byGA.t.short, "wenigste Gegentore", byGA.ga, "Gegentore"),
     card("Clean Sheets", `#team-${byCS.t.id}`, byCS.t, byCS.t.short, "Spiele ohne Gegentor", byCS.cs, "Spiele")].join("")}</div>`;
 }
 function leagueHead(key, tab) {
   const info = COMP_INFO[key];
-  const tabs = [["", "Übersicht"], ["-tabelle", "Tabelle"], ["-spiele", "Spiele"], ["-stats", "Statistiken"], ["-teams", "Teams"]];
+  const tabs = [["", "Übersicht"], ["-tabelle", "Tabelle"], ["-spiele", "Spiele"], ["-stats", "Statistiken"]];
   return hero(`${esc(info.name)} 2026/27`, [`<a href="#${key}">${esc(info.short)}</a>`]) +
     `<nav class="subnav">${tabs.map(([s, n]) => `<a href="#${key}${s}" class="${tab === s ? "on" : ""}">${n}</a>`).join("")}</nav>`;
 }
@@ -615,7 +744,7 @@ function viewLeague(key, tab) {
     body = `${springBanner(key)}
       <section class="card acc"><div class="sec-head"><h2>Top Teams &amp; Spieler · ${esc(r.name)}</h2></div>${topCards(r.games, key)}</section>
       <div class="grid-half">
-        <section class="card acc"><div class="sec-head"><h2>Tabelle · ${esc(r.name)}</h2><a class="more" href="#${key}-tabelle">Ausführlich</a></div>${standingsMini(key, r)}</section>
+        <section class="card acc"><div class="sec-head"><h2>Tabelle · ${esc(r.name)}</h2><a class="more" href="#${key}-tabelle">Ganze Tabelle</a></div>${standingsMini(key, r)}</section>
         <div class="stack">
           ${next.length ? `<section class="card compact"><div class="sec-head"><h2>Nächste Spiele</h2><a class="more" href="#${key}-spiele">Alle</a></div><div class="matches">${next.map(g => matchRow(g)).join("")}</div></section>` : ""}
           <section class="card compact"><div class="sec-head"><h2>Letzte Ergebnisse</h2><a class="more" href="#${key}-spiele">Alle Spiele</a></div><div class="matches">${latest.map(g => matchRow(g)).join("") || '<p class="empty">Noch keine Resultate.</p>'}</div></section>
@@ -623,7 +752,10 @@ function viewLeague(key, tab) {
         </div>
       </div>`;
   } else if (tab === "-tabelle") {
-    body = `${springBanner(key)}<section class="card acc"><div class="sec-head"><h2>Tabelle · ${esc(r.name)}</h2>${roundChips(key)}</div>${standings(key, r)}</section>`;
+    const lo = leagueOdds(key, r);
+    body = `${springBanner(key)}<section class="card acc"><div class="sec-head"><h2>Tabelle · ${esc(r.name)}</h2>${roundChips(key)}</div>${standings(key, r)}</section>` +
+      (lo ? `<section class="card"><div class="sec-head"><h2>Prognose Schlussrang</h2><span class="sub">${lo.open} Spiele offen · Schätzung aus allen bisherigen Resultaten</span></div>
+        <div class="tbl-wrap"><table><thead><tr><th class="team">Team</th><th>Ø Rang</th><th class="hide-sm">Ø Punkte</th><th>Platz 1</th>${lo.z.up ? "<th>Aufstieg</th>" : ""}${lo.z.down ? "<th>Abstieg</th>" : ""}</tr></thead><tbody>${lo.rows.map(x => `<tr class="clk" data-href="#team-${x.t.id}"><td class="team"><span class="t">${crest(x.t, "sm")}${teamLink(x.t)}</span></td><td>${x.rank.toFixed(1)}</td><td class="hide-sm">${x.pts.toFixed(1)}</td>${pcCell(x.first, true)}${lo.z.up ? pcCell(x.up, true) : ""}${lo.z.down ? pcCell(x.down, true) : ""}</tr>`).join("")}</tbody></table></div></section>` : "");
   } else if (tab === "-spiele") {
     const sel = LSTATE.team?.[key] ?? "";
     const list = r.games.filter(g => sel === "" || g.H.id === +sel || g.A.id === +sel);
@@ -652,10 +784,17 @@ function records(games) {
     const k = e.who + "|" + t.id; if (!c.has(k)) c.set(k, {name:e.who, t, g, n:0}); c.get(k).n++; }); per.push(...c.values()); });
   per.sort((a, b) => b.n - a.n || a.g.date - b.g.date);
   R.multi = per[0]; R.multiTies = per[0] ? per.filter(o => o.n === per[0].n).length - 1 : 0;
-  R.hat = per.filter(o => o.n >= 3);
+  // Joker: Tore von Spielern, die nicht in der Startelf standen (Aufstellung, sonst Wechsel im Spielbericht)
+  const jk = new Map();
+  pl.forEach(g => g.ev.forEach(e => { if (e.t !== "G" && e.t !== "P") return; const t = evTeam(g, e); if (!t) return;
+    const side = t === g.H ? "H" : "A"; const L = g.lu && g.lu[side];
+    const sub = L ? L.bench.some(p => p.name === e.who) && !L.start.some(p => p.name === e.who) : g.ev.some(x => x.t === "S" && evNames(x)[1] === e.who && evTeam(g, x) === t && x.sort <= e.sort);
+    if (!sub) return; const k = e.who + "|" + t.id; if (!jk.has(k)) jk.set(k, {name:e.who, t, n:0}); jk.get(k).n++; }));
+  R.joker = [...jk.values()].sort((a, b) => b.n - a.n)[0];
   const goals = []; pl.forEach(g => g.ev.forEach(e => { if ((e.t === "G" || e.t === "P") && e.m) goals.push({g, e, t:evTeam(g, e)}); }));
   goals.sort((a, b) => a.e.sort - b.e.sort || a.g.date - b.g.date);
   R.fast = goals[0]; R.late = [...goals].sort((a, b) => b.e.sort - a.e.sort || a.g.date - b.g.date)[0];
+  R.fastTies = R.fast ? goals.filter(x => x.e.sort === R.fast.e.sort).length - 1 : 0; R.lateTies = R.late ? goals.filter(x => x.e.sort === R.late.e.sort).length - 1 : 0;
   const teams = new Map();
   games.filter(g => g.played).forEach(g => [g.H, g.A].forEach(t => { if (!teams.has(t)) teams.set(t, []); teams.get(t).push(resFor(g, t)); }));
   const streak = ok => { let best = null; teams.forEach((rs, t) => { let cur = 0, mx = 0; rs.forEach(r => { cur = ok(r) ? cur + 1 : 0; mx = Math.max(mx, cur); });
@@ -672,12 +811,12 @@ function recordTiles(R) {
   const t = [];
   if (R.big) t.push(tile("Höchster Sieg", `#spiel-${R.big.tg}`, `${R.big.gh}:${R.big.ga}`, "", gameWho(R.big), gameSub(R.big)));
   if (R.most) t.push(tile("Torreichstes Spiel", `#spiel-${R.most.tg}`, R.most.gh + R.most.ga, "Tore", `${esc(R.most.H.short)} ${R.most.gh}:${R.most.ga} ${esc(R.most.A.short)}`, gameSub(R.most)));
-  if (R.multi) t.push(tile("Meiste Tore in einem Spiel", playerHref(R.multi.name, R.multi.t), R.multi.n, "Tore", esc(R.multi.name),
-    `${esc(R.multi.t.short)} gegen ${esc(opp(R.multi.g, R.multi.t).short)}${R.multiTies ? ` · ${R.multiTies} weitere gleich` : ""}`));
-  t.push(tile("Hattricks", R.hat.length === 1 ? playerHref(R.hat[0].name, R.hat[0].t) : "", R.hat.length, R.hat.length === 1 ? "Hattrick" : "Hattricks",
-    R.hat.length ? esc([...new Set(R.hat.map(o => o.name))].slice(0, 3).join(", ")) + (new Set(R.hat.map(o => o.name)).size > 3 ? " …" : "") : "Noch keiner", "3 oder mehr Tore in einem Spiel"));
-  if (R.fast) t.push(tile("Schnellstes Tor", playerHref(R.fast.e.who, R.fast.t), minTxt(R.fast.e), "", esc(R.fast.e.who), `${esc(R.fast.t.short)} gegen ${esc(opp(R.fast.g, R.fast.t).short)}`));
-  if (R.late) t.push(tile("Spätestes Tor", playerHref(R.late.e.who, R.late.t), minTxt(R.late.e), "", esc(R.late.e.who), `${esc(R.late.t.short)} gegen ${esc(opp(R.late.g, R.late.t).short)}`));
+  const more = n => n ? ` · ${n} weitere gleich` : "";
+  if (R.multi) t.push(tile("Meiste Tore in einem Spiel", `#spiel-${R.multi.g.tg}`, R.multi.n, "Tore", esc(R.multi.name),
+    `${esc(R.multi.t.short)} gegen ${esc(opp(R.multi.g, R.multi.t).short)}${more(R.multiTies)}`));
+  if (R.joker) t.push(tile("Bester Joker", playerHref(R.joker.name, R.joker.t), R.joker.n, R.joker.n === 1 ? "Tor" : "Tore", esc(R.joker.name), `${esc(R.joker.t.short)} · nach Einwechslung`));
+  if (R.fast) t.push(tile("Schnellstes Tor", `#spiel-${R.fast.g.tg}`, minTxt(R.fast.e), "", esc(R.fast.e.who), `${esc(R.fast.t.short)} gegen ${esc(opp(R.fast.g, R.fast.t).short)}${more(R.fastTies)}`));
+  if (R.late) t.push(tile("Spätestes Tor", `#spiel-${R.late.g.tg}`, minTxt(R.late.e), "", esc(R.late.e.who), `${esc(R.late.t.short)} gegen ${esc(opp(R.late.g, R.late.t).short)}${more(R.lateTies)}`));
   if (R.win) t.push(tile("Längste Siegesserie", isOurs(R.win.t) ? `#team-${R.win.t.id}` : "", R.win.n, "Siege", esc(R.win.t.short), "in Folge"));
   if (R.unb) t.push(tile("Ungeschlagen in Folge", isOurs(R.unb.t) ? `#team-${R.unb.t.id}` : "", R.unb.n, "Spiele", esc(R.unb.t.short), "ohne Niederlage"));
   return `<div class="recs">${t.join("")}</div>`;
@@ -700,6 +839,7 @@ function statsBlock(o) {
     ${games.length ? `
     <section class="card acc"><div class="sec-head"><h2>Torschützen</h2><span class="sub">${sc.length} Spieler${inc ? ` · in ${inc} Spielen fehlen Torschützen im Matchcenter` : ""}</span></div>${scorerTable(sc.slice(0, 40), {full:true, comps:!o.fixedComp})}</section>
     <section class="card"><div class="sec-head"><h2>Gelbe und rote Karten</h2><span class="sub">${ny} Verwarnungen · ${nr} Ausschlüsse</span></div>${cards.length ? `<div class="split">${[cards.slice(0, 10), cards.slice(10, 20)].filter(x => x.length).map(x => cardTable(x, true)).join("")}</div>` : '<p class="empty">Keine Karten erfasst.</p>'}</section>
+    <section class="card"><div class="sec-head"><h2>Spieler im Trend</h2><span class="sub">Tore in den letzten 3 Spielen des Teams</span></div>${trendTable(trendPlayers(games).filter(x => x.n > 0).slice(0, 10))}</section>
     <section class="card"><div class="sec-head"><h2>Rekorde</h2><span class="sub">${R.total} Tore in ${R.count} Spielen · Ø ${(R.total / Math.max(R.count, 1)).toFixed(2)} pro Spiel</span></div>${recordTiles(R)}</section>` : '<section class="card"><p class="empty">Für diese Auswahl gibt es noch keine gespielten Spiele.</p></section>'}`;
 }
 function viewStats() {
@@ -713,9 +853,12 @@ function viewCup(tab) {
   const tabs = [["", "Runden"], ["-stats", "Torschützen"]];
   let body;
   if (tab === "") {
-    body = `<section class="card acc"><div class="sec-head"><h2>Runden</h2><span class="sub">K.-o.-Modus, Junioren B aller Stärkeklassen</span></div>
+    const od = cupOdds();
+    const oddsCard = od ? `<section class="card acc"><div class="sec-head"><h2>Chancen</h2><span class="sub">Schätzung aus allen bisherigen Resultaten · ab ${esc(od.round)}</span></div>
+      <div class="tbl-wrap"><table><thead><tr><th class="team">Team</th>${od.stages.map((n, i) => `<th class="${i > 0 && i < od.stages.length - 1 ? "hide-sm" : ""}">${STAGE[n] || n}</th>`).join("")}</tr></thead><tbody>${od.rows.map(r => `<tr class="${isOurs(r.t) ? "clk" : ""}" ${isOurs(r.t) ? `data-href="#team-${r.t.id}"` : ""}><td class="team"><span class="t">${crest(r.t, "sm")}${teamLink(r.t)}</span></td>${r.p.map((v, i) => pcCell(v, i === r.p.length - 1).replace('class="pc', `class="${i > 0 && i < r.p.length - 1 ? "hide-sm " : ""}pc`)).join("")}</tr>`).join("")}</tbody></table></div></section>` : "";
+    body = oddsCard + `<section class="card acc"><div class="sec-head"><h2>Runden</h2><span class="sub">K.-o.-Modus, Junioren B aller Stärkeklassen</span></div>
         <div class="matches">${[...rounds].reverse().map(r => { const gs = eq.games.filter(g => g.round === r); if (!gs.length) return "";
-          return `<div class="mday"><span>${esc(r)} · ${fmtDate(gs[0])}</span><span>${gs.every(g => !g.played) ? "noch offen" : gs.length + " Spiele"}</span></div>` + gs.map(g => matchRow(g, {date:true})).join(""); }).join("")}</div></section>
+          return `<div class="mday"><span>${esc(r)} · ${fmtDate(gs[0])}</span><span>${gs.every(g => !g.played) ? "noch offen" : gs.length + " Spiele"}</span></div>` + gs.map(g => g.played ? matchRow(g, {date:true}) : withProb(g, {date:true})).join(""); }).join("")}</div></section>
       <section class="card"><div class="sec-head"><h2>${compTag("bcj", true)} Cup BCJ · Junioren B</h2><span class="sub">nur Spiele der Promotion-Teams</span></div>
         <div class="matches compact">${[...new Set(bcj.games.map(g => g.round))].reverse().map(r => `<div class="mday"><span>${esc(r)}</span></div>` + bcj.games.filter(g => g.round === r).map(g => matchRow(g)).join("")).join("")}</div></section>`;
   } else {
@@ -748,14 +891,14 @@ function viewTeam(id) {
   const cards = cardsOf(all.filter(g => g.played)).filter(c => c.t === t);
   const next = all.find(g => !g.played);
   document.title = `${t.short} · Aaregou`;
-  app().innerHTML = `<div class="${info.color}">${hero(esc(t.name), [`<a href="#${key}">${esc(info.short)}</a>`, `<a href="#${key}-teams">Teams</a>`, esc(t.short)])}
+  app().innerHTML = `<div class="${info.color}">${hero(esc(t.name), [`<a href="#${key}">${esc(info.short)}</a>`, esc(t.short)])}
     <a class="back" href="#${key}">‹ ${esc(info.short)}</a>
     <div class="grid">
       <section class="card acc">
         <div class="team-head">${crest(t, "lg")}<div><h2>${esc(t.name)}</h2><div class="sub">${compTag(key, true)} · Form ${formPills(formOf(t, all))}</div></div></div>
         <div class="kpis">${tables}<div><span>Pflichtspiele</span><b>${st.sp}</b></div><div><span>Bilanz S-U-N</span><b>${st.s}-${st.u}-${st.n}</b></div><div><span>Tore</span><b>${st.gf}:${st.ga}</b></div><div><span>Ø Tore</span><b>${st.sp ? (st.gf / st.sp).toFixed(1) : "–"}</b></div><div><span>Ø Gegentore</span><b>${st.sp ? (st.ga / st.sp).toFixed(1) : "–"}</b></div><div><span>Zu null</span><b>${st.cs}</b></div></div>
       </section>
-      ${next ? `<section class="card"><div class="sec-head"><h2>Nächstes Spiel</h2>${compTag(next.comp)}</div><div class="matches">${matchRow(next, {comp:true, me:t})}</div></section>` : ""}
+      ${next ? `<section class="card"><div class="sec-head"><h2>Nächstes Spiel</h2>${compTag(next.comp)}</div><div class="matches">${withProb(next, {comp:true, me:t})}</div></section>` : ""}
       <div class="grid-2">
         <section class="card"><div class="sec-head"><h2>Teamspielplan</h2>
           <div class="chips" data-teamf>${[["all", "Alle"], ["liga", "Meisterschaft"], ["cup", "Cup"]].map(([k, n]) => `<button type="button" class="chip ${f === k ? "on" : ""}" data-v="${k}">${n}</button>`).join("")}</div></div>
@@ -787,37 +930,48 @@ function evChip(e, name) {
   if (e.t === "S") { const [o] = evNames(e); return `<span><span class="ic sub">⇄</span>${o === name ? "ausgewechselt" : "eingewechselt"} ${m}</span>`; }
   return "";
 }
+function playerGames(t, name) {
+  const out = [];
+  S.games.forEach(g => { if (g.H !== t && g.A !== t) return; const side = g.H === t ? "H" : "A"; const L = g.lu && g.lu[side];
+    const st = L && L.start.find(p => p.name === name), bn = L && L.bench.find(p => p.name === name);
+    const evs = g.ev.filter(e => evTeam(g, e) === t && evNames(e).includes(name));
+    if (st) out.push({g, role:"start", p:st, evs});
+    else if (bn && !bn.out) out.push({g, role:"sub", p:bn, evs});
+    else if (evs.length && !(bn && bn.out)) out.push({g, role:"", p:null, evs});
+  });
+  return out;
+}
 function viewPlayer(tid, name) {
   const t = S.teams[tid]; if (!t) return false;
-  const evs = playerEvents(t, name); if (!evs.length) return false;
+  const list = playerGames(t, name); if (!list.length) return false;
   const key = isOurs(t) ? [...t.leagues][0] : "eq"; const info = COMP_INFO[key];
+  const evs = list.flatMap(x => x.evs.map(e => ({g:x.g, e})));
   const goals = evs.filter(x => x.g.played && (x.e.t === "G" || x.e.t === "P"));
-  const games = [...new Set(evs.map(x => x.g))].sort((a, b) => a.date - b.date);
   const cnt = f => evs.filter(f).length;
   const lg = goals.filter(x => !isCup(x.g.comp)).length, cup = goals.length - lg;
+  const nr = (list.slice().reverse().find(x => x.p) || {}).p?.nr;
   document.title = `${name} · Aaregou`;
-  const rows = games.map(g => { const mine = evs.filter(x => x.g === g).sort((a, b) => a.e.sort - b.e.sort);
-    return matchRow(g, {comp:true, me:t}).replace('class="m"', 'class="m has-pev"') + `<div class="pev">${mine.map(x => evChip(x.e, name)).join("")}</div>`; }).join("");
-  app().innerHTML = `<div class="${info.color}">${hero(esc(name), [isOurs(t) ? `<a href="#team-${t.id}">${esc(t.short)}</a>` : esc(t.short), "Spieler"], `${esc(t.name)} · Saison 2026/27`)}
+  const rows = list.map(x => { const role = x.role === "start" ? `<span class="role">Startelf${x.p.pos ? " · " + esc(x.p.pos) : ""}${x.p.cap ? " · Captain" : ""}</span>` : x.role === "sub" && !x.evs.some(e => e.t === "S") ? '<span class="role">Eingewechselt</span>' : "";
+    return matchRow(x.g, {comp:true, me:t}).replace('class="m"', 'class="m has-pev"') + `<div class="pev">${role}${x.evs.sort((a, b) => a.sort - b.sort).map(e => evChip(e, name)).join("")}</div>`; }).join("");
+  app().innerHTML = `<div class="${info.color}">${hero(esc(name), [isOurs(t) ? `<a href="#team-${t.id}">${esc(t.short)}</a>` : esc(t.short), "Spieler"], `${esc(t.name)}${nr ? " · Nr. " + esc(nr) : ""} · Saison 2026/27`)}
     ${isOurs(t) ? `<a class="back" href="#team-${t.id}">‹ ${esc(t.short)}</a>` : ""}
     <div class="grid">
       <section class="card acc">
         <div class="team-head">${crest(t, "lg")}<div><h2>${esc(name)}</h2><div class="sub">${isOurs(t) ? teamLink(t, t.name) : esc(t.name)}</div></div></div>
-        <div class="kpis"><div><span>Tore</span><b>${goals.length}</b></div><div><span>Meisterschaft</span><b>${lg}</b></div><div><span>Cup</span><b>${cup}</b></div><div><span>Penaltys</span><b>${cnt(x => x.e.t === "P")}</b></div>
+        <div class="kpis"><div><span>Einsätze</span><b>${list.length}</b></div><div><span>Startelf</span><b>${list.filter(x => x.role === "start").length}</b></div><div><span>Tore</span><b>${goals.length}</b></div><div><span>Meisterschaft</span><b>${lg}</b></div><div><span>Cup</span><b>${cup}</b></div><div><span>Penaltys</span><b>${cnt(x => x.e.t === "P")}</b></div>
           <div><span>Gelb</span><b>${cnt(x => x.e.t === "Y")}</b></div><div><span>Rot</span><b>${cnt(x => x.e.t === "YR" || x.e.t === "R")}</b></div></div>
       </section>
-      <section class="card"><div class="sec-head"><h2>Spiele mit Einträgen</h2><span class="sub">${games.length} Spiele</span></div><div class="matches">${rows}</div>
-</section>
+      <section class="card"><div class="sec-head"><h2>Einsätze</h2><span class="sub">${list.length} Spiele</span></div><div class="matches">${rows}</div></section>
     </div></div>` + foot();
   return true;
 }
-
-/* ---- Suche ---- */
 function buildPlayers() {
   const P = new Map();
   S.games.forEach(g => g.ev.forEach(e => { const t = evTeam(g, e); if (!t) return;
     evNames(e).forEach(n => { if (!n) return; const k = t.id + "|" + n; if (!P.has(k)) P.set(k, {name:n, t, goals:0, q:norm(n)});
       if ((e.t === "G" || e.t === "P") && g.played) P.get(k).goals++; }); }));
+  S.games.forEach(g => g.lu && ["H", "A"].forEach(sd => { const L = g.lu[sd]; if (!L) return; const t = sd === "H" ? g.H : g.A;
+    [...L.start, ...L.bench].forEach(p => { const k = t.id + "|" + p.name; if (!P.has(k)) P.set(k, {name:p.name, t, goals:0, q:norm(p.name)}); }); }));
   S.players = [...P.values()];
 }
 function runSearch(q) {
@@ -848,6 +1002,23 @@ function evRow(e) {
   const inner = side === "H" ? `<span class="txt">${main}<small>${sub}</small></span>${icon}` : `${icon}<span class="txt">${main}<small>${sub}</small></span>`;
   return `<li><span class="ev ${side}">${inner}</span><span class="min">${minTxt(e)}</span></li>`;
 }
+function lineupBlock(g) {
+  if (!g.lu) return "";
+  const col = (sd, t) => { const L = g.lu[sd]; if (!L) return `<div><div class="lu-head">${crest(t, "sm")}${esc(t.short)}</div><p class="empty">Keine Aufstellung erfasst.</p></div>`;
+    const evOf = name => g.ev.filter(e => evTeam(g, e) === t && evNames(e).includes(name)).sort((a, b) => a.sort - b.sort).map(e => {
+      const m = minTxt(e);
+      if (e.t === "G" || e.t === "P") return `<span><span class="ic ball"></span>${m}${e.t === "P" ? " P" : ""}</span>`;
+      if (e.t === "OG") return `<span><span class="ic ball"></span>${m} ET</span>`;
+      if (e.t === "Y") return `<span><span class="ic card-y"></span>${m}</span>`;
+      if (e.t === "YR") return `<span><span class="ic card-yr"></span>${m}</span>`;
+      if (e.t === "R") return `<span><span class="ic card-r"></span>${m}</span>`;
+      if (e.t === "S") return evNames(e)[0] === name ? `<span><span class="arr-out">↓</span>${m}</span>` : `<span><span class="arr-in">↑</span>${m}</span>`;
+      return ""; }).join("");
+    const row = p => `<a class="lu-row ${p.out ? "out" : ""}" href="${playerHref(p.name, t)}"><span class="nr">${esc(p.nr)}</span><span class="nm">${esc(p.name)}${p.cap ? " (C)" : ""}<small>${p.out ? "kein Einsatz" : esc(p.pos || "")}</small></span><span class="ev">${p.out ? "" : evOf(p.name)}</span></a>`;
+    return `<div><div class="lu-head">${crest(t, "sm")}${isOurs(t) ? teamLink(t, t.name) : esc(t.name)}</div><div class="lu-sub">Startformation</div>${L.start.map(row).join("")}
+      ${L.bench.length ? `<div class="lu-sub">Ersatzbank</div>${L.bench.map(row).join("")}` : ""}</div>`; };
+  return `<section class="card"><div class="sec-head"><h2>Aufstellungen</h2></div><div class="lineups">${col("H", g.H)}${col("A", g.A)}</div></section>`;
+}
 function viewGame(tg) {
   const g = S.games.find(x => x.tg === tg); if (!g) return false;
   const info = COMP_INFO[g.comp]; const h = g.H, a = g.A;
@@ -862,7 +1033,9 @@ function viewGame(tg) {
   const sameComp = S.games.filter(x => x.comp === g.comp && (isCup(g.comp) || x.round === g.round)); const idx = sameComp.indexOf(g);
   let body;
   if (g.forfait) body = '<p class="empty">Forfait, kein Spielbericht.</p>';
-  else if (!g.played) body = '<p class="empty">Das Spiel ist angesetzt. Der Spielbericht folgt nach dem Spiel.</p>';
+  else if (!g.played) { const p = predict(h, a); body = isCup(g.comp)
+      ? `<div class="p3" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="${p.adv >= .5 ? "hi" : ""}"><b>${pct(p.adv)}</b><span>${esc(h.short)} weiter</span></div><div class="${p.adv < .5 ? "hi" : ""}"><b>${pct(1 - p.adv)}</b><span>${esc(a.short)} weiter</span></div></div>`
+      : `<div class="p3"><div class="${p.h >= p.a && p.h >= p.d ? "hi" : ""}"><b>${pct(p.h)}</b><span>Sieg ${esc(h.short)}</span></div><div><b>${pct(p.d)}</b><span>Unentschieden</span></div><div class="${p.a > p.h && p.a >= p.d ? "hi" : ""}"><b>${pct(p.a)}</b><span>Sieg ${esc(a.short)}</span></div></div>`; }
   else body = g.ev.length ? `<ul class="tl">${tl}</ul>` : '<p class="empty">Für dieses Spiel sind im Matchcenter keine Ereignisse erfasst.</p>';
   const facts = [`<div><dt>Datum</dt><dd>${fmtDate(g)}${g.time ? ", " + g.time : ""}</dd></div>`];
   if (g.venue) facts.push(`<div><dt>Spielort</dt><dd>${esc(g.venue)}</dd></div>`);
@@ -881,8 +1054,9 @@ function viewGame(tg) {
           <div class="side">${crest(a, "lg")}${teamLink(a, a.name)}${tagA}<div class="sc">${goals("A")}</div></div>
         </div></div>
         <dl class="facts">${facts.join("")}</dl></section>
-      <section class="card"><div class="sec-head"><h2>Spielverlauf</h2></div>${body}
+      <section class="card"><div class="sec-head"><h2>${g.played ? "Spielverlauf" : "Prognose"}</h2>${g.played ? "" : '<span class="sub">Schätzung aus allen bisherigen Resultaten</span>'}</div>${body}
         ${!g.complete && g.ev.length ? '<p class="note">Im Matchcenter sind nicht alle Tore dieses Spiels einem Torschützen zugeordnet.</p>' : ""}</section>
+      ${lineupBlock(g)}
       <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
         ${idx > 0 ? `<a class="back" style="margin:0" href="#spiel-${sameComp[idx - 1].tg}">‹ Vorheriges Spiel</a>` : "<span></span>"}
         ${idx < sameComp.length - 1 ? `<a class="back" style="margin:0" href="#spiel-${sameComp[idx + 1].tg}">Nächstes Spiel ›</a>` : ""}

@@ -239,4 +239,981 @@ G|4366777|07.10.2026|20:00|Team Ajoie Centre (FC Fontenais) c|FC Vicques|1|5|152
 G|4407482|28.10.2026|19:30|Team Grand Chasseral (FC TT)|Team Grand Chasseral (Birse Football Club) a|2|5|515784|Allianz Park, Tavannes - Terrain principal|2:2|||Jun.B 1/S|Jun.B P|1/4-Final|7;G;H;Thibaut Gerber~19;G;A;Celien Piaget~35;G;A;Swan Elber~45+1;G;H;Axel Minder~46;OG;A;Samir Khadimi~72;G;A;Simon Affolter~73;G;A;Grégory Allimann
 G|4407484|28.10.2026|19:45|SR Delémont b|FC Vicques|0|4|515786|Les Prés-Roses, Delémont - Place A|0:2|||Jun.B 1/S|Jun.B P|1/4-Final|3;G;A;Justin Chételat~44;G;A;Justin Chételat~59;G;A;Lucas Muriset~73;G;A;Guillaume Koller~87;Y;H;Elio Roland Münch
 G|4407481|28.10.2026|20:00|Team Ajoie Centre (FC Alle) a|Team Ajoie Centre (FC Porrentruy) b|7|0|515783|Stade des Prés Domont / Centre sportif, Alle - Stade "A"|5:0|||Jun.B P|Jun.B 1/S|1/4-Final|5;G;H;Aurel von Niederhäusern~17;G;H;Pierre Frossard~21;G;H;Pierre Frossard~26;G;H;Aurel von Niederhäusern~38;Y;A;Faël Mancini~42;G;H;Aurel von Niederhäusern~80;G;H;Raphaël Pheulpin~87;G;H;Kilwan Chavanne
+PL|0|1|Fabian Muster
+PL|1|5|Nevio Kormann
+PL|2|3|Ledion Emerllahu
+PL|3|4|Sandro Lehmann
+PL|4|11|George Thorne
+PL|5|15|Mateo Hofmann
+PL|6|7|Nils Jost
+PL|7|12|Finley Escat
+PL|8|10|Lukas Kaderli
+PL|9|9|Sergii Goncharenko
+PL|a|11|Erel Aktay
+PL|b|2|Raphael Preg
+PL|c|6|Fabio Robin Matutis
+PL|d|14|Jean-Leonardo Zegarra
+PL|e|13|Kenichi Kogler
+PL|f|8|Fabio Mangiarratti
+PL|g|24|Loris Bonetti
+PL|h|23|Niklas Rieder
+PL|i|6|Bello Alihou Alhadji
+PL|j|11|Leandro Lottaz
+PL|k|20|Luka Damnjanovic
+PL|l|6|Evan Arthur Patrick Muala
+PL|m|17|Keane Wyder
+PL|n|47|Vigjilent Tolaj
+PL|o|5|Arda Bascoban
+PL|p|99|Demian Lyn de la Cruz Hernandez
+PL|q|7|Thierno Sow
+PL|r|9|Valentino Frautschi
+PL|s|22|Yasin Mahmoud
+PL|t|19|Nesanet Ayele
+PL|u|15|Omer Husic
+PL|v|13|Bryan Alex Dos Reis Gomes
+PL|w|1|Jesiel Malozi
+PL|x|3|Noam Baumann
+PL|y|23|Jules Zurbrügg
+PL|z|4|Juri Wassmer
+PL|10|14|Leandro Bill
+PL|11|8|Mohammed Mahi Mirda
+PL|12|10|Ajdin Arifagic
+PL|13|11|Joao Paulo Pereira Eschbach
+PL|14|7|Rameez Ahmed
+PL|15|15|Redan Seker
+PL|16|20|Leandro Batista Fonseca
+PL|17|99|Diego Von Kaenel
+PL|18|16|Lenni Wyss
+PL|19|5|Arvo Spata
+PL|1a|22|Tim Köchli
+PL|1b|18|Avdi Rexhepi
+PL|1c|27|Joel Stalder
+PL|1d|3|Fabio Hunziker
+PL|1e|4|Dorian Nguyen
+PL|1f|22|Jonas Felder
+PL|1g|23|John Agner
+PL|1h|8|Lias Eichenberger
+PL|1i|6|Can Yildiz
+PL|1j|14|Enea Ruggiano
+PL|1k|7|Joshua Raho Luciano
+PL|1l|24|Luc Lehmann
+PL|1m|21|Leart Luzhnica
+PL|1n|1|David Abbey
+PL|1o|10|Kenan Reding Fernandez
+PL|1p|18|Luis Henzi
+PL|1q|9|Mahmoudou Balde
+PL|1r|17|Kyano Spörri
+PL|1s|19|Leano Wick
+PL|1t|7|Bahez Darbaz Zubair
+PL|1u|22|Leo Häuptli
+PL|1v|2|Medwyn Spörri
+PL|1w|4|Aidan Gygax
+PL|1x|5|Mael Howald
+PL|1y|18|Yanis Schärer
+PL|1z|8|Lionel Criblez
+PL|20|13|Indra Fossati
+PL|21|17|Noa Gass
+PL|22|10|Kenan Ademi
+PL|23|11|Yosef Barry Omari Ruakabuba
+PL|24|9|Kerim Mohamed
+PL|25|3|Pedro Da Silva Henriques
+PL|26|6|Nevio Widmer
+PL|27|12|Lennon Earnhart
+PL|28|14|Mael Koschahre
+PL|29|12|Dominik Bordiuh
+PL|2a|1|Jan Aeschlimann
+PL|2b|19|Julian Streit
+PL|2c|9|Joel Glanzmann
+PL|2d|2|Elija Lüthi
+PL|2e|7|Chaim Schilt
+PL|2f|11|Matteo Moser
+PL|2g|10|Philipp Langenegger
+PL|2h|18|Lionel Schott
+PL|2i|17|Malte Thye
+PL|2j|12|Tarcisi Timon Murer
+PL|2k|3|Léonard Müller
+PL|2l|14|Ruven Brüderlin
+PL|2m|4|Dimitri Frédéric Wenger
+PL|2n|18|Lou Marino Jambresic
+PL|2o|5|Fabio Raúl Gonzalez
+PL|2p|20|Bryan Trachsel
+PL|2q|3|Gilles Marty
+PL|2r|15|Gil Von Gunten
+PL|2s|13|Lorik Kida
+PL|2t|5|Karrar Adili
+PL|2u|10|Nikola Krstic
+PL|2v|16|Janis Lüthi
+PL|2w|7|Nik Steuri
+PL|2x|11|Fynn Fuchs
+PL|2y|8|Julian Vaca Straub
+PL|2z|19|Lucas Manuel dos Santos Albuquerque
+PL|30|2|Miran Can Avsar
+PL|31|12|Deniz Günes
+PL|32|9|Moslem Kotscher Mohammad Saleh
+PL|33|17|Rodrigo Fernandes Abrantes
+PL|34|4|Samuel Caldeira Rocha
+PL|35|1|Tom Beyeler
+PL|36|21|Dominik Hurab
+PL|37|4|Janik Aebi
+PL|38|22|Onno Kilchenmann
+PL|39|16|Finn Fahrni
+PL|3a|10|Leon Mani
+PL|3b|20|Luca Hersperger
+PL|3c|17|Micha Hug
+PL|3d|15|Noel Schär
+PL|3e|10|Alem Etoski
+PL|3f|19|Janis Arien Schibler
+PL|3g|5|Elio Weidlein
+PL|3h|12|Luka Mitrovic
+PL|3i|2|Len Keller
+PL|3j|24|Nik Gian Lobsiger
+PL|3k|17|Finn Fischer
+PL|3l|14|Nicolai Stebler
+PL|3m|9|Leon Arifi
+PL|3n|1|Raffael Dysli
+PL|3o|18|Jannik Dysli
+PL|3p|16|Theo Leu
+PL|3q|13|Alan Kloter
+PL|3r|15|David Hausammann
+PL|3s|19|Kay Hintermann
+PL|3t|8|Elio Ebeling
+PL|3u|10|Joachim Bischoff
+PL|3v|5|Nico Simos
+PL|3w|11|Jan Keller
+PL|3x|9|Leo Baumann
+PL|3y|12|Loi Torsello
+PL|3z|6|Elias Kunz
+PL|40|6|Luc Leuenberger
+PL|41|21|Dylan Mast
+PL|42|7|Haben Mogoes
+PL|43|14|Lucas Iff
+PL|44|1|Ahmed Rayen Boualliga
+PL|45|22|Ylli Bytyqi
+PL|46|70|Zakaria Haji Yussuf
+PL|47|98|Lars Berger
+PL|48|34|Ernest Andi Sopaj
+PL|49|33|Nahuel Alejandro Javet
+PL|4a|8|Sammy Jose Quintero Bermeo
+PL|4b|77|Halil Fehimli
+PL|4c|11|Starking Manuel Tejada Zapata
+PL|4d|9|Mohammad Said
+PL|4e|90|Aaron Montoya Quintero
+PL|4f|17|Isaak Trochsler
+PL|4g|25|Ebrima Jallow Mustabah
+PL|4h|1|Lionel Hämmerli
+PL|4i|2|Luis Baumgartner
+PL|4j|3|Lorin Bögli
+PL|4k|5|André Niklaus
+PL|4l|15|Nicola Stalder
+PL|4m|19|Damian Burri
+PL|4n|8|Fabrice Schärer
+PL|4o|16|Julien Dufaux
+PL|4p|13|Livio Studer
+PL|4q|10|Yanis Jampen
+PL|4r|6|Jannik Metzger
+PL|4s|12|Len Schwab
+PL|4t|17|Noel Schwab
+PL|4u|11|Nico Jampen
+PL|4v|18|Nenad Jovanov
+PL|4w|20|Aaron Aebersold
+PL|4x|9|Milosz Kucinski
+PL|4y|21|Laurin Klaus
+PL|4z|20|Leandro Jampen
+PL|50|2|Keito Widmer
+PL|51|4|Cyril Mendes da Silva
+PL|52|8|Elias Känel
+PL|53|11|Gian Will
+PL|54|6|Milo Nobs
+PL|55|13|Janic Nobs
+PL|56|10|Tim Brenzikofer
+PL|57|9|Vito Stämpfli
+PL|58|15|Nico Wenger
+PL|59|17|Nicola Rudin
+PL|5a|19|Nelio Zwahlen
+PL|5b|3|Leno Stämpfli
+PL|5c|12|Nicola Brantschen
+PL|5d|5|Loïc Känel
+PL|5e|1|Danilo D Elia
+PL|5f|12|Ömer Sirma
+PL|5g|18|Naele Verrillo
+PL|5h|13|Mateo Martin
+PL|5i|5|Edmond Kadriu
+PL|5j|9|Francesco Cascione
+PL|5k|19|Farzad Noori
+PL|5l|17|Gianluca Iannetta
+PL|5m|8|Daniel Eltschinger
+PL|5n|11|Livio Vaira
+PL|5o|18|Antonio Dagostino
+PL|5p|7|Payman Rezayi
+PL|5q|10|Serhat Dermirci
+PL|5r|1|Théo Spraul
+PL|5s|17|Yvo Comastri
+PL|5t|5|Maxime Steiner
+PL|5u|4|Néo Della Rosa
+PL|5v|3|Elwann Cerf
+PL|5w|6|Guillaume Koller
+PL|5x|6|Simon Chételat
+PL|5y|10|Malo Macquat
+PL|5z|3|Lucas Muriset
+PL|60|9|Justin Chételat
+PL|61|7|Tilio Portmann
+PL|62|2|Dany Charmillot
+PL|63|10|David Dupré
+PL|64|14|Zack Raveane
+PL|65|13|Noé Stebler
+PL|66|13|Alessio Fleury
+PL|67|1|Célien Borruat
+PL|68|11|Noam Couso
+PL|69|2|Aurel von Niederhäusern
+PL|6a|5|Lorik Ferati
+PL|6b|8|Mael Couso
+PL|6c|7|Diego Pasquale
+PL|6d|11|Esteban Ancel
+PL|6e|8|Luca Campolieti
+PL|6f|9|Meven Santin
+PL|6g|9|Pierre Frossard
+PL|6h|6|Esteban Studer
+PL|6i|1|Mathieu Lovis
+PL|6j|2|Kilwan Chavanne
+PL|6k|2|Raphaël Pheulpin
+PL|6l|15|Andi Rexhepi
+PL|6m|12|Enzo Chapuis Christophe
+PL|6n|16|Lenny Bregnard
+PL|6o|4|Noah Choulat
+PL|6p|12|Ardi Mazrekaj
+PL|6q|14|Szymon Papuga
+PL|6r|4|Jakub Papuga
+PL|6s|99|Livio Anwar Ahmad
+PL|6t|21|Lissandro Bastos Lopes
+PL|6u|8|Adilon Mazrekaj
+PL|6v|23|Raman Ali
+PL|6w|7|Aidil Chakvan Faqi Alhami
+PL|6x|45|Drin Amidi
+PL|6y|32|Juri Schwarz
+PL|6z|17|Matteo Culcasi
+PL|70|3|Elia Schöni
+PL|71|33|Randy Ansah
+PL|72|22|Nicola Dean Alexis Erics
+PL|73|19|Jannis Wille
+PL|74|73|Marco Nuzzo
+PL|75|9|Antonio Filipovic
+PL|76|11|Dylan Gonzalez Araya
+PL|77|27|Nico Giesser
+PL|78|3|Gabriel Waltert
+PL|79|26|Leandro Jenzer
+PL|7a|4|Yahya Atai
+PL|7b|17|Raul Fankhauser
+PL|7c|9|Szymon Karol Marton
+PL|7d|6|Samuele Amati
+PL|7e|18|Jamie Ruch
+PL|7f|21|Stefan Milivojevic
+PL|7g|11|Adrian Hordiychuk Protsenko
+PL|7h|7|Yafet Solomon
+PL|7i|15|Adriel Marti
+PL|7j|5|Artem Sitez
+PL|7k|16|Nelson Fankhauser
+PL|7l|8|Maxim Käser
+PL|7m|22|Sakeen Yogeswaran
+PL|7n|12|Cédric Christen
+PL|7o|24|Nawid Rahmani
+PL|7p|21|Téo Bühler
+PL|7q|7|Nelio Oliveira
+PL|7r|14|Micael De Oliveira Jorge
+PL|7s|2|Samir Khadimi
+PL|7t|3|Grégory Allimann
+PL|7u|6|Émile Seuret
+PL|7v|15|Marley Curty
+PL|7w|10|Unai Garcia
+PL|7x|11|Finan Fitsum
+PL|7y|7|Léo Kneuss
+PL|7z|13|Celien Piaget
+PL|80|17|Dylan Niederhauser
+PL|81|16|Thibaut Gerber
+PL|82|8|Simon Affolter
+PL|83|12|Matt Guenot
+PL|84|18|Melvine Ryser
+PL|85|9|Swan Elber
+PL|86|5|Maxime Cattin
+PL|87|1|Ivan Georgiev
+PL|88|5|Fynn Schenk
+PL|89|4|Nevio Baumgartner
+PL|8a|9|Alessandro Calabro
+PL|8b|18|Fabio Stalder
+PL|8c|2|Luca Schulthess
+PL|8d|6|Jonas Grädel
+PL|8e|2|Tenzin Hata
+PL|8f|6|Munasar Mohamed Ali
+PL|8g|7|Naod Medhanie
+PL|8h|15|Rodrigo Cruz Silveira
+PL|8i|13|Nils Probst
+PL|8j|14|Cem Brawand
+PL|8k|2|Max Schürch
+PL|8l|20|Almir Polozhani
+PL|8m|10|Alessio Di Leo
+PL|8n|13|Kevin Gangi
+PL|8o|7|Dany Schneider
+PL|8p|15|Noé Wenger
+PL|8q|4|Ruben Rodrigues da Silva
+PL|8r|5|Alexis Jolidon
+PL|8s|12|Enea Mozzillo
+PL|8t|3|Souleymane Delémont
+PL|8u|1|Axel Schär
+PL|8v|13|Hani Hani
+PL|8w|77|Amanuel Weldehaymanot
+PL|8x|6|Naod Ahraha
+PL|8y|4|Christ Yann Ndeme
+PL|8z|15|Antony Gallé
+PL|90|18|Alessio Caione
+PL|91|5|Ismaile Ezzine
+PL|92|17|Gabriele Cuddé
+PL|93|3|Lony Antico
+PL|94|1|Arnaud Dobler
+PL|95|4|Aaron Farine
+PL|96|11|Nolan Loriol
+PL|97|23|Bleon Palloshi
+PL|98|27|Fernando Pieta
+PL|99|20|Leonardo Engel
+PL|9a|1|Nils Brenzikofer
+PL|9b|7|Marc Rutishauser
+PL|9c|14|Jordan Kavanagh
+PL|9d|16|Til Kapp
+PL|9e|18|Luka Stalder
+PL|9f|2|Fabio Angiolillo
+PL|9g|3|Florian Brunner
+PL|9h|14|Asmorom Teklehaymanot
+PL|9i|7|Livio Stolina
+PL|9j|4|Arthur Austinat
+PL|9k|7|Kaleb Lakew
+PL|9l|21|Aburvan Yasotharan
+PL|9m|5|Julien Liechti
+PL|9n|1|Leandro Vogelsang
+PL|9o|12|Ludovic Junior Charmillot
+PL|9p|7|Abdoul Doukoe
+PL|9q|19|Elia Solimeo
+PL|9r|5|Samrawi Teweldemdhin
+PL|9s|12|Benoît Schnegg
+PL|9t|10|Matteo Marchini
+PL|9u|14|Roméo Carbotti
+PL|9v|19|Tim Krähenbühl
+PL|9w|72|Logman Suliman
+PL|9x|25|Erik Kling
+PL|9y|21|Bryan Peralta
+PL|9z|2|Afonso Munuengi Abrao
+PL|a0|3|Eliot Berberat
+PL|a1|3|Lois Edouard Pascal Godat
+PL|a2|9|Jan Chanson
+PL|a3|2|Laurin Zaugg
+PL|a4|16|Nicolo Lentini
+PL|a5|16|Endry Castillo
+PL|a6|13|Nael Rüttimann
+PL|a7|11|Leandro Pirri
+PL|a8|33|Leonardo Succoi
+PL|a9|4|Mael Bron
+PL|aa|15|Matthieu Schläppy
+PL|ab|14|Plator Ramqaj
+PL|ac|13|Niko Schnegg
+PL|ad|1|Kenzo Vadala
+PL|ae|8|Esrom Girmay
+PL|af|1|Nicolas Wyss
+PL|ag|14|Moïse Mopiti Ngwakere
+PL|ah|27|Lorik Demaj
+PL|ai|5|Thomas Haylu Barghla
+PL|aj|4|Evan Mikael Millard
+PL|ak|5|Aramis Bossard
+PL|al|17|Ali Assaf
+PL|am|27|Andrés Gonzalez Fernández
+PL|an|3|Leon Aucan Grünig
+PL|ao|5|Naim Debache
+PL|ap|16|Adil Debache
+PL|aq|19|Matthias Herren
+PL|ar|18|Robin Emanuel Guggisberg
+PL|as|7|Nino Zürcher
+PL|at|1|Mika Fankhauser
+PL|au|19|Ledion Rexha
+PL|av|15|Ruven Mosimann
+PL|aw|13|Flavio Montanaro
+PL|ax|13|Naye Weldu
+PL|ay|7|Kaique Nogi Do Prado
+PL|az|1|Alessio Tracia
+PL|b0|99|Shpend Jasiqi
+PL|b1|25|Leo Keller
+PL|b2|4|Sven Enderli
+PL|b3|8|Sydney iIsaac Makusa
+PL|b4|23|Lucas Hofmann
+PL|b5|22|Julian Zwygart
+PL|b6|16|Marceau Lenglet
+PL|b7|13|Thomas Dick
+PL|b8|8|Flurin Schüpbach
+PL|b9|7|Sandro Sherzad
+PL|ba|20|Edvin Nadarevic
+PL|bb|13|Arthur Matthey Claudet
+PL|bc|11|Diego Kaser
+PL|bd|1|Robin Moirandat
+PL|be|11|Jan Bernasconi
+PL|bf|6|Diego Romang
+PL|bg|8|Janni Habegger
+PL|bh|1|Andrei Boata
+PL|bi|6|Malik Steiner
+PL|bj|18|Bubacarr Camara
+PL|bk|4|Aron Folly Satchivi
+PL|bl|3|Enzo Scovino
+PL|bm|5|Adrien Schmitt
+PL|bn|10|Marwane Souhail
+PL|bo|8|Afonso Vaz Antonio
+PL|bp|16|Maykel Canosa Garcia
+PL|bq|6|Joao Miguel Mucha Simoes
+PL|br|18|Nolan Fino
+PL|bs|40|Lauro Gempeler
+PL|bt|2|Luk Jaussi
+PL|bu|5|Lionel Spielmann
+PL|bv|10|Ronan von Bergen
+PL|bw|6|Yannick Würsch
+PL|bx|13|Kaj Bischoff
+PL|by|20|Matteo Tschanz
+PL|bz|15|Yanick Fankhauser
+PL|c0|8|Lorent Mujaj
+PL|c1|24|Elia Gempeler
+PL|c2|9|Luca Brönnimann
+PL|c3|23|Tiago Daniel Ferreira Monteiro
+PL|c4|7|Flynn Herren
+PL|c5|12|Emanuel Wäfler
+PL|c6|19|Eid Mohammad Haidari
+PL|c7|3|Leon Ladvanszki
+PL|c8|99|Alex Rothen
+PL|c9|12|Feriz Cerkini
+PL|ca|3|Cyril Mühlethaler
+PL|cb|22|Luca Werren
+PL|cc|4|Dion Xhuka
+PL|cd|17|Jonn Hoxha
+PL|ce|6|Simon Tariku Steiner
+PL|cf|21|Raimondo Chiacchio
+PL|cg|18|Finn Borter
+PL|ch|19|Malyn Sahli
+PL|ci|11|Noah Elias Heinrichs França
+PL|cj|30|Alessio Cantando Vicente
+PL|ck|14|Seyen Halimi
+PL|cl|2|Nelion Kida
+PL|cm|15|Andi Llausha
+PL|cn|10|Fabio Alves Moreira Cardoso
+PL|co|8|Julian Gyger
+PL|cp|9|Muhamed Qerimi
+PL|cq|1|Livio Bill
+PL|cr|22|Nick Bütikofer
+PL|cs|26|Arda-Cem Savas
+PL|ct|25|Louis Wegmüller
+PL|cu|86|Tony Caforio
+PL|cv|6|Yoel Mägert
+PL|cw|11|Christian Gojani
+PL|cx|17|Daniel Pereira Lopes
+PL|cy|9|Bleron Tetaj
+PL|cz|13|Jay Holmes
+PL|d0|25|Rasmus Nolvak
+PL|d1|21|Josia Wäfler
+PL|d2|3|Fadri Wyssen
+PL|d3|5|Elia Elsener
+PL|d4|4|Marwin Zurbrügg
+PL|d5|18|Andrin Rieder
+PL|d6|11|Ramon Hurni
+PL|d7|14|Mattia Rüesch
+PL|d8|6|Loic Balmer
+PL|d9|8|Gil David Hermann
+PL|da|12|Josua Frauchiger
+PL|db|10|Angelin Moré Castillo
+PL|dc|15|Jannik Knecht
+PL|dd|2|Len Burn
+PL|de|13|Levin Frezza
+PL|df|7|Amir Enayatzadah
+PL|dg|9|Florin von Känel
+PL|dh|17|Lukas Klopfenstein
+PL|di|6|Eliah Schwede
+PL|dj|15|Tobias Urfer
+PL|dk|1|Maé Comte
+PL|dl|3|Ben Häner
+PL|dm|5|Nolann Affolter
+PL|dn|4|Samuel Machado De Jesus
+PL|do|4|Nael Vuillaume
+PL|dp|6|Rayen Younes
+PL|dq|3|Daris Burovic
+PL|dr|9|Matthieu Jolissaint
+PL|ds|17|Emerick Gerber
+PL|dt|8|Lluc Ribas Ribera
+PL|du|10|Lukas Holmes
+PL|dv|13|Ilan Bui
+PL|dw|11|Tim Tabouret
+PL|dx|16|Alan Andres
+PL|dy|15|Enzo Dongiovanni
+PL|dz|12|Elio Roland Münch
+PL|e0|4|Fionn Kehrli
+PL|e1|13|Nathan Locher
+PL|e2|4|Olti Ramadani
+PL|e3|14|Niklas Orell
+PL|e4|8|Rasul Bakhshiyev
+PL|e5|11|Liam Caetani
+PL|e6|7|Luca Marti
+PL|e7|23|Youssef Aboufaragalla
+PL|e8|14|Sire Guiro
+PL|e9|1|Severin Hänni
+PL|ea|3|Albin Vejseli
+PL|eb|4|Marco Rothacher
+PL|ec|5|Lionel Hachen
+PL|ed|3|Thanush Sures
+PL|ee|8|Bezaleel Effah
+PL|ef|9|Ibrahim Babaoglu
+PL|eg|7|Kevin Bigler
+PL|eh|17|Luca Eheleben
+PL|ei|18|Luik Gabriel Indermühle
+PL|ej|11|Noa Krebs
+PL|ek|13|Nino Zaugg
+PL|el|14|Wandell Kober
+PL|em|11|Ahmad Al Bayoush
+PL|en|20|Marco Käser
+PL|eo|15|Lorin Wüthrich
+PL|ep|6|Nilo Eicher
+PL|eq|2|Timo Wenger
+PL|er|16|Nico Stucki
+PL|es|8|Lorin Geering
+PL|et|10|Simon Ramseier
+PL|eu|11|Jamie Elia Thür
+PL|ev|5|Ben Liechti
+PL|ew|12|Samu Christen
+PL|ex|7|Yanis Wälti
+PL|ey|1|Melvin Daepp
+PL|ez|4|Sandro Schmied
+PL|f0|13|Fynn Zihler
+PL|f1|17|Jonas Mathieu Montagne
+PL|f2|19|Elia Stierli
+PL|f3|9|Mats Wagener
+PL|f4|1|Noel Minder
+PL|f5|2|Theo Zumbrunn
+PL|f6|18|Nils Zumbrunn
+PL|f7|6|Bradley Robin Fortuné Zingg
+PL|f8|15|Mattia Schenk
+PL|f9|13|Leon Hajdini
+PL|fa|21|Colin Hofer
+PL|fb|30|Daniel Ganea
+PL|fc|4|Alexandr Fehlmann
+PL|fd|2|Cyril Herzig
+PL|fe|4|Mateo Cristiano Pena Chumacero
+PL|ff|8|Aaric Enz
+PL|fg|10|Eris Shakjiri
+PL|fh|25|Lorenzo Chielpo
+PL|fi|15|Abdulkheir Kamawal
+PL|fj|19|Tim Bangerter
+PL|fk|3|Jovan Knezevic
+PL|fl|5|Fynn Zurlinden
+PL|fm|14|Nils Aeschlimann
+PL|fn|2|Nevio Zürcher
+PL|fo|9|Rachid Djellal
+PL|fp|17|Lio Hirt Mael
+PL|fq|19|Janick Mercedes
+PL|fr|14|Predrag Radic
+PL|fs|1|Maël Torsello
+PL|ft|9|Nikolaj Popovic
+PL|fu|12|Malik Latic
+PL|fv|11|Luis Mateo De Palma
+PL|fw|3|Hugo Rüfenacht
+PL|fx|7|Fabian Zwygart
+PL|fy|2|Mathieu Hubleur
+PL|fz|2|Pharell Makiesse Messi
+PL|g0|13|Pierrick Nusbaumer
+PL|g1|15|Patrick-Cristian Buciuleac
+PL|g2|11|Léo Pereira Arias
+PL|g3|12|Melo Kaser
+PL|g4|2|Benjamin Schmocker
+PL|g5|17|Orges Haliti
+PL|g6|19|Abish Sures
+PL|g7|9|Jehon Arifi
+PL|g8|5|Noé Schenk
+PL|g9|15|Martim Ferreira Almeida
+PL|ga|17|Gianluca Faga
+PL|gb|18|David Zahler
+PL|gc|4|Oliver Schlatter
+PL|gd|21|Felix Wittwer
+PL|ge|15|Rahman Miftari
+PL|gf|13|Emre Sahin
+PL|gg|7|Alex Jahaj
+PL|gh|6|Oleksii Shumskyi
+PL|gi|1|Laurin Aegerter
+PL|gj|16|Jordi Hernandez Garcia
+PL|gk|7|Luis Rafael Dos Santos Teles
+PL|gl|99|Nicolas Fekete
+PL|gm|16|Ron Blahak
+PL|gn|1|Simon Livio Aeschbacher
+PL|go|5|Philipp Müller Philipp An
+PL|gp|18|Levin Benfatto
+PL|gq|19|Mohamad Nabih Mohamad
+PL|gr|14|Nicola Feuz
+PL|gs|1|Louis Grossenbacher
+PL|gt|11|Fahd Echatoui Idrissi Guennouni
+PL|gu|15|Nias Mürner
+PL|gv|4|Lorik Rexhepi
+PL|gw|8|Dionis Karaca
+PL|gx|4|Teo Kamenjasevic
+PL|gy|20|Gian Reber
+PL|gz|19|Marek Sauter
+PL|h0|6|Filipe Ramos
+PL|h1|25|Andri Krebs
+PL|h2|7|Alexander Ehlers
+PL|h3|18|Fynn Cramer
+PL|h4|15|Curdin Fischer
+PL|h5|23|Gil Kronenberg
+PL|h6|13|Ruben Gerber
+PL|h7|8|Janik Thalmann
+PL|h8|16|Joshua Bichsel
+PL|h9|1|Luca Du Toit
+PL|ha|10|Jorin Walter
+PL|hb|18|Noah Muino Martinez
+PL|hc|27|Jamie Gretener
+PL|hd|20|Aidan Halimi
+PL|he|8|Joseph-Israel Yameogo
+PL|hf|8|Rafael Zurbrügg
+PL|hg|21|Lionel Rutti
+PL|hh|14|Matteo Touvet
+PL|hi|13|Adem Islami
+PL|hj|15|Silas Pelmer
+PL|hk|11|Dario Puric
+PL|hl|12|Gianluca Jordi
+PL|hm|11|Adrian Ramseier
+PL|hn|17|Andrin Uhlmann Leon
+PL|ho|20|Janic Fahrni
+PL|hp|16|Matteo Ferrari
+PL|hq|3|Noé Müller
+PL|hr|5|Rico Bieri Lian
+PL|hs|8|Arlind Prushi
+PL|ht|6|Tibo Tschanz
+PL|hu|25|Samuel Schmidhalter
+PL|hv|1|Loic Schürch
+PL|hw|5|Niklas Winkelmann
+PL|hx|2|Yanic Lionel Rosser
+PL|hy|1|Rouven Hauke Hodel
+PL|hz|32|Noah Eyer
+PL|i0|22|Jan Zesiger
+PL|i1|15|Stian Bauer
+PL|i2|14|Eyuel Adhanom
+PL|i3|15|Erion Halilaj
+PL|i4|7|Alex Crevoiserat
+PL|i5|16|Loïc Luterbacher
+PL|i6|4|Yanick Hertig
+PL|i7|18|Rayan Schindler
+PL|i8|22|Gabriele Rizzuti
+PL|i9|4|Simon Teklu
+PL|ia|19|Adriano Ricci
+PL|ib|5|Izak Wittwer
+PL|ic|15|Romain Burkhard
+POS|Tor;Verteidigung rechts;Verteidigung links;Verteidigung mitte;Mittelfeld defensiv rechts;Mittelfeld defensiv links;Mittelfeld;Mittelfeld rechtsaussen;Mittelfeld linksaussen;Sturmspitze rechts;Sturmspitze links;Verteidigung rechtsaussen;Innenverteidigung rechts;Innenverteidigung links;Verteidigung linksaussen;Mittelfeld rechtsinnen;Mittelfeld linksinnen;Mittelsturm;Hängende Spitze;Flügel rechts;Flügel links;Sturmspitze;Mittelfeld rechts;Mittelfeld links;hängende Spitze links;Mittelfeld defensiv;Verteidigung vorne;Libero;Hängende Spitze rechts;Ersatz (S)
+LU|4337897|A|0.0,1.1!,2.2#23,3.3,4.4#18,5.5,6.6,7.7#27,8.8,9.9,a.a|b,c#20,d,e,f,g
+LU|4337898|A|h.0,i.b,j.c,k.d!,l.e#14,m.7,n.f,o.g,p.8#10,q.9#99,r.a|s,t,u,v
+LU|4337899|A|w.0,x.b,y.c,z.d,10.e,11.4,12.5,13.6!,14.7,15.8,16.h|17,18,19,1a#12,1b
+LU|4337900|A|1c.0,1d.b!,1e.c,1f.d,1g.e,1h.f,1i.g,1j.i#10,1k.j,1l.k,1m.l|1n*,1o#16,1p,1q,1r,1s,1t#14
+LU|4337901|A|1u.0,1v.b,1w.c!,1x.d,1y.e,1z.4,20.5,21.m,22.6,23.n,24.h|25,26,27,28*,29#15
+LU|4337904|A|2a.0,2b.5!,2c.n,2d.g,2e.8,2f.k,2g.o,2h.h#6,2i.k,2j.l,2k.a|2l,2m,2n,2o
+LU|4337906|A|2p.0,2q.b,2r.c,2s.d,2t.e,2u.p,2v.n!,2w.7,2x.f#9,2y.g,2z.l|30#14,31,32#18,33#6,34#2
+LU|4337907|A|35.0,36.b#19,37.c!,38.d#5,39.e#6,3a.7#8,3b.f#16,3c.g,3d.8#7,3e.i,3f.l#9|3g#3,3h#15,3i,3j#13,3k#12,3l,3m#11
+LU|4341222|H|3n.0,3o.b,3p.c,3q.d!,3r.e,3s.f,3t.g,3u.i,3v.9,3w.l,3x.a|3y,3z,40#4,41,42,43
+LU|4341222|A|44.0,45.b#17,46.c#4,47.d#21,48.e#3,49.p#8,4a.m#16,4b.n#10!,4c.j#13,4d.h#18,4e.k#19|4f#15,4g#12
+LU|4341223|H|4h.0,4i.b,4j.c!,4k.d,4l.e,4m.7,4n.f,4o.g,4p.8,4q.9,4r.a|4s,4t,4u,4v,4w,4x
+LU|4341223|A|4y.0,b.1,c.2,2.2!,5.4,6.5,7.7,8.8#8,4.i,9.9,3e.a#18|0*,1,d,f#10
+LU|4341224|H|4z.0#1,50.b,51.c,52.d!,53.e,54.p,55.f,56.g,57.j,58.k,59.l|5a,5b#16,5c,5d
+LU|4341224|A|5e.0,5f.b,5g.c#15,5h.d,5i.e,5j.6!,5k.7,5l.f,5m.g#6,5n.8,5o.h|5p,5q
+LU|4341225|H|5r.0,5s.b,5t.c,5u.d,5v.e,5w.7#11,5x.f,5y.g!,5z.k#8,60.h,61.9|62,63#16,64,65#15,66
+LU|4341225|A|67.0,68.b#3,69.c,6a.d,6b.e#4,6c.p!,6d.m,6e.f,6f.g#10,6g.l,6h.a|6i#20*,6j#18,6k#17,6l,6m#19,6n,6o#14
+LU|4341226|H|6p.0,6q.b,6r.c,6s.d!,6t.e,6u.p,6v.m,6w.n,6x.f,6y.g,6z.h|70,71,72,73,74,75,76
+LU|4341226|A|77.0,78.b,79.c,7a.d,7b.e,7c.f,7d.g!,7e.j,7f.k,7g.9,7h.a|7i,7j,7k,7l,7m,7n,7o
+LU|4341227|H|7p.0#20,7q.b#4,7r.c,7s.d,7t.e,7u.p!,7v.f,7w.g,7x.9,7y.l,7z.a|80,81,82,83,84,85,86
+LU|4341227|A|87.0,88.b,89.c,2k.d,2h.e,2i.7,2g.f,2b.g!,2e.8,8a.i#8,8b.l#9|2j,8c,8d,2f
+LU|4341228|H|44.0,4f.b,47.c#15,8e.d,48.e#6,8f.7#9,4a.f,49.g#3,4b.8#10!,4c.9,8g.a|45#14,8h#18,4e#22,4g#24*
+LU|4341228|A|2a.0,2j.1#5,2i.q#2,2f.2#14,2k.b,2h.c#6,2g.d,2m.e,2c.4,2b.p!,2e.5|2n*,2o#8*,8d#17,8i*
+LU|4341229|H|77.0,7j.q,78.b,7b.e,7d.p!,7c.f,7l.g,7e.j,7h.k,8j.9,7g.a|8k,8l,8m,7k,7m,8n,7o
+LU|4341229|A|7p.0#20,86.b,7r.c#4,80.d,8o.e,82.4,7u.5!,7v.6#12,8p.7,7z.k#11,85.l|8q#13,81,7q#2,7t,7w#14
+LU|4341230|H|6i.0,8r.r,8s.b,6o.c,8t.e,6e.4#14,6b.p,68.5#10,6f.s#11!,6c.o,6m.l#9|8u#20*,6n#2,6l,8v,6k#16
+LU|4341230|A|6p.0,6v.b,6r.c!,73.d,6t.e,8w.p,6q.m,6x.f,6u.g,6w.k,75.h|70,6s,8x,74
+LU|4341231|H|5e.0,5i.b#4,8y.c#14,5h.d,8z.e,5l.4#6,5m.5,5q.6,5f.7!,5k.8,5n.h|90,91,92,93
+LU|4341231|A|94.0,5s.b#2,95.c#5,5t.d#4,5z.e,5w.7#7,5x.f#8,63.g,96.8,61.9#9,5y.a#6!|60#12,5v#13,64#15,65#14,62#16
+LU|4341232|H|0.0,b.1,c.2#12,1.3!,4.4#18,6.5,d.7,2.8#19,5.i,f.9#10,a.a|3,g,97,e,98,99
+LU|4341232|A|9a.0,50.b,5a.c,52.d!,51.e#5,54.f,56.g,9b.i,55.j,53.k,58.l|9c,5c,9d,9e
+LU|4341233|H|3n.0,3y.b,3p.c,3o.d,3r.e,3t.4,3s.5,3q.6!,42.9#5,3x.l,3w.a#10|3v#4,9f,9g,9h,40,9i
+LU|4341233|A|4m.0#1,4i.b,4j.c,9j.d,4l.e,4u.7,4r.f,4n.g!,4o.8,4x.9,4q.a|4k,4s,4v,9k
+LU|4341234|H|4h.0,4i.b,4j.c,4k.d,9j.e,4u.7,4r.f,4n.g,4t.8,4m.9,4q.a!|4s,4l,4o,4v,9k,4x
+LU|4341234|A|44.0#12,4f.b,46.c#4,47.d#15,48.e#6,8h.7#18,4a.f,8f.g#9,4b.8#13!,4c.9,4d.a#24|9l,8e*,45#14*,4e#16,8g
+LU|4341235|H|9a.0,50.b,5a.c,52.d!,51.e,54.f,56.g,9b.i,55.j,53.k,59.l|4z,9m,5c,9d,58
+LU|4341235|A|9n.0,3y.b,3p.c,3o.d,3r.e,3s.4,3t.5,3q.6!,3x.9,3w.l#14,9i.a|9f*,9g,3u,42#5
+LU|4341236|H|5r.0,5s.1#2,95.2,5u.3#5,63.4#6,5y.5#8!,96.m,5z.8,64.j#10,61.k,60.l|62#15,9o,5v#13,5w#14
+LU|4341236|A|0.0,b.b,1.c!,2.d#4,c.e#20,4.p#18,5.m,f.f,6.g,8.k,a.l|e#27,d,g#23,9,7#17
+LU|4341237|H|6z.0#69,6q.b,6r.c!,73.d,6t.e,8w.p,6v.m,6w.n,6u.f,6x.g,75.h|6s,70,8x,74,76#33,6y#88
+LU|4341237|A|5e.0,5f.b#2,8y.c,5h.d#16,8z.e#14,5l.4#6!,5m.5,5q.6,9p.7#19,9q.8#7,5n.l#17|5i#3,5j,9r,5o
+LU|4341238|H|7p.0,7s.r,80.b,86.d,7w.e,82.4,7u.p!,7t.n,8o.7,85.9,8p.l|8q,9s,7v#16,83#14,7x#13
+LU|4341238|A|8u.0,6o.1,6n.2#12,8r.b,8t.3,6f.e#11,6c.4!,68.5#10,9t.6#9,8v.7,6b.8|6h#16,9u,6l
+LU|4341239|H|2a.0,2d.1,2h.b!,2m.m,2i.7,8d.j,2k.h,2e.k,2f.9,2g.l,8b.a#12|2l,2n#15,2o
+LU|4341239|A|77.0,79.q,8n.b,7b.e,7d.p!,7c.f,7l.g,7e.j,7h.k,7o.9,7g.a|7n,9v,8l,7k,8m,7m,8j
+LU|4341240|H|44.0,4f.b,46.c#72,47.d,48.e,4b.7!,4a.f,8f.g,8h.8,4c.9,4d.a|9l,8e,45,8g,9w#25
+LU|4341240|A|77.0,7a.q,78.b,7b.e,7d.p!,7c.f,8m.g,7e.j,7h.k,7g.9,7o.a|8n,7i,8j,9x,7k,7m,9y
+LU|4341241|H|67.0,6o.r,9z.1,6n.2#5,6b.4,6c.p!,69.5#12,8v.m,68.6,6h.n,6m.h#14|a0,9t,a1#15,6f
+LU|4341241|A|2a.0,8d.r,2k.1,2f.q,2h.2,89.b#5,2g.c,2m.3,2b.d!,a2.e,2i.4|2e,2j,a3
+LU|4341242|H|5e.0,a4.b,5h.c,8z.d,5f.e,5l.4!,5m.5,5k.7,9p.8#14,5n.i,5q.l|5i,8y,5g,5j,9q#7
+LU|4341242|A|7p.0,7u.r!,8q.1,7s.b,86.d,8o.e,80.6,7t.n,a5.9#13,7z.l#9,82.a|9s,7v#16,83#14,7x
+LU|4341243|H|0.0,b.b,1.c!,2.d#12,c.e#20,6.p,5.7,a6.f,8.g,a7.k,9.h|3#8,4#18,e#24,g#23,d
+LU|4341243|A|6z.0#12,6r.q!,6q.m,6x.f,73.g,6u.o,75.h,6w.k,6t.9,6v.l,a8.a|8x,6s,72,6y#11
+LU|4341244|H|9n.0,3y.b,3p.c!,9g.d,3r.e,3t.4,41.5,43.s,3s.i,3x.o,3w.l|3v#4,9f,3o,40,3q,42,3u
+LU|4341244|A|94.0,9o.b#2,5u.c#5,95.d,5z.e,5x.p#8,5y.6!,5w.f#11,63.g#6,61.9,60.a|96#13,64#12
+LU|4341245|H|4h.0,4i.b,4j.c!,4k.d,9j.e,4u.7,4r.f,4n.g,4t.8,4m.9,4x.a|4s,4l,4o,4v,9k
+LU|4341245|A|4z.0#1,50.b,5a.c,52.d!,53.e,54.f,56.g,9b.i,55.j,9d.k,59.l|9a#9*,9m,58,5c
+LU|4341246|H|4z.0,50.b,5a.c,52.d!,51.e,54.f,9m.g,56.i,55.j,53.k,59.l|9a#9,9c,5c,58
+LU|4341246|A|44.0,45.b!,46.c,8e.d,48.e,4b.m,4a.6#27,49.n,4c.j,8g.k,4d.l|4f,4e,8h,9w
+LU|4341247|H|5r.0,5s.b#2,5u.c#5,a9.d,5z.e,95.p#6!,5w.f#8,63.g,96.j,61.k,60.l|62#14,5v#13,64#12,aa
+LU|4341247|A|4m.0#1,4i.b,4j.c!,4k.d,9j.e,4s.7,4n.f,4o.g,4t.8,4x.9,9k.a|4v#11,4r,4p,ab#10
+LU|4341248|H|76.0#17,6q.b,6r.c!,73.d,6t.e,8w.p,6v.m,6w.n,6x.f,6u.g,75.h|6s,70,8x,72,74,6y,71
+LU|4341248|A|9n.0,3y.b,3p.c!,9g.d,3r.e,3t.4,3s.5,43.6,3v.9,3w.l,3x.a|3o#4,3q,41#18,9i,3u
+LU|4341249|H|7p.0,7s.b#4,80.c,86.d,7u.e!,ac.6,7w.f,82.g,7z.j#12,83.k#14,85.l|ad,8q#16,9s#3,7v,8o,7x
+LU|4341249|A|0.0,b.b,1.c#3!,2.d#12,c.e,ae.p,5.7,f.f#7,4.g,8.8,a6.l#9|3,d,7#13
+LU|4341250|H|af.0,8d.r,2g.q,8b.b,88.c#2,2m.3,2k.d,2b.p!,2i.6,8a.i,2f.h|2a#15*,2o,2j
+LU|4341250|A|5e.0#20,5f.b#2,5g.c#5,5h.d,8z.e,ag.4,5m.5,5l.6#6!,9p.7,5n.8#17,5q.h|5i#4,5j,9q
+LU|4341251|H|ah.0,7a.q,8n.b,78.e,7d.p!,7e.7,7c.f,8m.g,7h.8,7g.9,7o.a|7j,7i*,9x,7k,7m,7n*
+LU|4341251|A|8u.0,68.b,6h.c,6n.d#5,6b.e,6c.p!,8v.n,9t.f,6m.g#4,a1.j,6f.h|6l#14,9u#12,6k
+LU|4341252|H|44.0,4f.b,46.c,8e.d,45.e!,4b.m,4a.6#27,49.n,4c.j,4d.h,4e.k|9l,47,8h,ai,8f,8g
+LU|4341252|A|8u.0,68.b,6o.3,6k.p,a1.5,6b.n,6c.s!,6l.i#14,9t.j,6f.h,6m.9|8v,9u#5
+LU|4341253|H|5e.0#20,a4.b,aj.c,5h.d,5f.e,5m.4,5l.5!,5j.6,9q.8,5i.j,5n.h|90#14,8z,5g,5k#7,5q
+LU|4341253|A|77.0,7a.q,7i.b,7b.e,7d.p!,7e.7,7c.f,7l.g,7h.8,7g.9,8m.a|79*,78,7j,8j,7k*,7m,7n
+LU|4341254|H|4y.0,b.1,1.2#3!,3.3,4.4,ae.5#16,2.8#18,5.j,6.i,8.9,7.a|0*,c,d,f,9
+LU|4341254|A|ak.0,2b.q!,2k.2,8b.3,2g.d,2f.e,2m.p,2h.5#2,8a.6,2a.g,2i.8|8d,2e,2j
+LU|4341255|H|3n.0,3y.b,3p.c,3o.d#4,3r.e,41.4,3s.5,3q.6!,43.9,3w.l,3x.a|9f,40,al#8,42,3v#18
+LU|4341255|A|7p.0,9s.c#4,7r.3#5,80.d,82.p,8o.7#12,7x.f#10,7u.g!,7t.8,7z.9#11,85.l|ad*,7s,a5,81#14,7v
+LU|4341256|H|4h.0,4i.b,4j.c,4k.d,9j.e,9k.7,4r.f!,4n.g,4l.8,4m.9,4t.a|4q,4v,4x,4p,ab
+LU|4341256|A|am.0,6q.b,6r.c!,70.d,6t.e,6u.p,6v.m#20,6w.n,6x.f#10,8w.g#18,75.h#19|6z#13,6s#12,8x,72#16,74#15,76#17
+LU|4341257|H|9a.0,51.b,5a.c,52.d!,53.e,9m.f,56.g,9d.i,55.j,58.k,5c.l|4z#7,an,54,57
+LU|4341257|A|94.0,62.b,5u.c,5t.d,5v.e,5x.5#12,5s.7,5y.f!,5w.g,60.9,96.a|64,63#15
+LU|4341258|H|94.0,5z.2#13,9o.b#2,5u.c,5t.d,5v.e,5y.f!,5x.g,61.8,60.9,5w.a#8|64,5s*,63#11
+LU|4341258|A|44.0,4f.b,8e.c,46.d,45.e!,8f.7,4a.f,ai.g#97,8g.8,4c.9,4d.a|48,4b,4e,8h#37
+LU|4341259|H|6p.0,ao.b,6r.3!,6q.e,73.p,6v.m,76.m,6w.n,8x.g,75.9,6z.a|6u,6x,6s,ap,74
+LU|4341259|A|9a.0,50.1,aq.2,52.3!,ar.7,as.f,9m.g,53.8,56.i,58.9,59.a|4z,5c,57
+LU|4341260|H|7p.0,7q.b#12,86.c,80.d,7t.e,7x.7,7w.f#8,7u.g!,7z.8#14,7y.l#10,85.a|7s,8q,8o,81#15,8p#16
+LU|4341260|A|4h.0,4i.b,4j.c,9j.d,4l.e,4m.7,4r.f,4o.g,9k.8,4x.9,4q.a!|4u,4v,ab
+LU|4341261|H|at.0,2j.r,8d.q,8c.c,2e.3,2k.d,2f.p,2i.6,au.f,2g.g,2h.i!|av
+LU|4341261|A|3n.0,3y.b,9g.c,3o.d#4,3r.e,3q.4!,3s.5,3z.i#7,3v.9,3w.l,3x.a|41#18,3t,3u,42#2,43
+LU|4341262|H|77.0,79.q,7j.b,78.e,7d.p!,7c.f,8m.g,7e.j,7h.k,8j.9,9y.a#19|7i,9x,7m,7g,7n,7o*,aw
+LU|4341262|A|0.0,b.1,c.2#8,2.3#6,5.4!,6.5,d.7,8.8,4.i,9.9,7.a|ax,g#16,97#22,99#18
+LU|4341263|H|67.0,68.b,6o.3,6h.e,6e.p#5,69.6#13,6b.n,6c.s!,9t.j,6f.h,6m.9|6n,6k,a1,8v#15,9u#17,6l#14
+LU|4341263|A|5e.0#20,5f.b,ag.c,5h.d,8z.e,5p.7#6,5g.f,5m.g,9p.8#19,5l.i!,5j.l|92#16,5i,5q,ay
+LU|4341264|H|az.0,45.b,4b.c#97,46.d,48.e!,4e.7#11,4a.f,ai.g,49.8,4d.9,b0.a|44#20,8e,8f#19,9w,b1
+LU|4341264|A|5e.0,8y.b#16,ag.c,8z.d,5i.e,5j.6!,5f.7,9p.f,5m.g#6,9q.8,5q.l|b2,b3,93*
+LU|4341265|H|4y.0,1.1!,c.2#25,2.3#2,ae.4#27,6.5,5.7#11,8.8,4.i#15,9.9,b4.a|3#13,g,d,f,7,b5
+LU|4341265|A|8u.0,6c.r!,9u.2#12,68.b,6h.c,6f.p,6d.m#4,6k.6,6l.f#14,a1.k,6g.l#10|6j#5*,8v#15*,b6*,b7*
+LU|4341266|H|3n.0,3y.b,3p.c,9g.d,3r.e,3t.4,3s.5,3q.6!,9i.s,3x.o,3u.l|3o,41,42#6,3w,43
+LU|4341266|A|77.0,79.q,8n.b,78.e,7d.p!,7c.f,7l.g,7e.j,7h.k,7n.9,7o.a|7i,9v*,8l*,9x,8m,7m,7g
+LU|4341267|H|4h.0,4i.b,4j.c!,4k.d,9j.e,4m.7,4n.f,4o.g,4u.8,4x.9,4q.a|4s,4l,4t,4p,9k
+LU|4341267|A|2h.1,b8.q,2d.b#13,ak.d#10,8b.e#9,89.4,8a.5#15,2b.6!,2i.7,af.f,2k.g|8c,2e,2f,8d,2o,2j
+LU|4341268|H|9a.0,50.b,5a.c,52.d!,51.e,9m.p,55.f,56.g,58.j,53.k,59.l|4z#7,54,5c,57
+LU|4341268|A|7p.0,7q.b,80.c,7s.d,9s.e#16,7u.p!,7x.7,82.f,7w.g,86.o,7z.l|8q,7r,85,83,7v
+LU|4341269|H|5r.0,63.b#2,5u.c,5t.d,5z.e,5s.7,5y.f!,5w.g,96.8,64.9#8,60.a|9o,65,61
+LU|4341269|A|am.0#1,71.b,6s.c,8w.d!,8x.e,6u.p,6v.m,6y.n,6x.f,b9.g,6z.h|70,72,74#15,ap#12,ba,ao
+LU|4341270|H|6p.0,71.b,6s.c,6r.c,8x.e,6u.p,6v.m,76.n,6x.f,8w.g!,6z.l|am#1,6t,72,74*,6q,6y
+LU|4341270|A|44.0,4f.b,46.c,8e.d,48.e!,4a.p,4b.m,49.n,4e.i#27,9w.9,4d.a|ai,4g,8f,b1#99
+LU|4341271|H|7p.0,7t.2,7q.c,80.3,7s.d,7u.p!,7w.6,8q.n,7x.7,82.f,85.l|a5,bb,7v,8p#12
+LU|4341271|A|5r.0,5s.b,5u.c,5x.d#5,5z.e,5w.7,63.f#8,5y.g!,61.8,bc.i,60.l|62,9o,65,96#15,64
+LU|4341272|H|ak.0#8,2b.q!,2k.2,2f.e,8d.4,89.p#2,2h.5,8a.6,2a.g,2i.8,2d.o#15|2j,2g,2m,2o,2e
+LU|4341272|A|4z.0#1,50.b,5a.c,52.d!,51.e,54.4,as.5,ar.i#10,55.j,53.k,59.l|9a#5,58,57,5c
+LU|4341273|H|77.0,7j.q!,7i.b,8n.e,9x.f,7l.g,7k.j,7m.k,8j.9,7o.l,7n.a|78,7a,7d,7e,7h,7f,7c
+LU|4341273|A|4h.0,4s.b,4j.c!,4i.d,ab.e#13,4w.m,4k.6,4u.n,9k.j,4v.k,4x.l|4l,4n,4q,4m
+LU|4341274|H|bd.0,68.b,6a.c,a0.d#9,a1.e#4,6c.p!,6m.f#14,6e.g#10,69.o#6,6k.9#3,8v.l|6b#12,6j,6l,6n,9u#18
+LU|4341274|A|9n.0#20,3y.b,3p.c,9g.d,3r.e#14,3q.4!,3s.5,al.6,3v.9#4,be.l,3x.a#21|9f#5,42,bf,bg
+LU|4341275|H|bh.0,5f.b,ag.c,5h.d,5i.e,5j.6!,5k.7#18,5m.f#6,9p.g,9q.8,5q.l|8y#16,91#8,5l,5p#4,5n
+LU|4341275|A|4y.0,1.1#13!,c.2#3,2.3#18,6.4,ae.5#6,b.7,8.8,4.i,9.9,7.a|3,g#16,d,f
+LU|4341276|H|44.0#20,4f.b,46.c,47.d,48.e!,49.6,8f.7#97,4b.8,4e.j#27,4g.k,4d.l|8e,4a,ai,9w,9l
+LU|4341276|A|4y.0#1,b.1,c.2#3,1.3#22!,5.4,6.5,8.7,bi.8,4.i,9.9,bj.a|bk,d,g#16,f,7
+LU|4341277|H|9n.0,3y.b,3q.c!,9g.d,3r.e,3s.4,3z.5,3u.6,3v.9,3w.l,3x.a|9f,3o*,40#4,3t,al,42,43
+LU|4341277|A|bh.0,5k.b#7,ag.c,5h.d,5i.e#4,5j.6!,5n.7#17,5l.f#6,5m.g,9q.8,5q.h|bl,5g#5,8z,9r#16,5o
+LU|4341278|H|4h.0,4i.b,4j.c,4k.d,4l.e,4m.7,4r.f!,4n.g,4t.8,4x.9,4q.a|4s,4p,4u,9k,ab
+LU|4341278|A|8u.0,a1.q#4,68.b,6c.3!,6j.e,6h.6,6b.n#14,9u.7#9,6f.i#12,6k.9#3,6l.l|bm,bn,bo
+LU|4341279|H|4z.0,50.b,5a.c,52.d!,51.e,54.p,55.f,56.g,58.j,53.k,59.l|9m,5b,9b,9a#9*
+LU|4341279|A|77.0,7i.b,79.c,7a.d,78.e,7f.7,7c.f,7d.g!,7h.8,7k.9,7g.a|8n,9v,8l,9x,8m,7n,7o
+LU|4341280|H|5r.0,5s.b,5u.c,5t.d,5z.e,63.f#8,5y.g!,61.8,96.j,5w.9,60.a|62,9o,5v#14,64#13
+LU|4341280|A|8d.0,89.n,2c.7,2i.j,2e.k,2j.i,2k.j,2h.k,af.9,8b.l#10,2b.a!|8c,2o
+LU|4341281|H|6p.0,70.b,6r.c,6s.d!,6t.e,71.m#18,76.n#17,6q.f,6x.g,6v.i,75.h|72,6w,73,74#15
+LU|4341281|A|7p.0,7r.1#4,80.2#5,7q.b#12,7z.e#8,7s.4,7u.5!,7v.6#7,7w.7,7x.8,83.h#9|7t,9s#13,bp,8q#14,86#15
+LU|4341282|H|7p.0,7q.b#4,80.c,7s.d,7t.e,82.4,7u.5!,7w.6,7x.j,7z.l,83.a|ad*,7r,86,8o*,85,7v
+LU|4341282|A|44.0,4f.b#15,47.c#21,46.d#4,45.e#17,4e.7#19,4a.f#16,49.g#8,4b.8#10!,4c.9#13,4d.a#18|ai#7,9w#11,4g#12,8f
+LU|4341283|H|af.0,89.r,2d.1,2k.2,8d.p,2i.7,2g.f,2c.g,2b.8!,ak.9#7,8b.a|2j,8c#13,b8,2f
+LU|4341283|A|am.0#69,70.b,6r.c,6s.d#5!,6t.e#13,6v.m#15,6w.n,6x.f#8,6q.g,75.i,6z.l|6p*,71#18,8x,73#10,76,6y#16,ao#2
+LU|4341284|H|77.0,79.q,78.b,7j.e,7d.p!,7l.f,7c.g,7e.j,7f.k,7o.9,7h.a|7i,8n,8j,9x,7k,7g,7n
+LU|4341284|A|94.0,5x.1,5u.2,62.b,5t.3,5v.e,63.f#12,5y.g!,65.j#7,5z.k#8,60.h|5s,64,5w#11
+LU|4341285|H|67.0,69.r#10,68.b,6j.c,6b.e#14,6c.p!,6e.f,6f.g#12,6k.9#3,6l.l,6h.a|8u#20,6n,6o,9u#9
+LU|4341285|A|9a.0,50.b,5a.c,52.d!,51.e#7,9m.p,55.f,56.g,5c.j,53.k,59.l|54,5b,58
+LU|4341286|H|5e.0,5f.b,bl.c#4,5h.d,5i.e,5k.7#11,bq.f,5l.g,9q.8,5q.9,5j.a!|91#15,br,5p#8
+LU|4341286|A|4h.0,4s.1,4i.b,4j.c,4k.d,4m.7,ab.f,4n.g,4p.8,4q.9!,4x.a|4t,4u,4v,4w
+LU|4341287|H|4y.0,b.1,2.2,1.3#22!,ae.4#18,6.5,bk.7#16,8.8,4.i,9.9,7.a|c,d,f
+LU|4341287|A|9n.0,3y.b,3p.c,3q.d!,3r.e,3s.f,3t.g,3u.i,43.9,3w.l,3x.a|3o,3z,41,al#7,3v
+LU|4343466|H|bs.0,bt.b,bu.c,bv.d!,bw.e,bx.m,by.n,bz.f,c0.g,c1.i,c2.l|c3,c4,c5#11,c6,c7
+LU|4343466|A|c8.0,c9.b,ca.c,cb.d!,cc.e,cd.4,ce.5,cf.i,cg.9,ch.l,ci.a|cj,ck,cl,cm,cn,co,cp
+LU|4343467|H|cq.0,39.b,3h.c,37.d!,cr.e,3j.m,3c.n#18,cs.7,3f.8#9,3k.i,ct.l|3i,3g,3a,3l,3b
+LU|4343467|A|cu.0,cv.b!,x.c,z.d,10.e,1b.4,12.5,cw.6,15.7,cx.8,cy.l|cz,d0,14
+LU|4343468|H|d1.0,d2.b,d3.c,d4.d,d5.e,d6.4,d7.5!,d8.6,d9.j,da.k,db.l|dc*,dd*,de*,df*,dg*,dh
+LU|4343468|A|1u.0,1v.b,1w.c!,1x.d,25.e,20.4#19,1z.5,di.m,23.6,21.n,24.l#12|26#9*,27#13*,22*,dj*
+LU|4343469|H|dk.0,dl.b,dm.c,dn.d!,do.e#2,dp.p,dq.m#7,dr.n,ds.f,dt.g,du.h|dv,dw,dx,dy,dz
+LU|4343469|A|1n.0,1d.b,e0.c!,1i.d,1g.e,1r.f,1h.g,1o.i,1k.j,1q.k,1m.l|1c*,1e#16,1f,1p,1j,1l,e1
+LU|4343470|H|h.0#1,u.b#9,e2.c!,e3.d,k.e,e4.p,e5.f,o.g,p.j,e6.k,m.l|e7,l,n,v,e8#22
+LU|4343470|A|e9.0,ea.b#6,eb.c,ec.d,ed.e,ee.p,ef.7#22,eg.f#10!,eh.g,ei.8,ej.l|ek,el#16,em#7
+LU|4343471|H|en.0,eo.b,ep.c,eq.d,er.e,es.f,et.g,eu.s,ev.i#13,ew.o,ex.l!|ey*,ez,f0#3,f1,f2*,f3
+LU|4343471|A|f4.0!,2t.b,2s.c,f5.d,33.e,31.7,f6.f,2u.g,2x.8,2w.9,2z.a#21|32,2y,2q,f7
+LU|4343472|H|c8.0,f8.b,cc.c,cb.d!,cl.e,ce.4,f9.5,co.s,cn.i,ci.o,fa.l|c9,cd,ck,cg,ch,cp,fb*
+LU|4343472|A|f4.0,2q.b,2r.c,f5.d,2t.e,2u.p!,31.7,f6.f,2y.g#6,2v.8,2w.l|2s,32,fc,2x#17,2z
+LU|4343473|H|e9.0,fd.b#3,ec.c,fe.d,ek.e,ff.p!,eh.m,ei.n#9,eg.f,fg.g,em.l|fh*,fi,ea#12,eb#6,ed#19,el,fj#16
+LU|4343473|A|ey.0,eo.b#6,fk.c,fl.d,er.e,es.f,et.g,fm.s,f3.i#11,ew.o,ex.l!|en*,fn,fo*,f0,eu#19,f1
+LU|4343474|H|1n.0,1d.b!,fp.c,1f.d,1q.e,1h.f,1i.g,1o.i#16,1k.j,fq.k,1m.l|1c,1e,1g,1r#25,1j#10,fr,1l
+LU|4343474|A|fs.0,e6.b#8,e2.c,k.d!,l.e#14,t.7,n.f,j.g,p.8#10,q.9#22,ft.a|fu,o,u,v,e7#6,m,fv#7
+LU|4343475|H|1u.0,25.r#16,1v.b,1x.d,fw.e,1z.4,fx.5!,21.m#11,22.6,23.n#6,24.h|26#15*,27#14,dj#13,28#12,29#17
+LU|4343475|A|dk.0#20,fy.b#3,do.c,dn.d#5!,fz.e,dp.f,dt.g,dr.s,dx.i#7,ds.o,du.l|g0,g1,g2,dy#14,g3
+LU|4343476|H|w.0,cv.b,y.c,g4.d!,z.e,11.4,13.5,10.6,14.7#13,15.8,16.h|17,g5,g6,g7,1b,cx#10
+LU|4343476|A|d1.0,d2.b,de.c,g8.d,g9.e,d4.p,d6.m,d7.n!,dd.j,da.k,db.l|d5,d9,ga,df,dg
+LU|4343477|H|bs.0,bt.1,gb.2,bu.3,bx.7,c0.f,bz.g,gc.8#20,bv.i!,gd.9,c2.a|c1,bw,c3,c4,c5
+LU|4343477|A|35.0,39.2#19,3i.b,37.3!,3g.d,3b.m#22,3j.n,ge.8,gf.i,3l.j#12,3m.h#21|36#20,38#25,3c#16,3a,3d#18,3e#9
+LU|4343478|H|35.0,37.1!,3i.b,3g.d,39.e,3b.m,3j.6,3l.7,3a.8,gf.i,3m.h|36,38,3h#18,3k,3d,3f
+LU|4343478|A|c8.0,c9.b,cc.c,cb.d!,cl.e,ce.4,cd.5,co.s,cn.i,ci.o,cp.l|f9,cf,cm#16,ck,cg,gg
+LU|4343479|H|d1.0#1,d2.b,de.c,d5.d,g9.e,d4.p,da.m,d7.n!,d9.j,db.k,dg.l|d6,dd,gh,ga
+LU|4343479|A|bs.0,bt.1,gb.2,bu.3,bx.7,by.f,c0.g,bz.8,bv.i!,gd.9,c2.a|gi,c1#26,bw,c4,c5
+LU|4343480|H|dk.0#22,do.b#3,dm.c,dn.d!,fy.e,dp.f,gj.g,dr.s,ds.i#10,gk.o,du.l#11|fz#13,g1,dt#14,dw#8,dx#17,g3
+LU|4343480|A|w.0,cv.b!,19.c,y.d#24,g6.e,11.4,12.5,10.6,15.j,14.k,16.h#21|17,z,1a#12,13,1b
+LU|4343481|H|h.0,i.b,j.c,k.d!,l.e#8,m.7,n.f,e2.g,p.8#19,o.9,e5.a#9|s*,e7#14,v,u,q,gl
+LU|4343481|A|1u.0,1v.b,1w.c!,1x.d,25.e,1z.4,fx.5,20.m,22.6,23.n,24.l|1y,26,27,21,gm
+LU|4343482|H|gn.0,eo.b#6,fk.c,fl.d#2,f0.e,es.f!,et.g,eu.s#9,f1.i,ew.o,f3.l#11|go#4,er,gp#15,gq,fm,ex,ev
+LU|4343482|A|1n.0,1d.b!,1e.c,1f.d,1g.e#12,1h.f,1i.g,1o.i,1q.j,fq.k,1m.l|1c*,1p,1t,1j#20,1k#11,1l#17
+LU|4343483|H|f4.0,2q.b,2z.c,2s.d,33.e#5,f6.p,2y.f,2x.g#15,31.j,2v.k!,2w.l|30,gr,32,fc,f7
+LU|4343483|A|e9.0,fd.b#3,eb.c,ec.d,ek.e,ff.p!,eh.m,ef.n,eg.f,fg.g,el.l|fh,ea#6,ed#19,ei#15,fj#16,em
+LU|4343484|H|c8.0,ck.b,cc.c,cb.d!,cl.e,ce.4,f9.5,co.s,cn.i,ci.o,fa.l#19|ca,cd,cf,cg,gg,cp,fb
+LU|4343484|A|fh.0,fd.b,ea.c,ec.d,ek.e#23,ff.4!,eh.5,ef.m,eg.6,ei.k#16,em.l|fi#6,eb,ed#19,fg,ee#14,fj#20,el#12
+LU|4343485|H|1n.0,1d.b!,1e.c,1f.d,1q.e,1p.f#8,1i.g,1o.i,1t.j,fq.k#16,1k.l#24|1c*,1g,fp#18,1r,1m,1s
+LU|4343485|A|f4.0,f5.b,2r.c,2s.d,33.e,f6.p,31.7,2y.f,2x.g,2v.k!,2w.l#6|2q,2u,32#14,2z#4,2t
+LU|4343486|H|1u.0,1v.b,1w.c!,1x.d,25.e,1z.4,fx.5,20.m,27.6,21.n,24.l|1y,26,23,22,di#14,dj
+LU|4343486|A|ey.0,eo.b,fk.c,ep.d,er.e,es.f!,et.g,fm.s,f1.i,ew.o,f3.l#11|ez#2,eq#4,ev,f2#13,eu#9,ex
+LU|4343487|H|w.0,cv.b!,g4.c,y.d,z.e,10.p,11.f,12.g,15.j,14.k,16.h|17,g6,g5,1a,13,1b
+LU|4343487|A|h.0#1,e6.b#8,e2.c!,k.d,l.e#5,v.p#19,n.f,e5.g,m.j#22,p.k#10,ft.l|fu,o#13,i#14,u,gl,q#6
+LU|4343488|H|bs.0,bt.1,gb.2,bu.3,bz.p,bx.7,by.f,bv.g!,c0.8,gd.9,c2.a|gi*,c1,bw,c6,c5
+LU|4343488|A|gs.0,do.b#3,dm.c,dn.d!,fy.e,dp.f,dt.g,dr.s,gt.i,ds.o#7,du.l|dk#22,g0,dw#15,dx#14,g3
+LU|4343489|H|35.0,3i.b,37.c!,3g.d,39.e,3b.f,3j.g,3a.8,36.j,gf.i,3m.h|38,3c#26,3h#18,3k,3d,cs#25,3f
+LU|4343489|A|d1.0#20,d2.b,de.c,g8.d,d5.e,d4.p!,d6.m,db.n,gu.j#17,dg.k,df.l|dd,gh,d9,g9
+LU|4343490|H|d1.0#1,d2.b,de.c,d4.d,d5.e,d7.p!,d6.m,gh.n,dd.j,g9.k,dg.l|g8,da,db,df
+LU|4343490|A|c8.0,ck.b,cc.c,cb.d!,c9.e,ce.p,cn.f,ci.g,co.9,cp.l,cg.a|cl,cd,f9,ca,gg
+LU|4343491|H|gs.0,dl.b,gv.c,dn.d#5!,fy.e,dp.f,gw.g,dr.s,dt.i#11,ds.o#7,du.l|dk#20,dq#13,dm#12,dw#17,g0#14,g1
+LU|4343491|A|35.0,3i.b,37.c!,3g.d,39.e,36.7,3b.f,3j.g,3a.8,gf.i,3m.h|38,3h#25,3k,3l,3d,cs,3f
+LU|4343492|H|h.0,e7.b#20,e2.c!,k.d#7,fv.e,v.p,gl.f,e5.g#15,m.j,e8.k,u.l#5|s#1,i,o#8,t#22,p#19,ft,n
+LU|4343492|A|bs.0,gb.2,bu.3,gc.d,bz.p,bx.7,c0.f,bv.g!,c5.8,gd.9,c2.a|gi,c1,bw,c3,c4
+LU|4343493|H|ey.0,ez.b,fk.c,ep.d,eq.e,es.f!,et.g,fm.s,ev.i,ew.o,f3.l|er,gq#13,gp,f2,eu
+LU|4343493|A|w.0,cv.b!,19.c,1a.d,18.e,11.f,12.g,15.j,13.k,d0.i,16.h|17*,g5,14,10,g7
+LU|4343494|H|f4.0,2q.b,2z.c,2s.d,f5.e,2u.p!,31.7,f6.f,2w.g,32.8,2t.l|gr,33,30#11,f7#8
+LU|4343494|A|1u.0,1v.b,1w.c!,1x.d,1y.e#3,1z.4,fx.5,20.m,22.6,23.n,24.l|26,27,di#14,21
+LU|4343495|H|e9.0,fd.b,ea.c,ec.d,ef.e,ff.4!,fg.5,eh.m,eg.6,ei.n,fj.l|fh*,fi#12,gx,ek,ee#6,el,em
+LU|4343495|A|1c.0,1d.b!,1e.c,1f.d,1g.e,1i.f,1r.g,1o.i,1k.j,1l.k,e1.l|1n*,e0#21,1h,1p,fq,1j,1q
+LU|4343496|H|c8.0,ck.b,gy.c,cb.d!,cc.e,f9.p,cn.f,cd.g,co.9,cp.l,fa.a|cl,c9,cm#16,cg,gg
+LU|4343496|A|1n.0,1d.b!,1r.c,1f.d,1g.e,1o.f,1i.g,1j.i#9,1k.j,1l.k,e1.l|1c*,gz,e0,1h,1p,1m
+LU|4343497|H|1u.0,1v.b,1w.c!,1x.d,25.e#15,1z.4,fx.5,20.m,22.6,23.n,24.l|1y#3,26,27,21,gm#14
+LU|4343497|A|fh.0#1,ea.b,eb.c,ec.d,fd.e,ee.4#15,eh.5,ef.m,ed.n#16,eg.i!,fj.l#11|e9#22*,el,h0#19
+LU|4343498|H|h1.0,cv.b,g4.c!,19.d,y.e,12.4,11.5,15.m,cx.6#11,14.n,16.h|w,18*,1b,d0#12,g7
+LU|4343498|A|f4.0,2q.b,2r.c,2s.d,33.e,2u.p,31.7,2x.f,f6.g,2v.8!,2w.l|30#6*,f5,32,34#8*,2t,f7#19
+LU|4343499|H|bs.0,bt.1,gb.2,bu.3,c0.p,bx.7,bv.f!,h2.g,by.8,gd.9,c2.a|gc,c1,bw,bz,c5
+LU|4343499|A|ey.0,ez.b,fk.c,ep.d,er.e,f1.f,et.g,fm.s,f3.i,ew.o,ex.l!|f0,eq,f2,h3,h4,ev
+LU|4343500|H|35.0,3i.b,37.c!,38.d,39.e,3g.4,3j.5,3k.6,3l.j,3a.k,3m.h|ct*,36,3b,3d,cs*,gf,h5#19*
+LU|4343500|A|h.0,e6.b,e2.c!,k.d,l.e,n.p,v.f,e5.g,m.j,ft.h,t.k#31|j#8,o,e8,u
+LU|4343501|H|d1.0,d2.b,h6.c,g8.d,d5.e,d4.p,gh.m,d7.n!,d9.j,da.k,df.l|d6,db,dg,ga
+LU|4343501|A|dk.0,dq.b,dm.c,dn.d!,fy.e,dp.f,dt.g,dr.s,gt.i,ds.o#7,du.l|do#12,g0#14,g1,dx,g3#13
+LU|4343502|H|gs.0#20,dq.b,dn.d!,do.e#2,dp.f,dt.g,dr.s,g0.i#11,ds.o,du.l,g3.t|dm,dw#13,g1#7,g2#14
+LU|4343502|A|c8.0,c9.b,cc.c,cb.d!,cl.e,f9.4,cd.5,cn.6,co.9,cp.l,gg.a|cf,ca,cm,ch,cg
+LU|4343503|H|h.0,e6.b,e2.c!,k.d#22,l.e,n.p,v.f,e5.g,i.j#12,m.h,u.k|j#8,o,ft,e4#14,q#32,p
+LU|4343503|A|d1.0,d2.b,de.c,g8.d,d5.e,d6.4,d4.5!,db.i,da.j,dg.k,df.l|dc,dd,h7,gu#17,h8
+LU|4343504|H|ey.0,eo.b,fk.c,eq.d#5,er.e,es.f,et.g,f2.s,f3.i,ew.o,ex.l!|f0,ez,gp,eu,f1
+LU|4343504|A|cq.0,3i.b,37.c!,38.d#20,cr.e#13,39.f,3d.g#10,3m.i#11,3l.j#3,gf.k#7,ct.l#9|35#38,3g,3c,3h#8,cs#19,3f#14
+LU|4343505|H|2p.0,f5.b,2r.c,2s.d#4,2t.e,2u.p!,2w.m,f6.f,2x.g,31.8,2z.l|30#6,32,2y,33,h9
+LU|4343505|A|gc.0#1,bv.r!,gb.1,bu.2,bx.7,bz.f,c0.g,gd.8,h2.i,by.9,c2.a|bt,bw,c3#17,c4#11,c6
+LU|4343506|H|fh.0#1,fd.b,ea.c#6,ec.d,ek.e,ee.p,ef.m,ej.n,eg.f!,eh.g,ha.h|e9#25*,fi,ei,el,h0#4,ed,em#12
+LU|4343506|A|17.0,cv.b,g4.c!,19.d,y.e,12.4,11.5,15.m,13.6,14.n,16.h|18,10,1b,g5,d0,g7
+LU|4343507|H|1n.0,1f.b,1r.c,e0.d!,1d.e,1h.f,1i.g,1o.i,1l.j,1j.k#9,e1.l|1g*,1t,1m,hb,hc*
+LU|4343507|A|1u.0,1v.b,fx.c!,1x.d,23.e,1z.4,27.5,20.m#19,22.6,21.n,24.l|25#15,26
+LU|4343508|H|c8.0,ck.b,hd.c,cb.d!,cc.e,f9.4,ce.5,cn.i,fa.9#8,cp.l,ci.a|cl,c9,ca,cf,cg,ch,cm
+LU|4343508|A|1u.0,1v.b,1w.c!,26.d#5,25.e,fx.4,di.5,21.m,22.6,23.n,20.h#19|he,27#13,1y#15,29
+LU|4343509|H|h1.0,10.b,z.c,19.d,g6.e,12.4,11.p,13.5!,15.m,14.n,16.i|17*,1b,g5,d0#24,g7
+LU|4343509|A|1n.0,1d.b!,1f.c,1i.d,1q.e,1r.f,hf.g,1o.i,1k.j,1l.k,hg.l|hc,gz#16,1g,hh*,hi,hb
+LU|4343510|H|bs.0,bv.r!,gb.1,bu.2,bx.7,hj.f,c0.g,gd.8,h2.i,hk.9,c2.a|bw,c1#22,hl,c3#17,c6
+LU|4343510|A|fh.0#1,ek.b,gx.c,ee.d,ed.e#16,eh.p,eg.f!,ef.g,el.j,ej.k,em.l#10|fi,eb#5,ea,h0#12,fj
+LU|4343511|H|35.0,36.b,37.c!,3g.d,39.e,3l.7,ge.f#24,gf.g,3a.8,cs.9,3f.a|3i*,38,cr#12,3d,3m*,ct
+LU|4343511|A|2p.0,33.b,2z.c#21,2s.d,f5.e,2u.p,2x.f,f6.g,2y.j,2v.k!,32.l|34#14,fc,2t
+LU|4343512|H|d1.0#1,d2.b,g8.c,h6.d,d5.e,d4.4!,d3.5#10,d6.6,da.j,ga.k,df.l|dc#14*,dd,gh,d9,dg,gu
+LU|4343512|A|en.0,ez.b,fk.c,eq.d#5,er.e,hm.f,et.g,fm.s,f3.i,ew.o,ex.l!|f0,fl#6,h4,ev#8,gp,hn
+LU|4343513|H|dk.0,dl.b,do.c,dn.d#5!,fy.e,dp.f,gj.g,dr.s,dt.i,ds.o,du.l|dv#12,dq#13,dw,g1#7,dx#14
+LU|4343513|A|h.0,i.b#5,j.c#4,k.d#22,l.e,e5.p,n.f!,e4.g,p.j,t.k,m.l|e7#1,e6,ft,q#10
+LU|4343514|H|e7.0,e4.q,i.b#5,j.c,k.d,l.e,n.f,v.g,p.j,e2.h!,t.k|e6,o#14,u,ft
+LU|4343514|A|c8.0,c9.b#6,hd.c#14,cb.d#5!,cc.e,f9.p,cn.f,ci.g,co.9,cp.l,fa.a#7|ho*,cf,cg,cm#17,hp,hq
+LU|4343515|H|en.0,eo.b,fk.c,er.d,f0.e,hm.f#8,et.g,fm.s,f3.i,ew.o,ex.l!|ez,fn,eu,hr
+LU|4343515|A|dk.0,dq.b,do.c,dn.d#5,g3.e#2,dp.f,dt.g,dr.s!,ds.i,g1.o#7,du.l|dm#14*,dw,g0,fz#12
+LU|4343516|H|2p.0,2q.b,2r.c,2s.d,33.e,2v.7!,2x.f,f6.g,32.k,2w.9,34.a#12|fc#5,hs,f7#14,h9
+LU|4343516|A|d1.0#1,g8.b,de.c,d4.d,d5.e,d8.4,d7.5!,d6.6,db.j,df.h,dg.k|dd,d9,dh,gu
+LU|4343517|H|fh.0#1,fd.b,eb.c,ea.d,ek.e,ee.p,h0.m#9,ej.n,eg.f!,eh.g,em.l#10|fi,ei,ht,ed#16,ef#12,fj,hu
+LU|4343517|A|hv.0,3i.b,37.c!,3g.d,39.e,gf.4,3l.7,h5.f#10,3d.8,3m.i,cs.h|36,38,ct#20,3j
+LU|4343518|H|1c.0,1f.b!,1e.c#16,e0.d,gz.e,1p.f#6,1j.g,1o.i,1k.j,1l.k,1m.l|1g,hh#3,1r,1h,1q,e1,1n#18
+LU|4343518|A|gi.0,bt.b,bz.c,bv.d!,gc.e#21,c1.p,bx.m,c2.6,bw.n,c5.f#11,c0.g|bs,bu,c4,c6,c7
+LU|4343519|H|1u.0,1v.b,1w.c!,hw.d,25.e,fx.4,26.5,20.m#19,22.6,23.n,he.h|21,24,29
+LU|4343519|A|w.0,10.b,1a.c,19.d!,g6.e,12.4,11.5,d0.m#11,1b.6,14.n,16.h|z,g7,hx
+LU|4343520|H|c8.0,ck.b,hd.c#17,cb.d!,cc.e,f9.4,ce.5,cn.i,fa.9#16,cp.l,ci.a|cl,c9,cf,co*,cg,ch,cm
+LU|4343520|A|h1.0,cv.b!,19.c,1a.d,g6.e,11.4,12.5,16.m,cx.6#11,d0.n#12,cy.h|w*,10*,1b,g5*,15,14
+LU|4343521|H|bs.0,gb.b,bv.c!,bu.d,gc.e#17,bx.7,bz.f,c0.g,by.8,gd.9,c2.a|bw,c1*,c5#7,c6
+LU|4343521|A|1u.0,1v.b,1w.c!,1x.d,25.e,fx.4,1z.5,21.m,22.6,hw.n#11,di.h|26#9,27#13,dj#14,29
+LU|4343522|H|cq.0,3i.b,37.c!,3g.d,3d.e,h5.f,3b.g,3l.j,3a.k,3m.i,gf.l#18|3h,36,ct,cr,3k,3j,3f
+LU|4343522|A|1n.0,1g.b#12,1f.c#19,1i.d,1d.e!,1h.f,1r.g,1o.i,1k.j#11,1q.k,1m.l|1c,gz#20,1e#15,e0,1p,1j#13,1l#7
+LU|4343523|H|d1.0#1,dc.b,g8.c,d4.d,d5.e,d8.4,d7.5!,d6.6,db.j,dg.k,df.l|d2,d9,da,dh
+LU|4343523|A|hy.0,fd.b,eb.c,ec.d,ed.e,ee.p,ej.n,ef.f,eh.g!,ei.j,fj.l|fh,fi,ea#13,h0,eg,el,em#12
+LU|4343524|H|gs.0#20,dl.b,dm.c,dn.d!,fy.e,dp.f,gw.g#7,dr.s,dt.i,ds.o,du.l|do#12,dq#13,g1#14,dw,dx
+LU|4343524|A|2p.0,2q.b,f5.c,f6.d,33.e,2u.f!,2x.g,2v.8,32.j,2w.9,2t.a|2y,34,f7#12
+LU|4343525|H|h.0#22,i.b#5,j.c,k.d,l.e,e2.p!,hz.f,v.g,p.j,r.h,e6.k|e7*,m,u,n,fv#14*
+LU|4343525|A|ey.0,eo.b,fn.c,ep.d,er.e,es.f,et.g,f2.s,f3.i,ew.o,ex.l!|ez,go,gp,ev#14,eu,f1
+LU|4343526|H|ey.0,ez.b,go.c,ep.d,f0.e#3,es.f,et.g,gp.s,f3.i,fm.o#11,ex.l!|eq*,eo,ev#13*,f1,er,f2,eu#14
+LU|4343526|A|c8.0,ck.b,gy.c,cb.d!,cl.e,cd.4,ce.5,cn.i,co.9,cp.l,gg.a|cj*,c9,ca,cc,cg,ch,ci
+LU|4343527|H|f4.0!,2t.b,f5.c,2s.d,33.e,2y.7,2u.f,f6.g,2x.8,31.9,2z.a|32,2w,2q,f7#4
+LU|4343527|A|h.0#1,i.b,e2.c!,k.d,j.e,e4.p#10,n.f,v.g,p.j,m.k,q.l#8|e6,e7#22,e3,o,u#9,t#31
+LU|4343528|H|hy.0,fd.b,eb.c,ec.d,ek.e,ee.p,ef.m,ej.n,eg.f!,eh.g,em.l#10|e9#12,fh#15*,ea,ei,el
+LU|4343528|A|dk.0#20,dq.b,dm.c,dn.d!,fy.e,dp.f,dt.g,ds.s,gt.i,dw.o#9,du.l|dv,do#12,g1#7,dx
+LU|4343529|H|1c.0#1,1d.b!,1f.c,1i.d,1g.e,1r.f,1h.g,1o.i,1q.j,1l.k#7,1m.l|1n#27*,gz#18,1e#16,e0,1j#19,e1
+LU|4343529|A|d1.0,d2.b,g8.c,d4.d,d5.e,d8.4,d7.5!,d6.6,db.j,dg.k,df.l|da,d9,dh,gu
+LU|4343530|H|i0.0,25.b,1w.c!,1x.d,23.e,fx.4,26.5#9,20.6#19,1v.j,21.k,di.h|27#13,22,1z,24#12,dj#14
+LU|4343530|A|cq.0,3i.b,37.c!,38.d,3d.e,h5.f,3b.g,gf.i,3l.j,3a.k,3m.l|3g,36,ct,3h,3k,3j,cs
+LU|4343531|H|h1.0#1,18.b,g4.c!,y.d,g6.e,1a.4,12.5,1b.6,cz.7,cx.8,cy.h|w#25,cv,z,11,16,15,13
+LU|4343531|A|bs.0,bt.1,gc.2#17,bv.3!,bu.p,bx.m,gd.n,by.f,c0.g,c1.i#22,c2.l|bw,c5#7,c7,hl,i1
+LU|4366761|A|6i.0!,8r.r,8s.b,8t.e,6c.4,6b.p,68.5#10,6o.7,9t.k#9,8v.h,6f.9#11|6n#2,9u,6l
+LU|4366762|A|8u.0,6n.2#5,68.b,6o.3,a0.4#15,6h.5,69.m#16,6b.n,6e.i#17,9t.j,6f.h!|6c,8v,6l#14,6m,a1,6k
+LU|4366766|H|7p.0#20,7s.b#12,86.c,82.d,7t.e,7u.4!,7w.p,7x.i#13,8o.j,i2.k,85.l|7q#2,i3,a5#11
+LU|4366769|H|7p.0,80.c,82.3,7r.d#12,7x.6,7q.7#4,7u.f!,7t.8,7v.j,8o.k,85.l|86,7s,81#13,a5#10
+LU|4366771|A|ad.0,86.r,7s.c,9s.d#13,7q.7,82.f,7v.g,8q.8,7x.9,85.l!,a5.a#10|80,7t,7u,bb#14,83#16,8p#12
+LU|4366772|H|5r.0,9o.b#2,5u.c#5,5t.d#4!,5v.e,i4.7,5x.f,63.g,5z.8#8,61.9#9,64.a#11|94#20,5s#13,95#14,5w#16,96#12,60#17,5y#15
+LU|4366775|H|94.0,9o.b#2,62.c#4,5t.d,5v.e,5y.4!,5x.5,5w.f#14,96.j,5z.k#8,61.a#9|5r#20,5s#12,5u#17,65#16,63#13,60#15
+LU|4366777|A|5r.0,63.b#8,5u.c!,62.d,5z.e,65.7,64.f#17,5x.g#5,61.8,i5.9,60.a|94#20*,9o,5y,96#15,5w
+LU|4403935|A|5e.0#20,90.b#3,5g.c#5,5h.d,a4.e,5k.7#7,91.f#4,9r.g#14,9q.8,5q.9,5n.a#17!|8z,5m,5l#6,92#18,5f#2,5o#9
+LU|4403936|A|9n.0,9f.b,3p.c,3o.d#4,3r.e,3t.4,3q.5!,43.s,3s.i,3x.o,3w.l|3y,3v#18,41,40,9i,3u
+LU|4403938|A|am.0,70.b,72.c,6r.d!,6t.e,6v.m,74.n,8w.f,8x.g,6z.9,6s.a|6w,6q,6u,75,6x
+LU|4403940|A|ey.0,f2.b,ez.b,ep.c,eq.d#3,er.e,es.f!,f1.g,ex.8,f3.i#11,hm.o#10|go#2,f0,gq#12,fm,gp,eu#9
+LU|4403946|A|f4.0,2q.b,2s.c,2r.d,2t.e,2u.p!,31.m,f6.f,2x.g,32.k#14,2w.l#6|30,33,34#16,2z#4
+LU|4403947|A|e9.0#25,fi.b#4,ea.c#5,gx.d#3,ed.e#2,ff.4!,fg.5,eh.m,ef.n,eg.i,fj.l|ei,h0,em
+LU|4403948|H|44.0,45.b!,46.c,8e.d,48.e,4b.7,4a.f,49.g,8g.8,4c.9,4d.a|9l,8h,4g*,9w#25
+LU|4403948|A|4h.0,4i.b,4j.c,4k.d,9j.e,4m.7,4n.f!,4o.g,4l.8,4x.9,4t.a|4s,9k,ab#10
+LU|4403949|A|d1.0,d2.b,d4.c,g8.d,d5.e,d3.p#8,d6.m,d7.n!,da.j,db.k,df.l|dd,g9,de,gh,dg
+LU|4403951|A|h.0,e4.b#5,e2.c!,k.d,i.e,n.p,o.f#8,gl.g,e8.j,fv.k,q.l|v,t#22,m,p#19,e5#15
+LU|4403952|A|35.0,36.b,37.c!,38.d,cr.e#20,cs.7,3h.f#24,3g.g,3d.8,3k.i,3f.l|3i,39,ct,3a,3l#18,gf,3m
+LU|4403953|A|77.0,7a.q,7j.b,7b.e,7d.p!,7e.f,8l.g,7k.j,7m.k,7h.9,8m.a|78,9v,7i,9x,8j,7n,7g
+LU|4403955|A|bs.0,bt.1,gb.2,bu.3,bz.p,by.7,bv.f!,c0.g,c5.8,gd.9,c2.a|gc,bw,c3,c4,c7
+LU|4403959|A|c8.0,ck.b,ca.c,cb.d!,c9.e,cd.4,f9.5,gg.s,ci.i,cg.o,cp.l|cc,cl,cf,co,cn
+LU|4403962|A|9a.0,53.b#77,5a.c#29,52.d!,51.e#23,54.f,9m.g,56.i,55.j#9,58.k,59.l#90|4z#17,50#22,5c#7
+LU|4403963|A|2a.0,a3.b,8c.c#12,i6.d,2k.e,8d.p,2g.f,2b.g!,2i.j,av.k#9,2f.l|2o,2e,i7,au#14
+LU|4405115|H|5e.0,a4.b,5g.c#14,5h.d,5f.e,5m.6#6,5l.f,9p.g,5k.j#11,9q.k,5j.h!|ag#3,5i,8z,5q,5o
+LU|4405115|A|77.0,7a.q,79.b,7j.e,7d.p!,7e.7,i8.f,7c.g,7f.8,8m.9,7g.a|8n,8l,9x,7h,7l,7o
+LU|4405116|H|af.0,i9.b,8c.c,2k.d,2h.e!,2o.p,av.7,2c.f,2g.g,2e.8,2f.l|8d,b8,2i,2j,2b
+LU|4405116|A|9a.0,50.b,5a.c,52.d!,51.e,9m.p,55.f,56.g,5c.j#3,53.k,59.l|4z#9,54,5b#12,58
+LU|4405118|A|c8.0,ck.b,gy.c,cb.d!,cc.e,f9.4,ce.5,cn.i,cg.9,cp.l,ci.a|cj,cl,c9,ca,cd,co,ch
+LU|4405119|H|4h.0,4i.b,4j.c,4k.d,4l.e,4m.7,4n.f!,4o.g,4p.8,4q.9,4r.a|4t*,9k*,4v*,4w#14*,4x*
+LU|4405119|A|e7.0,e4.q,i.b,e2.c!,k.d,j.e,r.f,v.g,p.j,n.k,m.l|h#1*,o*,fv#14*,q#10*,e6*
+LU|4405121|A|2p.0,2q.b,f5.c,2s.d,33.e,2t.7,2u.f!,f6.g,2x.k,2w.9,34.a|f4,2y,32,2z
+LU|4405122|A|cq.0,3i.b,37.c!,38.d,36.e,3l.7,gf.f,3j.g,h5.8,3m.i,cs.l|ct,3h*,3a,cr#19*,3k*,3b,3d
+LU|4405123|A|1c.0,1g.b,1f.c,1i.d,1d.e!,1h.f,1e.g#16,1j.i,1q.j,1l.k#7,e1.l|1n*,gz#18,e0,1o,1r,1m,1s
+LU|4405124|A|d1.0,d2.b,g8.c,d4.d,d5.e,d8.4,d7.5!,dh.6,db.j,dg.k,df.l|dc,d6,gh#13,d9
+LU|4405125|A|e9.0,fd.b,ea.c,eb.d,ia.e,ee.p,ej.n,eg.f!,eh.g,ef.j,em.l#10|fh#18,fi,ed#6,ei#5,h0#13,el
+LU|4405126|A|bs.0,bt.b,bv.c!,bu.d,gc.e#17,by.f,c0.g,gd.s,c1.i#22,hl.o,c2.l|bw,c4#13,c5#7,hk
+LU|4405128|A|am.0#69,8x.b,70.c,73.d,6t.e,72.p,74.m,76.n,75.f,6w.g,6s.l!|6r,6v,6x,6q,6z
+LU|4405129|A|ey.0,ez.b,go.c,ep.d,f0.e#3,es.f,et.g,gp.s,ev.i#13,fm.o,ex.l!|eq#16,eo*,fn,f2,f3,f1,ew
+LU|4405370|A|3n.0,3y.b,3p.c,9g.d,3r.e,3s.f,3q.g!,3u.i,3v.9,3w.l,3x.a|3o,3z,al,9i,43
+LU|4407481|H|6i.0,68.b#3,a0.3#12,6a.d,6n.e,6c.p!,6d.m,6e.f,6f.g#10,69.8,6g.l|8u#20,6j#18,6b#4,6k#17,6h,6m#19,6o#14
+LU|4407482|A|7p.0,7t.2,7q.b,80.c,7r.d#4,7u.p!,82.f,7w.g,83.k,7z.j,85.l|9s#16,ac#18,ib,i2,7y#11,ic
+LU|4407484|A|5r.0,62.b,5u.c,i4.d#5,5v.e,63.4#6,5y.5!,i5.j#11,61.k,64.i#8,60.l|5s,65#12,5z#14,5w#15,96#13
 LOGOS|FC Goldstern a=10306;FC Ins Müntschemier=10213;FC Köniz a=10309;Ämme Team (FC BW Oberburg) a=10404;SC Burgdorf 1898 a=10403;FC Aarberg=10201;FC Azzurri Bienne a=10236;FC Vicques=10139;Team Ajoie Centre (FC Alle) a=10101;SC Bümpliz 78 a=10303;FC Langenthal a=10408;Team Grand Chasseral (Birse Football Club) a=10174;FC Breitenrain a=10330;FC Bern 1894=10302;FC Grünstern=10211;SR Delémont a=10117;FC Münsingen=10315;Team Chiesetau (FC Oberdiessbach) a=10516;FC Spiez=10505;Team Untere Emme (FC Kirchberg)=10405;FC Lerchenfeld a=10511;FC Interlaken a=10503;FC Dürrenast a=10507;FC Frutigen / Reichenbach a=10504;FC Täuffelen=10229;FC Rubigen=10319;SV Kaufdorf=10344;FC Allmendingen=10508;SC Grafenried=10307;SC Radelfingen / Aarberg=10225;FC Ostermundigen=10317;FC Wabern a=10382;FC Rot-Schwarz=10510;FC Belp a=10301;FC Schwarzenburg / Rüschegg=10322;FC Langnau=10401;FC Steffisburg a=10513;FC Schönbühl=10320;FC Hünibach=10520;FC Herzogenbuchsee=10406;FC Weissenstein Bern a=10323;FC Orpund Safnern=10259;FC Reichenbach / Frutigen b=10517;FC Sarina=10506;Ämme Team (FC Aemme) b=10446;SC Ersigen=10416;SC Ittigen=10335;SC Wohlensee=10390;FC Besa Biel/Bienne=10255;Team Häftli (FC Büren a. Aare)=10206;FC United Hermrigen-Jens=10258;FC Zollikofen=10331;FC Aurore Bienne=10202;FC Heimberg=10514;FC Gerzensee=10380;FC Utzenstorf=10436;FC Sternenberg=10397;FC Schüpfen=10321;SV Meiringen / Rothorn=10502;FC Prishtina Bern=10354;FC EDO Simme=10521;SCI Esperia 1927=10362;SC Münchenbuchsee=10314;SV Slavonija Bern=10339;SC Aegerten Brügg=10203;Team Chiesetau (FC Biglen) b=10515;FC Wattenwil=10512;FC Länggasse=10311;SV Sumiswald=10419;SV Lyss a=10215;FC Wyler Bern a=10308;Team Schlossmatt (SC Holligen 94)=10318;SC Thörishaus=10381;FC Muri-Gümligen=10316;FC Bolligen=10346;FC Nidau=10220;FC Bützberg=10407;SC Jegenstorf=10343;SC Worb a=10328;Team Franches (FC Franches-Montagnes)=10145;GJAO (US Boncourt)=10105;Team Vallon (CS Vallon)=10173;Team CCD (FC Courtételle) b=10115;Team Sorne (FC Bassecourt)=10102;Team Grand Chasseral (FC TT)=10165;FC Diaspora=10170;Team Ajoie Centre (FC Fontenais) c=10120;SR Delémont b=10117;Team Ajoie Centre (FC Porrentruy) b=10131
