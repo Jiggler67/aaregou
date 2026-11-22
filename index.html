@@ -1,9 +1,19 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aaregou · Junioren B FVBJ 2026/27</title>
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d2b3e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Aaregou">
+<meta name="application-name" content="Aaregou">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -247,6 +257,31 @@ a.lu-row:hover{background:var(--panel)}
 .lu-row.out{opacity:.5}
 .arr-in{color:var(--win);font-weight:800}.arr-out{color:var(--loss);font-weight:800}
 .role{display:inline-block;font-size:12px;color:var(--muted)}
+.subnav.grp{flex-wrap:wrap;gap:6px}
+.subnav.grp a{padding:6px 12px;font-size:14px}
+.subnav.grp .stlink{margin-left:auto;border:0;background:none;color:var(--accent);font-weight:700;align-self:center}
+.subnav.grp .stlink:hover{text-decoration:underline}
+/* Verlauf / Chancen-Balken */
+.dayctl{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);flex-wrap:nowrap}
+.dayctl button{font:inherit;font-weight:800;font-size:18px;line-height:1;border:1px solid var(--line);background:#fff;color:var(--navy);width:36px;height:36px;border-radius:9px;cursor:pointer;flex:none}
+.dayctl button:disabled{opacity:.35;cursor:default}
+.dayctl .daylabel{flex:none;min-width:142px}
+.dayctl .daylabel b{font-family:var(--font-display);font-size:20px;display:block;line-height:1.1;color:var(--navy)}
+.dayctl .daylabel small{color:var(--muted);font-size:12.5px}
+.dayctl input[type=range]{flex:1;min-width:80px;accent-color:var(--accent);height:6px}
+.cbarwrap{display:flex;align-items:center;gap:9px;min-width:150px}
+.cbarwrap .u,.cbarwrap .d{font-weight:700;font-variant-numeric:tabular-nums;width:40px;font-size:13px}
+.cbarwrap .u{color:var(--up);text-align:right}
+.cbarwrap .d{color:var(--down);text-align:left}
+.cbar{flex:1;display:flex;height:20px;border-radius:5px;overflow:hidden;background:#eef1f5;min-width:70px}
+.cbar i{display:block;height:100%}
+.cbar i.up{background:var(--up)}.cbar i.mid{background:#d4dbe2}.cbar i.dn{background:var(--down)}
+td.vsr{font-family:var(--font-display);font-weight:800;font-size:18px;color:var(--navy)}
+.vlegend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);padding:2px 18px 0}
+.vlegend span{display:inline-flex;align-items:center;gap:6px}
+.vlegend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.barcell{width:46%}
+@media(max-width:620px){.cbarwrap{min-width:120px}.dayctl .daylabel{min-width:118px}.barcell{width:52%}}
 /* Rekorde */
 .split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1px;background:var(--line)}
 .split > *{background:#fff}
@@ -339,6 +374,8 @@ a.rec:hover{border-color:var(--accent)}
       <a href="#start" data-nav="start">Start</a>
       <a href="#yl" data-nav="yl">Youth League B</a>
       <a href="#promo" data-nav="promo">Promotion B</a>
+      <a href="#sk1" data-nav="sk1">1. Stärkeklasse</a>
+      <a href="#sk2" data-nav="sk2">2. Stärkeklasse</a>
       <a href="#cup" data-nav="cup">Cup</a>
       <a href="#stats" data-nav="stats">Statistiken</a>
     </nav>
@@ -370,7 +407,7 @@ const MC = "https://matchcenter.fvbj-afbj.ch/default.aspx?oid=6&lng=1&ln=&v=0&tg
 const WD = ["So","Mo","Di","Mi","Do","Fr","Sa"];
 const MONTHS = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
 
-const S = {updated:null, leagues:{}, cups:{}, games:[], teams:[], teamByName:new Map(), logos:{}, pl:{}, pos:[], lu:{}};
+const S = {updated:null, leagues:{}, cups:{}, sks:{}, games:[], teams:[], teamByName:new Map(), logos:{}, pl:{}, pos:[], lu:{}};
 
 function teamOf(name) {
   if (S.teamByName.has(name)) return S.teamByName.get(name);
@@ -418,6 +455,9 @@ function parse(txt, logoTxt, corrTxt) {
     else if (p[0] === "T") { const t = teamOf(p[2]); t.leagues.add(league.key); t.strp[round.name + "|" + league.key] = +p[7];
       round.table.push({rank:+p[1], t, sp:+p[3], s:+p[4], u:+p[5], n:+p[6], strp:+p[7], gf:+p[8], ga:+p[9], pts:+p[10]}); }
     else if (p[0] === "CUP") { cup = S.cups[p[1]] = {key:p[1], name:p[2], games:[]}; league = null; }
+    else if (p[0] === "SK") { S.sks[p[1]] = {key:p[1], name:p[2], ln:p[3], groups:[]}; cup = null; }
+    else if (p[0] === "SKG") { const sk = S.sks[p[1]]; sk.groups.push({rkind:p[2], rname:p[3], lkey:p[4], gname:p[5]});
+      COMP_INFO[p[4]] = {name:sk.name + " · " + p[5], short:p[5], tag:sk.name.replace("Junioren B ", "").replace("Stärkeklasse", "Kl.").trim() + " · " + p[5].replace("Gruppe", "Gr."), color:"", zones:{}, sk:p[1], gname:p[5], rkind:p[2]}; }
     else if (p[0] === "LOGOS") { p[1].split(";").forEach(x => { const [n, id] = x.split("="); const t = S.teamByName.get(n) || teamOf(n); t.logoId = id; }); }
     else if (p[0] === "PL") S.pl[p[1]] = {nr:p[2], name:p[3]};
     else if (p[0] === "POS") S.pos = p[1].split(";");
@@ -517,6 +557,84 @@ function leagueOdds(key, r, N = 4000) {
 }
 const pcCell = (v, hi) => `<td class="pc ${v >= 0.5 && hi ? "hi" : ""}">${v < 0.005 ? "–" : v > 0.995 ? "100 %" : `<span class="pcb" style="width:${Math.max(3, v * 40)}px"></span>${pct(v)}`}</td>`;
 
+/* ---- Chancen-Verlauf: pro Spieltag die Schlussrang-Wahrscheinlichkeiten ---- */
+S._verlauf = {}; const VSTATE = {};
+function eloAt(cutMs) {
+  const e = new Map();
+  S.teams.forEach(t => e.set(t, t.leagues.has("yl") ? 1650 : t.leagues.has("promo") ? 1500 : null));
+  S.games.forEach(g => [[g.H, g.htag], [g.A, g.atag]].forEach(([t, tag]) => { if (e.get(t) == null && LEVEL[tag]) e.set(t, LEVEL[tag]); }));
+  S.teams.forEach(t => { if (e.get(t) == null) e.set(t, 1350); });
+  S.games.filter(g => g.played && !g.forfait && g.date <= cutMs).sort((a, b) => a.date - b.date).forEach(g => {
+    const E = 1 / (1 + Math.pow(10, -((e.get(g.H) + HOME_ADV) - e.get(g.A)) / 400));
+    const res = g.gh > g.ga ? 1 : g.gh < g.ga ? 0 : 0.5; const gd = Math.abs(g.gh - g.ga);
+    const G = Math.min(gd <= 1 ? 1 : gd === 2 ? 1.5 : (11 + gd) / 8, 2.5); const d = 32 * G * (res - E);
+    e.set(g.H, e.get(g.H) + d); e.set(g.A, e.get(g.A) - d);
+  });
+  return e;
+}
+const predByElo = (he, ae) => { const d = (he + HOME_ADV) - ae; const E = 1 / (1 + Math.pow(10, -d / 400)); const pD = Math.min(0.26 * Math.exp(-Math.pow(d / 260, 2)), 1.6 * Math.min(E, 1 - E)); return {h:E - pD / 2, d:pD, a:1 - E - pD / 2}; };
+function verlaufData(key, r) {
+  const z = COMP_INFO[key].zones || {}; const up = z.up || 0, down = z.down || 0;
+  const teams = r.table.map(x => x.t); const n = teams.length; const idx = new Map(teams.map((t, i) => [t, i]));
+  const dayMax = new Map(); r.games.filter(g => g.played).forEach(g => dayMax.set(g.dstr, Math.max(dayMax.get(g.dstr) || 0, g.date)));
+  const days = [...dayMax.keys()].sort((a, b) => dayMax.get(a) - dayMax.get(b));
+  const N = 3000;
+  function snap(cutMs) {
+    const elo = eloAt(cutMs); const base = teams.map(() => ({pts:0, gd:0}));
+    const open = []; let pc = 0;
+    r.games.forEach(g => { const hi = idx.get(g.H), ai = idx.get(g.A); if (hi == null || ai == null) return;
+      if (g.date <= cutMs) { if (g.played) { pc++; const w = g.gh > g.ga ? 1 : g.gh < g.ga ? 2 : 0; if (w === 1) base[hi].pts += 3; else if (w === 2) base[ai].pts += 3; else { base[hi].pts++; base[ai].pts++; } base[hi].gd += g.gh - g.ga; base[ai].gd += g.ga - g.gh; } }
+      else open.push({hi, ai, p:predByElo(elo.get(g.H), elo.get(g.A))}); });
+    const acc = teams.map(() => ({sr:0, first:0, up:0, dn:0})); const rnd = seeded();
+    for (let s = 0; s < N; s++) {
+      const cur = base.map(b => ({pts:b.pts, gd:b.gd}));
+      open.forEach(o => { const u = rnd(); if (u < o.p.h) { cur[o.hi].pts += 3; cur[o.hi].gd++; cur[o.ai].gd--; } else if (u < o.p.h + o.p.d) { cur[o.hi].pts++; cur[o.ai].pts++; } else { cur[o.ai].pts += 3; cur[o.ai].gd++; cur[o.hi].gd--; } });
+      const order = cur.map((c, k) => k).sort((x, y) => cur[y].pts - cur[x].pts || cur[y].gd - cur[x].gd || x - y);
+      order.forEach((k, pos) => { const A = acc[k]; A.sr += pos + 1; if (pos === 0) A.first++; if (up && pos < up) A.up++; if (down && pos >= n - down) A.dn++; });
+    }
+    return {pc, rows:teams.map((t, k) => ({t, sr:acc[k].sr / N, first:acc[k].first / N, up:acc[k].up / N, dn:acc[k].dn / N})).sort((a, b) => a.sr - b.sr)};
+  }
+  const st = snap(0);
+  const snaps = [{label:"Saisonstart", sub:"vor dem 1. Spieltag", rows:st.rows}];
+  days.forEach((ds, i) => { const sn = snap(dayMax.get(ds)); snaps.push({label:`${i + 1}. Spieltag`, sub:`${ds} · ${sn.pc} Spiele gespielt`, rows:sn.rows}); });
+  return {snaps, up, down, n};
+}
+function verlaufTable(ck) {
+  const V = S._verlauf[ck]; const noZone = !V.up && !V.dn && !V.down;
+  const cell = r => { if (noZone) { return `<div class="cbarwrap"><div class="cbar"><i class="up" style="width:${Math.max(0, r.first) * 100}%;background:var(--accent)"></i></div><span class="d" style="color:var(--accent)">${r.first < 0.005 ? "–" : pct(r.first)}</span></div>`; }
+    const mid = Math.max(0, 1 - r.up - r.dn); const seg = (c, w) => w > 0.004 ? `<i class="${c}" style="width:${w * 100}%"></i>` : "";
+    return `<div class="cbarwrap"><span class="u">${V.up ? (r.up < 0.005 ? "–" : pct(r.up)) : ""}</span><div class="cbar">${seg("up", r.up)}${seg("mid", mid)}${seg("dn", r.dn)}</div><span class="d">${r.dn < 0.005 ? "–" : pct(r.dn)}</span></div>`; };
+  const barHead = noZone ? "Titelchance (Platz 1)" : (V.up ? "Aufstieg · Halten · Abstieg" : "Halten · Abstieg");
+  return `<div class="tbl-wrap"><table><thead><tr><th>#</th><th class="team">Team</th><th>Ø&nbsp;Rang</th>${V.up ? "<th class=\"hide-sm\">Platz 1</th>" : ""}<th class="barcell" style="text-align:left">${barHead}</th></tr></thead><tbody>${V.snaps[VSTATE[ck]].rows.map((r, i) => `<tr class="clk" data-href="#team-${r.t.id}"><td class="rank"><span>${i + 1}</span></td><td class="team"><span class="t">${crest(r.t, "sm")}${teamLink(r.t)}</span></td><td class="vsr">${r.sr.toFixed(1)}</td>${V.up ? `<td class="hide-sm">${r.first < 0.005 ? "–" : pct(r.first)}</td>` : ""}<td class="barcell">${cell(r)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+function verlaufBox(ck) {
+  const V = S._verlauf[ck], day = VSTATE[ck], sn = V.snaps[day];
+  const noZone = !V.up && !V.dn && !V.down;
+  const leg = noZone ? `<span><i style="background:var(--accent)"></i>Chance auf Platz 1 (Gruppensieg)</span>` : V.up ? `<span><i style="background:var(--up)"></i>Aufstieg</span><span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>` : `<span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>`;
+  return `<section class="card acc"><div class="sec-head"><h2>Verlauf der Chancen</h2><span class="sub">Schlussrang-Wahrscheinlichkeit nach jedem Spieltag</span></div>
+    <div class="dayctl"><button class="vstep" data-vck="${ck}" data-vd="-1" ${day === 0 ? "disabled" : ""}>‹</button>
+      <div class="daylabel"><b id="vlabel">${sn.label}</b><small id="vsub">${sn.sub}</small></div>
+      <input class="vslider" type="range" min="0" max="${V.snaps.length - 1}" value="${day}" data-vck="${ck}">
+      <button class="vstep" data-vck="${ck}" data-vd="1" ${day === V.snaps.length - 1 ? "disabled" : ""}>›</button></div>
+    <div class="vlegend">${leg}</div>
+    <div id="vtbl">${verlaufTable(ck)}</div>
+    <p class="note">Je Spieltag aus 3000 simulierten Saisonverläufen: Stand nach diesem Tag plus die damals noch offenen Spiele, gespielt mit den Spielstärken von damals. Am Saisonstart sind alle fast gleich, am letzten Spieltag steht alles fest. Schätzung, keine Gewähr.</p></section>`;
+}
+function refreshVerlauf(ck) {
+  const V = S._verlauf[ck], sn = V.snaps[VSTATE[ck]];
+  const L = document.getElementById("vlabel"); if (L) L.textContent = sn.label;
+  const Su = document.getElementById("vsub"); if (Su) Su.textContent = sn.sub;
+  const T = document.getElementById("vtbl"); if (T) T.innerHTML = verlaufTable(ck);
+  document.querySelectorAll("button.vstep").forEach(b => { b.disabled = (b.dataset.vd === "-1" && VSTATE[ck] === 0) || (b.dataset.vd === "1" && VSTATE[ck] === V.snaps.length - 1); });
+}
+function mountVerlauf(key, r) {
+  const ck = key + "|" + r.name; const mount = document.getElementById("verlaufMount"); if (!mount) return;
+  if (S._verlauf[ck]) { if (VSTATE[ck] == null) VSTATE[ck] = S._verlauf[ck].snaps.length - 1; mount.innerHTML = verlaufBox(ck); return; }
+  mount.innerHTML = '<section class="card"><p class="empty">Verlauf wird berechnet…</p></section>';
+  setTimeout(() => { S._verlauf[ck] = verlaufData(key, r); VSTATE[ck] = S._verlauf[ck].snaps.length - 1;
+    const m2 = document.getElementById("verlaufMount"); if (m2) m2.innerHTML = verlaufBox(ck); }, 30);
+}
+
 /* ============ Helfer ============ */
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const crest = (t, cls = "") => t.logo ? `<span class="crest ${cls}"><img src="${t.logo}" alt=""></span>` : `<span class="crest ph ${cls}" aria-hidden="true">${esc(t.abbr)}</span>`;
@@ -567,8 +685,10 @@ function gamesByDay(list, opt = {}) {
 }
 
 /* ============ Auswertungen ============ */
+const skOf = c => COMP_INFO[c] ? COMP_INFO[c].sk : null;
 function leagueGames(comp, scope) { // scope: "hb" | "fj" | "all"
-  return S.games.filter(g => (comp === "all" ? true : comp === "liga" ? !isCup(g.comp) : comp === "cup" ? isCup(g.comp) : g.comp === comp)
+  if (S.sks[comp]) return S.games.filter(g => skOf(g.comp) === comp && (scope === "all" || g.rkind === scope));
+  return S.games.filter(g => (comp === "all" ? !skOf(g.comp) : comp === "liga" ? (!isCup(g.comp) && !skOf(g.comp)) : comp === "cup" ? isCup(g.comp) : g.comp === comp)
     && (scope === "all" || isCup(g.comp) || g.rkind === scope));
 }
 function formOf(t, games) { return games.filter(g => g.played && (g.H === t || g.A === t)).slice(-5).map(g => ({x:resFor(g, t), g})); }
@@ -629,6 +749,14 @@ function viewStart() {
       <div class="comp-body"><div class="sub" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">${esc(r.name)} · Spitze</div><table class="mini"><tbody>${top}</tbody></table></div>
       <div class="comp-foot"><span>Tabelle, Spiele, Statistik</span><span class="go">›</span></div></a>`;
   };
+  const skCard = key => { const sk = S.sks[key]; if (!sk) return "";
+    const hasFj = sk.groups.some(g => g.rkind === "fj" && S.leagues[g.lkey] && S.leagues[g.lkey].current.games.length);
+    const rk = hasFj ? "fj" : "hb"; const groups = sk.groups.filter(g => g.rkind === rk);
+    const sc = scorers(S.games.filter(g => skOf(g.comp) === key)).slice(0, 3);
+    return `<a class="comp" href="#${key}">
+      <div class="comp-top"><span class="kicker">Meisterschaft</span><span class="name">${esc(sk.name.replace("Junioren B ", ""))}</span><span class="state"><b>${groups.length} Gruppen</b> · ${esc(rk === "fj" ? "Frühjahrsrunde" : "Herbstrunde")}</span></div>
+      <div class="comp-body"><div class="sub" style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">Top-Torschützen</div><table class="mini"><tbody>${sc.map(x => `<tr><td><span class="t">${crest(x.t, "sm")}${esc(x.name)}</span></td><td class="p">${x.goals}</td></tr>`).join("") || '<tr><td class="sub">—</td></tr>'}</tbody></table></div>
+      <div class="comp-foot"><span>Gruppen, Tabellen, Statistik</span><span class="go">›</span></div></a>`; };
   const eq = S.cups.eq; const rounds = [...new Set(eq.games.map(g => g.round))];
   if (S.fav === undefined) { const od = cupOdds(); S.fav = od ? od.rows[0] : null; }
   const nextR = rounds.find(r => eq.games.some(g => g.round === r && !g.played)) || rounds[rounds.length - 1];
@@ -643,7 +771,7 @@ function viewStart() {
   const recent = [...S.games].filter(g => g.played).reverse().slice(0, 6);
   app().innerHTML = hero("Junioren B · FVBJ 2026/27", [], `Wähle einen Wettbewerb · Stand <b>${fmtStamp(S.updated)}</b>`) + `
     <div class="grid">
-      <div class="start-grid">${card("yl")}${card("promo")}${cupCard}</div>
+      <div class="start-grid">${card("yl")}${card("promo")}${skCard("sk1")}${skCard("sk2")}${cupCard}</div>
       <div class="start-extra">
         <a class="quick" href="#stats"><span class="ico">∑</span><span><b>Statistiken</b><small>Torschützen, Karten und Rekorde über alle Wettbewerbe</small></span></a>
       </div>
@@ -728,13 +856,48 @@ function topCards(games, key) {
 }
 function leagueHead(key, tab) {
   const info = COMP_INFO[key];
+  if (info.sk) {
+    const sk = S.sks[info.sk]; const grp = sk.groups.find(g => g.lkey === key);
+    const sibs = sk.groups.filter(g => g.rkind === grp.rkind);
+    const tabs = [["", "Übersicht"], ["-tabelle", "Tabelle"], ["-chancen", "Chancen"], ["-spiele", "Spiele"]];
+    return hero(`${esc(sk.name)} 2026/27`, [`<a href="#${info.sk}">${esc(sk.name)}</a>`, esc(grp.gname)]) +
+      `<nav class="subnav grp">${sibs.map(g => `<a href="#${g.lkey}" class="${g.lkey === key ? "on" : ""}">${esc(g.gname)}</a>`).join("")}<a class="stlink" href="#${info.sk}-stats">Statistik der Klasse ›</a></nav>
+      <nav class="subnav">${tabs.map(([sx, n]) => `<a href="#${key}${sx}" class="${tab === sx ? "on" : ""}">${n}</a>`).join("")}</nav>`;
+  }
   const tabs = [["", "Übersicht"], ["-tabelle", "Tabelle"], ["-chancen", "Chancen"], ["-spiele", "Spiele"], ["-stats", "Statistiken"]];
   return hero(`${esc(info.name)} 2026/27`, [`<a href="#${key}">${esc(info.short)}</a>`]) +
     `<nav class="subnav">${tabs.map(([s, n]) => `<a href="#${key}${s}" class="${tab === s ? "on" : ""}">${n}</a>`).join("")}</nav>`;
 }
+function skHead(skKey, tab) {
+  const sk = S.sks[skKey]; const tabs = [["", "Übersicht"], ["-stats", "Statistik"]];
+  return hero(`${esc(sk.name)} 2026/27`, [esc(sk.name)]) +
+    `<nav class="subnav">${tabs.map(([sx, n]) => `<a href="#${skKey}${sx}" class="${tab === sx ? "on" : ""}">${n}</a>`).join("")}</nav>`;
+}
+function viewSK(skKey, tab) {
+  const sk = S.sks[skKey];
+  const hasFj = sk.groups.some(g => g.rkind === "fj" && S.leagues[g.lkey] && S.leagues[g.lkey].current.games.length);
+  const rkind = hasFj ? "fj" : "hb";
+  const groups = sk.groups.filter(g => g.rkind === rkind);
+  const skGames = S.games.filter(g => skOf(g.comp) === skKey);
+  let body;
+  if (tab === "-stats") {
+    body = statsBlock({comp:skKey, scope:LSTATE.scope?.[skKey] || (skGames.some(g => g.rkind === "fj") ? "fj" : "hb"), fixedComp:true});
+  } else {
+    const groupCards = groups.map(g => { const l = S.leagues[g.lkey]; const r = l.current;
+      const top = r.table.slice(0, 5).map(x => `<tr class="clk" data-href="#team-${x.t.id}"><td class="rank"><span>${x.rank}</span></td><td class="team"><span class="t">${crest(x.t, "sm")}${teamLink(x.t)}</span></td><td>${x.sp}</td><td class="pts">${x.pts}</td></tr>`).join("");
+      return `<section class="card acc"><div class="sec-head"><h2>${esc(g.gname)}</h2><a class="more" href="#${g.lkey}">Ganze Gruppe</a></div>
+        <div class="tbl-wrap"><table><thead><tr><th>#</th><th class="team">Team</th><th>Sp</th><th>Pkt</th></tr></thead><tbody>${top}</tbody></table></div></section>`; }).join("");
+    const sc = scorers(skGames);
+    body = `<section class="card"><div class="sec-head"><h2>Gruppen</h2><span class="sub">${groups.length} Gruppen · ${esc(rkind === "fj" ? "Frühjahrsrunde" : "Herbstrunde")} · über alle Gruppen zusammengefasst</span></div>
+        <div class="subnav grp" style="padding:4px 0 2px">${groups.map(g => `<a href="#${g.lkey}">${esc(g.gname)}</a>`).join("")}</div></section>
+      <section class="card acc"><div class="sec-head"><h2>Beste Torschützen</h2><span class="sub">ganze Stärkeklasse</span><a class="more" href="#${skKey}-stats">Alle Statistiken</a></div>${sc.length ? scorerTable(sc.slice(0, 10), {full:true, comps:false}) : '<p class="empty">Noch keine Torschützen erfasst.</p>'}</section>
+      <div class="grid-half">${groupCards}</div>`;
+  }
+  app().innerHTML = `<div>${skHead(skKey, tab)}<div class="grid">${body}</div></div>` + foot();
+}
 function springBanner(key) {
   const l = S.leagues[key];
-  if (l.hasSpring) return "";
+  if (COMP_INFO[key].sk || l.hasSpring) return "";
   return `<div class="banner"><span>ℹ️</span><span><b>Frühjahrsrunde 2027:</b> Der FVBJ hat die Gruppeneinteilung und den Spielplan noch nicht publiziert. Sobald sie im Matchcenter stehen, erscheinen sie hier automatisch als Standard-Ansicht. Bis dahin siehst du die abgeschlossene Herbstrunde.</span></div>`;
 }
 function strengthTable(key) {
@@ -767,12 +930,9 @@ function viewLeague(key, tab) {
   } else if (tab === "-tabelle") {
     body = `${springBanner(key)}<section class="card acc"><div class="sec-head"><h2>Tabelle · ${esc(r.name)}</h2>${roundChips(key)}</div>${standings(key, r)}</section>`;
   } else if (tab === "-chancen") {
-    const lo = leagueOdds(key, r);
     body = `${springBanner(key)}
-      <section class="card acc"><div class="sec-head"><h2>Stärke-Rangliste</h2><span class="sub">Spielstärke aus allen bisherigen Resultaten dieser Saison</span></div>${strengthTable(key)}</section>` +
-      (lo ? `<section class="card acc"><div class="sec-head"><h2>Prognose Schlussrang</h2><span class="sub">${lo.open} Spiele offen · ${esc(r.name)}</span></div>
-        <div class="tbl-wrap"><table><thead><tr><th>#</th><th class="team">Team</th><th>Ø Rang</th><th class="hide-sm">Ø Punkte</th><th>Platz 1</th>${lo.z.up ? "<th>Aufstieg</th>" : ""}${lo.z.down ? "<th>Abstieg</th>" : ""}</tr></thead><tbody>${lo.rows.map((x, i) => `<tr class="clk" data-href="#team-${x.t.id}"><td class="rank"><span>${i + 1}</span></td><td class="team"><span class="t">${crest(x.t, "sm")}${teamLink(x.t)}</span></td><td>${x.rank.toFixed(1)}</td><td class="hide-sm">${x.pts.toFixed(1)}</td>${pcCell(x.first, true)}${lo.z.up ? pcCell(x.up, true) : ""}${lo.z.down ? pcCell(x.down, true) : ""}</tr>`).join("")}</tbody></table></div><p class="note">Durchschnitt aus 4000 simulierten Saisonverläufen. Schätzung, keine Gewähr.</p></section>`
-       : `<section class="card"><p class="empty">Sobald der Spielplan der Frühjahrsrunde publiziert ist, erscheint hier die Prognose für den Schlussrang (Platz 1, Aufstieg, Abstieg).</p></section>`);
+      <section class="card acc"><div class="sec-head"><h2>Stärke-Rangliste</h2><span class="sub">Spielstärke aus allen bisherigen Resultaten dieser Saison</span></div>${strengthTable(key)}</section>
+      <div id="verlaufMount"></div>`;
   } else if (tab === "-spiele") {
     const sel = LSTATE.team?.[key] ?? "";
     const list = r.games.filter(g => sel === "" || g.H.id === +sel || g.A.id === +sel);
@@ -787,6 +947,7 @@ function viewLeague(key, tab) {
       return `<a class="tg" href="#team-${t.id}">${crest(t, "md")}<span class="nm">${esc(t.name)}<small>${row ? `${row.rank}. Rang ${esc(r.name)} · ${row.pts} Punkte` : ""}</small></span></a>`; }).join("")}</div></section>`;
   }
   app().innerHTML = `<div class="${info.color}">${leagueHead(key, tab)}<div class="grid">${body}</div></div>` + foot();
+  if (tab === "-chancen") mountVerlauf(key, r);
 }
 
 /* ---- Statistiken (wettbewerbsübergreifend oder einzeln) ---- */
@@ -1088,18 +1249,22 @@ function route() {
   let nav = "start";
   document.title = "Aaregou · Junioren B FVBJ 2026/27";
   const m = h.match(/^(yl|promo)(-tabelle|-chancen|-spiele|-stats|-teams|-hb|-fj)?$/);
+  const skm = h.match(/^(sk\d)(-stats)?$/);
+  const gm = h.match(/^(sk\d_[a-z]+_g\d+)(-tabelle|-chancen|-spiele)?$/);
   const pm = h.match(/^spieler-(\d+)-(.+)$/);
   if (m) {
     nav = m[1];
     if (m[2] === "-hb" || m[2] === "-fj") { const r = S.leagues[m[1]].rounds.find(x => x.kind === m[2].slice(1)); if (r) LSTATE.round[m[1]] = r.name; viewLeague(m[1], ""); }
     else viewLeague(m[1], m[2] || "");
   }
+  else if (skm && S.sks[skm[1]]) { nav = skm[1]; viewSK(skm[1], skm[2] || ""); }
+  else if (gm && S.leagues[gm[1]]) { nav = COMP_INFO[gm[1]].sk; viewLeague(gm[1], gm[2] || ""); }
   else if (h === "cup" || h === "cup-stats" || h === "cup-chancen") { nav = "cup"; viewCup(h.slice(3)); }
   else if (h === "stats") { nav = "stats"; viewStats(); }
   else if (h === "teams") { viewTeams(); }
-  else if (h.startsWith("team-") && viewTeam(+h.slice(5))) { const t = S.teams[+h.slice(5)]; nav = [...t.leagues][0]; }
-  else if (pm && viewPlayer(+pm[1], decodeURIComponent(pm[2]))) { const t = S.teams[+pm[1]]; nav = isOurs(t) ? [...t.leagues][0] : "cup"; }
-  else if (h.startsWith("spiel-") && viewGame(h.slice(6))) { const g = S.games.find(x => x.tg === h.slice(6)); nav = isCup(g.comp) ? "cup" : g.comp; }
+  else if (h.startsWith("team-") && viewTeam(+h.slice(5))) { const t = S.teams[+h.slice(5)]; const k = [...t.leagues][0]; nav = skOf(k) || k; }
+  else if (pm && viewPlayer(+pm[1], decodeURIComponent(pm[2]))) { const t = S.teams[+pm[1]]; const k = [...t.leagues][0]; nav = isOurs(t) ? (skOf(k) || k) : "cup"; }
+  else if (h.startsWith("spiel-") && viewGame(h.slice(6))) { const g = S.games.find(x => x.tg === h.slice(6)); nav = isCup(g.comp) ? "cup" : (skOf(g.comp) || g.comp); }
   else viewStart();
   document.querySelectorAll("[data-nav]").forEach(a => a.classList.toggle("on", a.dataset.nav === nav));
   window.scrollTo(0, 0);
@@ -1107,6 +1272,7 @@ function route() {
 function rerender() { const y = window.scrollY; route(); window.scrollTo(0, y); }
 document.addEventListener("click", e => {
   const tr = e.target.closest("tr[data-href]"); if (tr && !e.target.closest("a")) { location.hash = tr.dataset.href; return; }
+  const vs = e.target.closest("button.vstep"); if (vs) { const ck = vs.dataset.vck, V = S._verlauf[ck]; if (V) { VSTATE[ck] = Math.max(0, Math.min(V.snaps.length - 1, VSTATE[ck] + (+vs.dataset.vd))); const sl = document.querySelector("input.vslider"); if (sl) sl.value = VSTATE[ck]; refreshVerlauf(ck); } return; }
   const b = e.target.closest("button.chip"); if (!b || b.disabled) return;
   const box = b.parentElement;
   if (box.dataset.league) { LSTATE.round[box.dataset.league] = b.dataset.round; rerender(); }
@@ -1116,6 +1282,7 @@ document.addEventListener("click", e => {
   else if ("teamf" in box.dataset) { TSTATE.filter = b.dataset.v; rerender(); }
 });
 const qEl = document.getElementById("q");
+document.addEventListener("input", e => { const sl = e.target.closest("input.vslider"); if (!sl) return; const ck = sl.dataset.vck; if (S._verlauf[ck]) { VSTATE[ck] = +sl.value; refreshVerlauf(ck); } });
 qEl.addEventListener("input", () => runSearch(qEl.value));
 qEl.addEventListener("focus", () => { if (qEl.value.trim().length >= 2) runSearch(qEl.value); });
 qEl.addEventListener("keydown", e => {
@@ -1131,3 +1298,5 @@ Promise.all([fetch("data.txt", {cache:"no-store"}).then(r => { if (!r.ok) throw 
 </script>
 </body>
 </html>
+
+</body></html>
