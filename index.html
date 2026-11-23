@@ -252,7 +252,7 @@ a.lu-row:hover{background:var(--panel)}
 .lu-row .nm small{display:block;font-weight:400;color:var(--muted);font-size:12px}
 .lu-row .ev{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap;justify-content:flex-end}
 .lu-row .ev span{display:inline-flex;align-items:center;gap:3px}
-.lu-row .ev .ic.ball{width:13px;height:13px;border-width:2px}.lu-row .ev .ic.ball::after{width:4px;height:4px}
+.lu-row .ev .ic.ball{width:14px;height:14px}
 .lu-row .ev .ic.card-y,.lu-row .ev .ic.card-r{width:9px;height:12px}
 .lu-row.out{opacity:.5}
 .arr-in{color:var(--win);font-weight:800}.arr-out{color:var(--loss);font-weight:800}
@@ -299,7 +299,7 @@ a.rec:hover{border-color:var(--accent)}
 /* Spielerseite */
 .pev{display:flex;gap:12px;flex-wrap:wrap;padding:0 18px 10px 114px;margin-top:-4px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line)}
 .pev span{display:inline-flex;align-items:center;gap:5px}
-.pev .ic.ball{width:13px;height:13px;border-width:2px}.pev .ic.ball::after{width:4px;height:4px}
+.pev .ic.ball{width:14px;height:14px}
 @media (max-width:540px){.pev{padding-left:12px}}
 .matches .m.has-pev{border-bottom:0}
 .top .val small{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--muted);margin-left:4px}
@@ -337,8 +337,21 @@ a.rec:hover{border-color:var(--accent)}
 .ic.card-yr::before,.ic.card-yr::after{content:"";position:absolute;width:11px;height:15px;border-radius:2px}
 .ic.card-yr::before{background:var(--yellow);left:0;top:0}
 .ic.card-yr::after{background:var(--red);left:4px;top:2px}
-.ic.ball{width:16px;height:16px;border-radius:50%;border:2px solid var(--ink)}
-.ic.ball::after{content:"";width:6px;height:6px;background:var(--ink);border-radius:50%}
+.ic.ball{width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10.6' fill='%23fff' stroke='%230f2433' stroke-width='1.7'/%3E%3Cpath d='M12 7.4l4 2.9-1.5 4.7h-5L8 10.3z' fill='%230f2433'/%3E%3Cpath d='M12 7.4V2.2M16 10.3l4.8-1.7M14.5 15l3 4.2M9.5 15l-3 4.2M8 10.3L3.2 8.6' stroke='%230f2433' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") center/contain no-repeat}
+/* Symbole Spielerseite */
+.ki{width:17px;height:17px;flex:none;color:var(--accent)}
+.kpis.icons span{display:flex;align-items:center;gap:6px}
+.kpis.icons .ic.ball{width:17px;height:17px}
+.kpis.icons .ic.card-y,.kpis.icons .ic.card-r{width:12px;height:16px}
+.pev .role{display:inline-flex;align-items:center;gap:5px}
+.pev .role .ki{width:15px;height:15px}
+.capb{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:4px;background:var(--navy);color:#fff;font-size:10.5px;font-weight:800}
+/* Chancen: Platz-Matrix */
+a.chip{text-decoration:none}
+span.chip{cursor:default}
+.heat th{padding:9px 4px}
+.heat td.hc{padding:8px 3px;min-width:34px;font-size:12.5px;font-weight:600;border-left:1px solid #fff}
+.vlegend span i + i{margin-left:-4px}
 .ic.sub{font-weight:800;font-size:14px;color:var(--win)}
 .ev .txt{line-height:1.25;min-width:0}
 .ev .txt small{display:block;color:var(--muted);font-size:12.5px}
@@ -573,8 +586,10 @@ function eloAt(cutMs) {
   return e;
 }
 const predByElo = (he, ae) => { const d = (he + HOME_ADV) - ae; const E = 1 / (1 + Math.pow(10, -d / 400)); const pD = Math.min(0.26 * Math.exp(-Math.pow(d / 260, 2)), 1.6 * Math.min(E, 1 - E)); return {h:E - pD / 2, d:pD, a:1 - E - pD / 2}; };
+// Youth League und Stärkeklassen: kein Auf-/Abstieg in der Chancen-Ansicht -> Platz-Wahrscheinlichkeiten
+const chanceZones = key => (key === "yl" || COMP_INFO[key].sk) ? {} : (COMP_INFO[key].zones || {});
 function verlaufData(key, r) {
-  const z = COMP_INFO[key].zones || {}; const up = z.up || 0, down = z.down || 0;
+  const z = chanceZones(key); const up = z.up || 0, down = z.down || 0;
   const teams = r.table.map(x => x.t); const n = teams.length; const idx = new Map(teams.map((t, i) => [t, i]));
   const dayMax = new Map(); r.games.filter(g => g.played).forEach(g => dayMax.set(g.dstr, Math.max(dayMax.get(g.dstr) || 0, g.date)));
   const days = [...dayMax.keys()].sort((a, b) => dayMax.get(a) - dayMax.get(b));
@@ -585,22 +600,28 @@ function verlaufData(key, r) {
     r.games.forEach(g => { const hi = idx.get(g.H), ai = idx.get(g.A); if (hi == null || ai == null) return;
       if (g.date <= cutMs) { if (g.played) { pc++; const w = g.gh > g.ga ? 1 : g.gh < g.ga ? 2 : 0; if (w === 1) base[hi].pts += 3; else if (w === 2) base[ai].pts += 3; else { base[hi].pts++; base[ai].pts++; } base[hi].gd += g.gh - g.ga; base[ai].gd += g.ga - g.gh; } }
       else open.push({hi, ai, p:predByElo(elo.get(g.H), elo.get(g.A))}); });
-    const acc = teams.map(() => ({sr:0, first:0, up:0, dn:0})); const rnd = seeded();
+    const acc = teams.map(() => ({sr:0, first:0, up:0, dn:0, pos:new Array(n).fill(0)})); const rnd = seeded();
     for (let s = 0; s < N; s++) {
       const cur = base.map(b => ({pts:b.pts, gd:b.gd}));
       open.forEach(o => { const u = rnd(); if (u < o.p.h) { cur[o.hi].pts += 3; cur[o.hi].gd++; cur[o.ai].gd--; } else if (u < o.p.h + o.p.d) { cur[o.hi].pts++; cur[o.ai].pts++; } else { cur[o.ai].pts += 3; cur[o.ai].gd++; cur[o.hi].gd--; } });
       const order = cur.map((c, k) => k).sort((x, y) => cur[y].pts - cur[x].pts || cur[y].gd - cur[x].gd || x - y);
-      order.forEach((k, pos) => { const A = acc[k]; A.sr += pos + 1; if (pos === 0) A.first++; if (up && pos < up) A.up++; if (down && pos >= n - down) A.dn++; });
+      order.forEach((k, pos) => { const A = acc[k]; A.sr += pos + 1; A.pos[pos]++; if (pos === 0) A.first++; if (up && pos < up) A.up++; if (down && pos >= n - down) A.dn++; });
     }
-    return {pc, rows:teams.map((t, k) => ({t, sr:acc[k].sr / N, first:acc[k].first / N, up:acc[k].up / N, dn:acc[k].dn / N})).sort((a, b) => a.sr - b.sr)};
+    return {pc, rows:teams.map((t, k) => ({t, sr:acc[k].sr / N, first:acc[k].first / N, up:acc[k].up / N, dn:acc[k].dn / N, pos:acc[k].pos.map(c => c / N)})).sort((a, b) => a.sr - b.sr)};
   }
-  const st = snap(0);
-  const snaps = [{label:"Saisonstart", sub:"vor dem 1. Spieltag", rows:st.rows}];
+  // Rundenstart: Spielstärken kurz vor dem ersten Spiel dieser Runde (Frühjahr übernimmt also die Herbst-Resultate)
+  const t0 = r.games.length ? Math.min(...r.games.map(g => +g.date)) - 1 : 0;
+  const st = snap(t0);
+  const snaps = [{label:"Rundenstart", sub:"vor dem 1. Spieltag", rows:st.rows}];
   days.forEach((ds, i) => { const sn = snap(dayMax.get(ds)); snaps.push({label:`${i + 1}. Spieltag`, sub:`${ds} · ${sn.pc} Spiele gespielt`, rows:sn.rows}); });
-  return {snaps, up, down, n};
+  return {snaps, up, down, n, round:r.name};
 }
 function verlaufTable(ck) {
   const V = S._verlauf[ck]; const noZone = !V.up && !V.dn && !V.down;
+  if (noZone) {
+    const hc = v => v < 0.005 ? `<td class="hc"></td>` : `<td class="hc" style="background:rgba(10,133,151,${(0.1 + 0.9 * Math.min(1, v / 0.6)).toFixed(2)});color:${v >= 0.3 ? "#fff" : "var(--ink)"}">${v < 0.01 ? "&lt;1" : Math.round(v * 100)}</td>`;
+    return `<div class="tbl-wrap"><table class="heat"><thead><tr><th>#</th><th class="team">Team</th><th>Ø&nbsp;Rang</th>${Array.from({length:V.n}, (_, i) => `<th>${i + 1}.</th>`).join("")}</tr></thead><tbody>${V.snaps[VSTATE[ck]].rows.map((r, i) => `<tr class="clk" data-href="#team-${r.t.id}"><td class="rank"><span>${i + 1}</span></td><td class="team"><span class="t">${crest(r.t, "sm")}${teamLink(r.t)}</span></td><td class="vsr">${r.sr.toFixed(1)}</td>${r.pos.map(hc).join("")}</tr>`).join("")}</tbody></table></div>`;
+  }
   const cell = r => { if (noZone) { return `<div class="cbarwrap"><div class="cbar"><i class="up" style="width:${Math.max(0, r.first) * 100}%;background:var(--accent)"></i></div><span class="d" style="color:var(--accent)">${r.first < 0.005 ? "–" : pct(r.first)}</span></div>`; }
     const mid = Math.max(0, 1 - r.up - r.dn); const seg = (c, w) => w > 0.004 ? `<i class="${c}" style="width:${w * 100}%"></i>` : "";
     return `<div class="cbarwrap"><span class="u">${V.up ? (r.up < 0.005 ? "–" : pct(r.up)) : ""}</span><div class="cbar">${seg("up", r.up)}${seg("mid", mid)}${seg("dn", r.dn)}</div><span class="d">${r.dn < 0.005 ? "–" : pct(r.dn)}</span></div>`; };
@@ -610,15 +631,16 @@ function verlaufTable(ck) {
 function verlaufBox(ck) {
   const V = S._verlauf[ck], day = VSTATE[ck], sn = V.snaps[day];
   const noZone = !V.up && !V.dn && !V.down;
-  const leg = noZone ? `<span><i style="background:var(--accent)"></i>Chance auf Platz 1 (Gruppensieg)</span>` : V.up ? `<span><i style="background:var(--up)"></i>Aufstieg</span><span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>` : `<span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>`;
-  return `<section class="card acc"><div class="sec-head"><h2>Verlauf der Chancen</h2><span class="sub">Schlussrang-Wahrscheinlichkeit nach jedem Spieltag</span></div>
+  const leg = noZone ? `<span><i style="background:rgba(10,133,151,.25)"></i><i style="background:rgba(10,133,151,.6)"></i><i style="background:var(--accent)"></i>Wahrscheinlichkeit in % für jeden Schlussrang (dunkler = wahrscheinlicher)</span>` : V.up ? `<span><i style="background:var(--up)"></i>Aufstieg</span><span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>` : `<span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>`;
+  return `<section class="card acc"><div class="sec-head"><h2>Chancen · ${esc(V.round)}</h2>${S._vchips || ""}</div>
+    <div class="sub" style="padding:0 18px 10px">Schlussrang-Wahrscheinlichkeit nach jedem Spieltag · mit dem Regler durch die Runde blättern</div>
     <div class="dayctl"><button class="vstep" data-vck="${ck}" data-vd="-1" ${day === 0 ? "disabled" : ""}>‹</button>
       <div class="daylabel"><b id="vlabel">${sn.label}</b><small id="vsub">${sn.sub}</small></div>
       <input class="vslider" type="range" min="0" max="${V.snaps.length - 1}" value="${day}" data-vck="${ck}">
       <button class="vstep" data-vck="${ck}" data-vd="1" ${day === V.snaps.length - 1 ? "disabled" : ""}>›</button></div>
     <div class="vlegend">${leg}</div>
     <div id="vtbl">${verlaufTable(ck)}</div>
-    <p class="note">Je Spieltag aus 3000 simulierten Saisonverläufen: Stand nach diesem Tag plus die damals noch offenen Spiele, gespielt mit den Spielstärken von damals. Am Saisonstart sind alle fast gleich, am letzten Spieltag steht alles fest. Schätzung, keine Gewähr.</p></section>`;
+    <p class="note">Je Spieltag aus 3000 simulierten Saisonverläufen: Stand nach diesem Tag plus die damals noch offenen Spiele, gespielt mit den Spielstärken von damals. Am Rundenstart zählen nur die Spielstärken (in der Frühjahrsrunde inkl. aller Herbst-Resultate), am letzten Spieltag steht alles fest. Schätzung, keine Gewähr.</p></section>`;
 }
 function refreshVerlauf(ck) {
   const V = S._verlauf[ck], sn = V.snaps[VSTATE[ck]];
@@ -627,8 +649,10 @@ function refreshVerlauf(ck) {
   const T = document.getElementById("vtbl"); if (T) T.innerHTML = verlaufTable(ck);
   document.querySelectorAll("button.vstep").forEach(b => { b.disabled = (b.dataset.vd === "-1" && VSTATE[ck] === 0) || (b.dataset.vd === "1" && VSTATE[ck] === V.snaps.length - 1); });
 }
-function mountVerlauf(key, r) {
+function mountVerlauf(key, r, chips) {
   const ck = key + "|" + r.name; const mount = document.getElementById("verlaufMount"); if (!mount) return;
+  S._vchips = chips || "";
+  if (!r.table.length) { mount.innerHTML = `<section class="card acc"><div class="sec-head"><h2>Chancen · ${esc(r.name)}</h2>${S._vchips}</div><p class="empty">Für diese Runde gibt es noch keine Einteilung.</p></section>`; return; }
   if (S._verlauf[ck]) { if (VSTATE[ck] == null) VSTATE[ck] = S._verlauf[ck].snaps.length - 1; mount.innerHTML = verlaufBox(ck); return; }
   mount.innerHTML = '<section class="card"><p class="empty">Verlauf wird berechnet…</p></section>';
   setTimeout(() => { S._verlauf[ck] = verlaufData(key, r); VSTATE[ck] = S._verlauf[ck].snaps.length - 1;
@@ -900,16 +924,18 @@ function springBanner(key) {
   if (COMP_INFO[key].sk || l.hasSpring) return "";
   return `<div class="banner"><span>ℹ️</span><span><b>Frühjahrsrunde 2027:</b> Der FVBJ hat die Gruppeneinteilung und den Spielplan noch nicht publiziert. Sobald sie im Matchcenter stehen, erscheinen sie hier automatisch als Standard-Ansicht. Bis dahin siehst du die abgeschlossene Herbstrunde.</span></div>`;
 }
-function strengthTable(key) {
-  const teams = [...new Set(S.leagues[key].rounds.flatMap(r => r.table.map(x => x.t)))];
-  const played = t => S.games.filter(g => g.played && !g.forfait && (g.H === t || g.A === t)).length;
-  const rows = teams.map(t => ({t, elo:t.elo, sp:played(t)})).sort((a, b) => b.elo - a.elo);
-  const hi = rows[0].elo, lo = rows[rows.length - 1].elo, span = Math.max(hi - lo, 1);
-  return `<div class="tbl-wrap"><table><thead><tr><th>#</th><th class="team">Team</th><th class="hide-sm barcell">Stärke</th><th>Wert</th><th>Sp</th></tr></thead><tbody>${rows.map((x, i) => `<tr class="clk" data-href="#team-${x.t.id}"><td class="rank"><span>${i + 1}</span></td>
-    <td class="team"><span class="t">${crest(x.t)}${teamLink(x.t, x.t.name)}</span></td>
-    <td class="hide-sm barcell"><div class="bar" style="width:${Math.round((x.elo - lo) / span * 100)}%"></div></td>
-    <td class="pts">${Math.round(x.elo)}</td><td>${x.sp}</td></tr>`).join("")}</tbody></table></div>
-    <p class="note">Jedes Team startet mit einem Wert nach Liga-Stärke; Siege gegen starke Gegner heben ihn, Niederlagen senken ihn (ein Elo-Modell). Höher = stärker.</p>`;
+/* Chancen: Rundenwahl. YL/Promo wechseln die Runde, SK-Gruppen springen zur passenden Gruppe der anderen Runde. */
+function chanceChips(key) {
+  const info = COMP_INFO[key];
+  if (!info.sk) return roundChips(key);
+  const sk = S.sks[info.sk]; const mine = new Set(S.leagues[key].current.table.map(x => x.t));
+  const chip = (kind, label) => {
+    if (kind === info.rkind) return `<span class="chip on">${label}</span>`;
+    const cands = sk.groups.filter(g => g.rkind === kind && S.leagues[g.lkey]);
+    if (!cands.length) return `<button class="chip" type="button" disabled title="Noch nicht publiziert">${label}</button>`;
+    const best = cands.map(g => ({g, n:S.leagues[g.lkey].current.table.filter(x => mine.has(x.t)).length})).sort((a, b) => b.n - a.n)[0].g;
+    return `<a class="chip" href="#${best.lkey}-chancen">${label}</a>`; };
+  return `<div class="chips">${chip("fj", "Frühjahrsrunde")}${chip("hb", "Herbstrunde")}</div>`;
 }
 function viewLeague(key, tab) {
   const l = S.leagues[key]; const r = leagueRound(key); const info = COMP_INFO[key];
@@ -930,9 +956,7 @@ function viewLeague(key, tab) {
   } else if (tab === "-tabelle") {
     body = `${springBanner(key)}<section class="card acc"><div class="sec-head"><h2>Tabelle · ${esc(r.name)}</h2>${roundChips(key)}</div>${standings(key, r)}</section>`;
   } else if (tab === "-chancen") {
-    body = `${springBanner(key)}
-      <section class="card acc"><div class="sec-head"><h2>Stärke-Rangliste</h2><span class="sub">Spielstärke aus allen bisherigen Resultaten dieser Saison</span></div>${strengthTable(key)}</section>
-      <div id="verlaufMount"></div>`;
+    body = `${springBanner(key)}<div id="verlaufMount"></div>`;
   } else if (tab === "-spiele") {
     const sel = LSTATE.team?.[key] ?? "";
     const list = r.games.filter(g => sel === "" || g.H.id === +sel || g.A.id === +sel);
@@ -947,7 +971,7 @@ function viewLeague(key, tab) {
       return `<a class="tg" href="#team-${t.id}">${crest(t, "md")}<span class="nm">${esc(t.name)}<small>${row ? `${row.rank}. Rang ${esc(r.name)} · ${row.pts} Punkte` : ""}</small></span></a>`; }).join("")}</div></section>`;
   }
   app().innerHTML = `<div class="${info.color}">${leagueHead(key, tab)}<div class="grid">${body}</div></div>` + foot();
-  if (tab === "-chancen") mountVerlauf(key, r);
+  if (tab === "-chancen") mountVerlauf(key, r, chanceChips(key));
 }
 
 /* ---- Statistiken (wettbewerbsübergreifend oder einzeln) ---- */
@@ -1119,6 +1143,16 @@ function playerGames(t, name) {
   });
   return out;
 }
+const svgI = d => `<svg class="ki" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const ICO = {
+  shirt:svgI('<path d="M8 3L3 6l2 4 2-1v12h10V9l2 1 2-4-5-3c-.6 1.5-2.1 2.4-4 2.4S8.6 4.5 8 3z"/>'),
+  pitch:svgI('<rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M12 5v14"/><circle cx="12" cy="12" r="2.6"/><path d="M2.5 9.5h2.5v5H2.5M21.5 9.5H19v5h2.5"/>'),
+  bench:svgI('<path d="M3 11h18M5 11v7M19 11v7M4 7h16v4H4z"/>'),
+  shield:svgI('<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>'),
+  trophy:svgI('<path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 13v4M8 21h8M9.5 17h5v4h-5z"/>'),
+  goal:svgI('<path d="M3 18V6h18v12"/><path d="M3 10h18M3 14h18M7.5 6v12M12 6v12M16.5 6v12" stroke-width="1" opacity=".55"/><circle cx="12" cy="21" r="1.2" fill="currentColor" stroke="none"/>'),
+  ball:'<span class="ic ball"></span>', yellow:'<span class="ic card-y"></span>', red:'<span class="ic card-r"></span>'
+};
 function viewPlayer(tid, name) {
   const t = S.teams[tid]; if (!t) return false;
   const list = playerGames(t, name); if (!list.length) return false;
@@ -1129,15 +1163,15 @@ function viewPlayer(tid, name) {
   const lg = goals.filter(x => !isCup(x.g.comp)).length, cup = goals.length - lg;
   const nr = (list.slice().reverse().find(x => x.p) || {}).p?.nr;
   document.title = `${name} · Aaregou`;
-  const rows = list.map(x => { const role = x.role === "start" ? `<span class="role">Startelf${x.p.pos ? " · " + esc(x.p.pos) : ""}${x.p.cap ? " · Captain" : ""}</span>` : x.role === "sub" ? '<span class="role">Ersatzbank</span>' : "";
+  const rows = list.map(x => { const role = x.role === "start" ? `<span class="role">${ICO.pitch}Startelf${x.p.pos ? " · " + esc(x.p.pos) : ""}${x.p.cap ? ' <span class="capb" title="Captain">C</span>' : ""}</span>` : x.role === "sub" ? `<span class="role">${ICO.bench}Ersatzbank</span>` : "";
     return matchRow(x.g, {comp:true, me:t}).replace('class="m"', 'class="m has-pev"') + `<div class="pev">${role}${x.evs.sort((a, b) => a.sort - b.sort).map(e => evChip(e, name)).join("")}</div>`; }).join("");
   app().innerHTML = `<div class="${info.color}">${hero(esc(name), [isOurs(t) ? `<a href="#team-${t.id}">${esc(t.short)}</a>` : esc(t.short), "Spieler"], `${esc(t.name)}${nr ? " · Nr. " + esc(nr) : ""} · Saison 2026/27`)}
     ${isOurs(t) ? `<a class="back" href="#team-${t.id}">‹ ${esc(t.short)}</a>` : ""}
     <div class="grid">
       <section class="card acc">
         <div class="team-head">${crest(t, "lg")}<div><h2>${esc(name)}</h2><div class="sub">${isOurs(t) ? teamLink(t, t.name) : esc(t.name)}</div></div></div>
-        <div class="kpis"><div><span>Einsätze</span><b>${list.length}</b></div><div><span>Startelf</span><b>${list.filter(x => x.role === "start").length}</b></div><div><span>Tore</span><b>${goals.length}</b></div><div><span>Meisterschaft</span><b>${lg}</b></div><div><span>Cup</span><b>${cup}</b></div><div><span>Penaltys</span><b>${cnt(x => x.e.t === "P")}</b></div>
-          <div><span>Gelb</span><b>${cnt(x => x.e.t === "Y")}</b></div><div><span>Rot</span><b>${cnt(x => x.e.t === "YR" || x.e.t === "R")}</b></div></div>
+        <div class="kpis icons">${[[ICO.shirt, "Einsätze", list.length], [ICO.pitch, "Startelf", list.filter(x => x.role === "start").length], [ICO.ball, "Tore", goals.length], [ICO.shield, "Meisterschaft", lg], [ICO.trophy, "Cup", cup], [ICO.goal, "Penaltys", cnt(x => x.e.t === "P")],
+          [ICO.yellow, "Gelb", cnt(x => x.e.t === "Y")], [ICO.red, "Rot", cnt(x => x.e.t === "YR" || x.e.t === "R")]].map(([i, l, v]) => `<div><span>${i}${l}</span><b>${v}</b></div>`).join("")}</div>
       </section>
       <section class="card"><div class="sec-head"><h2>Einsätze</h2><span class="sub">${list.length} Spiele</span></div><div class="matches">${rows}</div></section>
     </div></div>` + foot();
