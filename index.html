@@ -999,7 +999,8 @@ function statsBlock(o) {
   const comp = o.comp, scope = isCup(comp) || comp === "cup" ? "all" : o.scope;
   const games = leagueGames(comp, scope).filter(g => g.played);
   const sc = scorers(games); const cards = cardsOf(games);
-  const compChips = o.fixedComp ? "" : `<div class="chips" data-statcomp>${[["all", "Alle Wettbewerbe"], ["liga", "Meisterschaft"], ["cup", "Cup"], ["yl", "Youth League B"], ["promo", "Promotion B"]].map(([k, n]) => `<button type="button" class="chip ${comp === k ? "on" : ""}" data-v="${k}">${n}</button>`).join("")}</div>`;
+  const compOpts = [["all", "Alle Wettbewerbe"], ["liga", "Meisterschaft"], ["cup", "Cup"], ["yl", "Youth League B"], ["promo", "Promotion B"], ...Object.keys(S.sks).map(k => [k, S.sks[k].name.replace("Junioren B ", "")])];
+  const compChips = o.fixedComp ? "" : `<div class="chips" data-statcomp>${compOpts.map(([k, n]) => `<button type="button" class="chip ${comp === k ? "on" : ""}" data-v="${k}">${n}</button>`).join("")}</div>`;
   const scopeChips = (comp === "cup") ? `<span class="sub">Cup: ganze Saison</span>` : `<div class="chips" data-statscope="${o.fixedComp ? comp : ""}">${[["fj", "Frühjahrsrunde"], ["hb", "Herbstrunde"], ["all", "Ganze Saison"]].map(([k, n]) => {
       const dis = k === "fj" && !S.games.some(g => g.rkind === "fj"); return `<button type="button" class="chip ${scope === k ? "on" : ""}" data-v="${k}" ${dis ? "disabled title=\"Noch nicht publiziert\"" : ""}>${n}</button>`; }).join("")}</div>`;
   const inc = games.filter(g => !g.complete).length;
