@@ -671,7 +671,8 @@ const evNames = e => e.t === "S" ? e.who.split(">").map(x => x.trim()) : [String
 const norm = x => String(x).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 const compTag = (c, solid) => `<span class="tag ${solid ? "solid" : ""}">${esc(COMP_INFO[c].tag)}</span>`;
 const COMP_ORDER = ["yl", "promo", "eq", "bcj"];
-const byComp = arr => [...arr].sort((a, b) => COMP_ORDER.indexOf(a) - COMP_ORDER.indexOf(b));
+const compRank = c => { const i = COMP_ORDER.indexOf(c); return i >= 0 ? (isCup(c) ? 10 + i : i) : 5; }; // Liga vor Stärkeklassen vor Cup
+const byComp = arr => [...arr].sort((a, b) => compRank(a) - compRank(b) || String(a).localeCompare(String(b)));
 const isCup = c => c === "eq" || c === "bcj";
 function winner(g) {
   if (!g.played) return null;
@@ -712,7 +713,7 @@ function gamesByDay(list, opt = {}) {
 const skOf = c => COMP_INFO[c] ? COMP_INFO[c].sk : null;
 function leagueGames(comp, scope) { // scope: "hb" | "fj" | "all"
   if (S.sks[comp]) return S.games.filter(g => skOf(g.comp) === comp && (scope === "all" || g.rkind === scope));
-  return S.games.filter(g => (comp === "all" ? !skOf(g.comp) : comp === "liga" ? (!isCup(g.comp) && !skOf(g.comp)) : comp === "cup" ? isCup(g.comp) : g.comp === comp)
+  return S.games.filter(g => (comp === "all" ? true : comp === "liga" ? !isCup(g.comp) : comp === "cup" ? isCup(g.comp) : g.comp === comp)
     && (scope === "all" || isCup(g.comp) || g.rkind === scope));
 }
 function formOf(t, games) { return games.filter(g => g.played && (g.H === t || g.A === t)).slice(-5).map(g => ({x:resFor(g, t), g})); }
@@ -975,7 +976,24 @@ function viewLeague(key, tab) {
 }
 
 /* ---- Statistiken (wettbewerbsübergreifend oder einzeln) ---- */
-const STATS = {comp:"all", scope:"all"};
+const STATS = {comp:["all"], scope:"all"}; // comp: Mehrfachauswahl, Klick schaltet ein/aus
+/* Mehrfachauswahl ohne Überschneidungen:
+   "Alle" ist exklusiv · "Meisterschaft" schliesst YL/Promo/Stärkeklassen aus (enthält sie schon) ·
+   alle Meisterschaften zusammen = "Meisterschaft" · Meisterschaft + Cup = "Alle" · leer = "Alle" */
+function toggleComp(cur, v) {
+  const LIGA = ["yl", "promo", ...Object.keys(S.sks)];
+  if (v === "all") return ["all"];
+  let sel = cur.filter(c => c !== "all");
+  if (sel.includes(v)) sel = sel.filter(c => c !== v);
+  else {
+    if (v === "liga") sel = sel.filter(c => !LIGA.includes(c));
+    if (LIGA.includes(v)) sel = sel.filter(c => c !== "liga");
+    sel.push(v);
+  }
+  if (LIGA.every(c => sel.includes(c))) sel = ["liga", ...sel.filter(c => !LIGA.includes(c))];
+  if (sel.includes("liga") && sel.includes("cup")) return ["all"];
+  return sel.length ? sel : ["all"];
+}
 function records(games) {
   const pl = games.filter(g => !g.forfait);
   const R = {};
@@ -1020,15 +1038,18 @@ function cardTable(cards, linkTeam) {
   return `<div class="tbl-wrap"><table><thead><tr><th class="team">Spieler / Staff</th><th title="Verwarnung"><span class="ic card-y"></span></th><th title="Gelb-Rot"><span class="ic card-yr"></span></th><th title="Rot"><span class="ic card-r"></span></th></tr></thead><tbody>${cards.map(c => `<tr class="clk" data-href="${playerHref(c.name, c.t)}"><td class="team"><span class="t">${linkTeam ? crest(c.t, "sm") : ""}<span class="pl">${esc(c.name)}${linkTeam ? `<small>${esc(c.t.short)}</small>` : ""}</span></span></td><td>${c.y || ""}</td><td>${c.yr || ""}</td><td>${c.r || ""}</td></tr>`).join("")}</tbody></table></div>`;
 }
 function statsBlock(o) {
-  const comp = o.comp, scope = isCup(comp) || comp === "cup" ? "all" : o.scope;
-  const games = leagueGames(comp, scope).filter(g => g.played);
+  const comps = Array.isArray(o.comp) ? o.comp : [o.comp], comp = comps[0];
+  const onlyCup = comps.every(c => c === "cup" || isCup(c));
+  const scope = onlyCup ? "all" : o.scope;
+  const gset = new Set(comps.flatMap(c => leagueGames(c, scope)));
+  const games = S.games.filter(g => gset.has(g) && g.played);
   const sc = scorers(games); const cards = cardsOf(games);
   const compOpts = [["all", "Alle Wettbewerbe"], ["liga", "Meisterschaft"], ["cup", "Cup"], ["yl", "Youth League B"], ["promo", "Promotion B"], ...Object.keys(S.sks).map(k => [k, S.sks[k].name.replace("Junioren B ", "")])];
-  const compChips = o.fixedComp ? "" : `<div class="chips" data-statcomp>${compOpts.map(([k, n]) => `<button type="button" class="chip ${comp === k ? "on" : ""}" data-v="${k}">${n}</button>`).join("")}</div>`;
-  const scopeChips = (comp === "cup") ? `<span class="sub">Cup: ganze Saison</span>` : `<div class="chips" data-statscope="${o.fixedComp ? comp : ""}">${[["fj", "Frühjahrsrunde"], ["hb", "Herbstrunde"], ["all", "Ganze Saison"]].map(([k, n]) => {
+  const compChips = o.fixedComp ? "" : `<div class="chips" data-statcomp>${compOpts.map(([k, n]) => `<button type="button" class="chip ${comps.includes(k) ? "on" : ""}" data-v="${k}" aria-pressed="${comps.includes(k)}">${n}</button>`).join("")}</div><span class="sub">Mehrere anklicken zum Kombinieren, nochmals klicken zum Entfernen</span>`;
+  const scopeChips = onlyCup ?`<span class="sub">Cup: ganze Saison</span>` : `<div class="chips" data-statscope="${o.fixedComp ? comp : ""}">${[["fj", "Frühjahrsrunde"], ["hb", "Herbstrunde"], ["all", "Ganze Saison"]].map(([k, n]) => {
       const dis = k === "fj" && !S.games.some(g => g.rkind === "fj"); return `<button type="button" class="chip ${scope === k ? "on" : ""}" data-v="${k}" ${dis ? "disabled title=\"Noch nicht publiziert\"" : ""}>${n}</button>`; }).join("")}</div>`;
   const inc = games.filter(g => !g.complete).length;
-  const scopeName = comp === "cup" || isCup(comp) ? "ganze Saison" : {fj:"Frühjahrsrunde", hb:"Herbstrunde", all:"ganze Saison"}[scope];
+  const scopeName = onlyCup ? "ganze Saison" : {fj:"Frühjahrsrunde", hb:"Herbstrunde", all:"ganze Saison"}[scope];
   const R = games.length ? records(games) : null;
   const ny = cards.reduce((a, c) => a + c.y, 0), nr = cards.reduce((a, c) => a + c.yr + c.r, 0);
   const view = STATS.view || "tore";
@@ -1311,7 +1332,7 @@ document.addEventListener("click", e => {
   const b = e.target.closest("button.chip"); if (!b || b.disabled) return;
   const box = b.parentElement;
   if (box.dataset.league) { LSTATE.round[box.dataset.league] = b.dataset.round; rerender(); }
-  else if ("statcomp" in box.dataset) { STATS.comp = b.dataset.v; rerender(); }
+  else if ("statcomp" in box.dataset) { STATS.comp = toggleComp(STATS.comp, b.dataset.v); rerender(); }
   else if ("statview" in box.dataset) { STATS.view = b.dataset.v; rerender(); }
   else if ("statscope" in box.dataset) { if (box.dataset.statscope) { LSTATE.scope = LSTATE.scope || {}; LSTATE.scope[box.dataset.statscope] = b.dataset.v; } else STATS.scope = b.dataset.v; rerender(); }
   else if ("teamf" in box.dataset) { TSTATE.filter = b.dataset.v; rerender(); }
