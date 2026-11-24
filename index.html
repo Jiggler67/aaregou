@@ -1,10 +1,10 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Aaregou · Junioren B FVBJ 2026/27</title>
+<link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -37,6 +37,8 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
 html,body{margin:0;background:var(--bg)}
 body{color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.45}
 a{color:inherit}
@@ -350,6 +352,8 @@ a.rec:hover{border-color:var(--accent)}
 a.chip{text-decoration:none}
 span.chip{cursor:default}
 .heat th{padding:9px 4px}
+.heat th.zu{background:var(--up);color:#fff}
+.heat th.zd{background:var(--down);color:#fff}
 .heat td.hc{padding:8px 3px;min-width:34px;font-size:12.5px;font-weight:600;border-left:1px solid #fff}
 .vlegend span i + i{margin-left:-4px}
 .ic.sub{font-weight:800;font-size:14px;color:var(--win)}
@@ -586,10 +590,10 @@ function eloAt(cutMs) {
   return e;
 }
 const predByElo = (he, ae) => { const d = (he + HOME_ADV) - ae; const E = 1 / (1 + Math.pow(10, -d / 400)); const pD = Math.min(0.26 * Math.exp(-Math.pow(d / 260, 2)), 1.6 * Math.min(E, 1 - E)); return {h:E - pD / 2, d:pD, a:1 - E - pD / 2}; };
-// Youth League und Stärkeklassen: kein Auf-/Abstieg in der Chancen-Ansicht -> Platz-Wahrscheinlichkeiten
-const chanceZones = key => (key === "yl" || COMP_INFO[key].sk) ? {} : (COMP_INFO[key].zones || {});
+// Chancen überall als Platz-Wahrscheinlichkeiten. Auf-/Abstiegsplätze (nur Promotion) werden in der Kopfzeile markiert.
+const markZones = key => (key === "yl" || COMP_INFO[key].sk) ? {} : (COMP_INFO[key].zones || {});
 function verlaufData(key, r) {
-  const z = chanceZones(key); const up = z.up || 0, down = z.down || 0;
+  const up = 0, down = 0, mz = markZones(key);
   const teams = r.table.map(x => x.t); const n = teams.length; const idx = new Map(teams.map((t, i) => [t, i]));
   const dayMax = new Map(); r.games.filter(g => g.played).forEach(g => dayMax.set(g.dstr, Math.max(dayMax.get(g.dstr) || 0, g.date)));
   const days = [...dayMax.keys()].sort((a, b) => dayMax.get(a) - dayMax.get(b));
@@ -614,13 +618,13 @@ function verlaufData(key, r) {
   const st = snap(t0);
   const snaps = [{label:"Rundenstart", sub:"vor dem 1. Spieltag", rows:st.rows}];
   days.forEach((ds, i) => { const sn = snap(dayMax.get(ds)); snaps.push({label:`${i + 1}. Spieltag`, sub:`${ds} · ${sn.pc} Spiele gespielt`, rows:sn.rows}); });
-  return {snaps, up, down, n, round:r.name};
+  return {snaps, up, down, n, mz, round:r.name};
 }
 function verlaufTable(ck) {
   const V = S._verlauf[ck]; const noZone = !V.up && !V.dn && !V.down;
   if (noZone) {
     const hc = v => v < 0.005 ? `<td class="hc"></td>` : `<td class="hc" style="background:rgba(10,133,151,${(0.1 + 0.9 * Math.min(1, v / 0.6)).toFixed(2)});color:${v >= 0.3 ? "#fff" : "var(--ink)"}">${v < 0.01 ? "&lt;1" : Math.round(v * 100)}</td>`;
-    return `<div class="tbl-wrap"><table class="heat"><thead><tr><th>#</th><th class="team">Team</th><th>Ø&nbsp;Rang</th>${Array.from({length:V.n}, (_, i) => `<th>${i + 1}.</th>`).join("")}</tr></thead><tbody>${V.snaps[VSTATE[ck]].rows.map((r, i) => `<tr class="clk" data-href="#team-${r.t.id}"><td class="rank"><span>${i + 1}</span></td><td class="team"><span class="t">${crest(r.t, "sm")}${teamLink(r.t)}</span></td><td class="vsr">${r.sr.toFixed(1)}</td>${r.pos.map(hc).join("")}</tr>`).join("")}</tbody></table></div>`;
+    return `<div class="tbl-wrap"><table class="heat"><thead><tr><th>#</th><th class="team">Team</th><th>Ø&nbsp;Rang</th>${Array.from({length:V.n}, (_, i) => `<th class="${i < (V.mz.up || 0) ? "zu" : i >= V.n - (V.mz.down || 0) ? "zd" : ""}">${i + 1}.</th>`).join("")}</tr></thead><tbody>${V.snaps[VSTATE[ck]].rows.map((r, i) => `<tr class="clk" data-href="#team-${r.t.id}"><td class="rank"><span>${i + 1}</span></td><td class="team"><span class="t">${crest(r.t, "sm")}${teamLink(r.t)}</span></td><td class="vsr">${r.sr.toFixed(1)}</td>${r.pos.map(hc).join("")}</tr>`).join("")}</tbody></table></div>`;
   }
   const cell = r => { if (noZone) { return `<div class="cbarwrap"><div class="cbar"><i class="up" style="width:${Math.max(0, r.first) * 100}%;background:var(--accent)"></i></div><span class="d" style="color:var(--accent)">${r.first < 0.005 ? "–" : pct(r.first)}</span></div>`; }
     const mid = Math.max(0, 1 - r.up - r.dn); const seg = (c, w) => w > 0.004 ? `<i class="${c}" style="width:${w * 100}%"></i>` : "";
@@ -631,7 +635,7 @@ function verlaufTable(ck) {
 function verlaufBox(ck) {
   const V = S._verlauf[ck], day = VSTATE[ck], sn = V.snaps[day];
   const noZone = !V.up && !V.dn && !V.down;
-  const leg = noZone ? `<span><i style="background:rgba(10,133,151,.25)"></i><i style="background:rgba(10,133,151,.6)"></i><i style="background:var(--accent)"></i>Wahrscheinlichkeit in % für jeden Schlussrang (dunkler = wahrscheinlicher)</span>` : V.up ? `<span><i style="background:var(--up)"></i>Aufstieg</span><span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>` : `<span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>`;
+  const leg = noZone ? `<span><i style="background:rgba(10,133,151,.25)"></i><i style="background:rgba(10,133,151,.6)"></i><i style="background:var(--accent)"></i>Wahrscheinlichkeit in % für jeden Schlussrang (dunkler = wahrscheinlicher)</span>${V.mz.up ? `<span><i style="background:var(--up)"></i>Aufstiegsplätze</span>` : ""}${V.mz.down ? `<span><i style="background:var(--down)"></i>Abstiegsplätze</span>` : ""}` : V.up ? `<span><i style="background:var(--up)"></i>Aufstieg</span><span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>` : `<span><i style="background:#d4dbe2"></i>Halten</span><span><i style="background:var(--down)"></i>Abstieg</span>`;
   return `<section class="card acc"><div class="sec-head"><h2>Chancen · ${esc(V.round)}</h2>${S._vchips || ""}</div>
     <div class="sub" style="padding:0 18px 10px">Schlussrang-Wahrscheinlichkeit nach jedem Spieltag · mit dem Regler durch die Runde blättern</div>
     <div class="dayctl"><button class="vstep" data-vck="${ck}" data-vd="-1" ${day === 0 ? "disabled" : ""}>‹</button>
@@ -1354,5 +1358,3 @@ Promise.all([fetch("data.txt", {cache:"no-store"}).then(r => { if (!r.ok) throw 
 </script>
 </body>
 </html>
-
-</body></html>
