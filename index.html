@@ -412,6 +412,8 @@ const COMP_INFO = {
   eq: {name:"EQUIP.Lab Berner Cup – Junioren B", short:"Cup", tag:"Cup", color:"c-cup"},
   bcj: {name:"Cup BCJ – Junioren B", short:"Cup BCJ", tag:"Cup BCJ", color:"c-bcj"}
 };
+// Auf-/Abstiegsplätze pro Gruppe der Stärkeklassen
+const SK_ZONES = {sk1:{up:1, down:2}, sk2:{up:1}};
 const SHORT = {
   "FC Aarberg":"Aarberg","FC Azzurri Bienne a":"Azzurri Bienne","FC Goldstern a":"Goldstern","FC Ins Müntschemier":"Ins Müntschemier","FC Köniz a":"Köniz",
   "FC Langenthal a":"Langenthal","FC Vicques":"Vicques","SC Burgdorf 1898 a":"Burgdorf","SC Bümpliz 78 a":"Bümpliz 78","Team Ajoie Centre (FC Alle) a":"Ajoie Centre",
@@ -474,7 +476,7 @@ function parse(txt, logoTxt, corrTxt) {
     else if (p[0] === "CUP") { cup = S.cups[p[1]] = {key:p[1], name:p[2], games:[]}; league = null; }
     else if (p[0] === "SK") { S.sks[p[1]] = {key:p[1], name:p[2], ln:p[3], groups:[]}; cup = null; }
     else if (p[0] === "SKG") { const sk = S.sks[p[1]]; sk.groups.push({rkind:p[2], rname:p[3], lkey:p[4], gname:p[5]});
-      COMP_INFO[p[4]] = {name:sk.name + " · " + p[5], short:p[5], tag:sk.name.replace("Junioren B ", "").replace("Stärkeklasse", "Kl.").trim() + " · " + p[5].replace("Gruppe", "Gr."), color:"", zones:{}, sk:p[1], gname:p[5], rkind:p[2]}; }
+      COMP_INFO[p[4]] = {name:sk.name + " · " + p[5], short:p[5], tag:sk.name.replace("Junioren B ", "").replace("Stärkeklasse", "Kl.").trim() + " · " + p[5].replace("Gruppe", "Gr."), color:"", zones:SK_ZONES[p[1]] || {}, sk:p[1], gname:p[5], rkind:p[2]}; }
     else if (p[0] === "LOGOS") { p[1].split(";").forEach(x => { const [n, id] = x.split("="); const t = S.teamByName.get(n) || teamOf(n); t.logoId = id; }); }
     else if (p[0] === "PL") S.pl[p[1]] = {nr:p[2], name:p[3]};
     else if (p[0] === "POS") S.pos = p[1].split(";");
@@ -590,8 +592,8 @@ function eloAt(cutMs) {
   return e;
 }
 const predByElo = (he, ae) => { const d = (he + HOME_ADV) - ae; const E = 1 / (1 + Math.pow(10, -d / 400)); const pD = Math.min(0.26 * Math.exp(-Math.pow(d / 260, 2)), 1.6 * Math.min(E, 1 - E)); return {h:E - pD / 2, d:pD, a:1 - E - pD / 2}; };
-// Chancen überall als Platz-Wahrscheinlichkeiten. Auf-/Abstiegsplätze (nur Promotion) werden in der Kopfzeile markiert.
-const markZones = key => (key === "yl" || COMP_INFO[key].sk) ? {} : (COMP_INFO[key].zones || {});
+// Chancen überall als Platz-Wahrscheinlichkeiten. Auf-/Abstiegsplätze werden in der Kopfzeile markiert (YL ohne).
+const markZones = key => key === "yl" ? {} : (COMP_INFO[key].zones || {});
 function verlaufData(key, r) {
   const up = 0, down = 0, mz = markZones(key);
   const teams = r.table.map(x => x.t); const n = teams.length; const idx = new Map(teams.map((t, i) => [t, i]));
@@ -913,7 +915,7 @@ function viewSK(skKey, tab) {
     body = statsBlock({comp:skKey, scope:LSTATE.scope?.[skKey] || (skGames.some(g => g.rkind === "fj") ? "fj" : "hb"), fixedComp:true});
   } else {
     const groupCards = groups.map(g => { const l = S.leagues[g.lkey]; const r = l.current;
-      const top = r.table.slice(0, 5).map(x => `<tr class="clk" data-href="#team-${x.t.id}"><td class="rank"><span>${x.rank}</span></td><td class="team"><span class="t">${crest(x.t, "sm")}${teamLink(x.t)}</span></td><td>${x.sp}</td><td class="pts">${x.pts}</td></tr>`).join("");
+      const top = r.table.slice(0, 5).map(x => `<tr class="clk ${zoneCls(g.lkey, x, r.table.length)}" data-href="#team-${x.t.id}"><td class="rank"><span>${x.rank}</span></td><td class="team"><span class="t">${crest(x.t, "sm")}${teamLink(x.t)}</span></td><td>${x.sp}</td><td class="pts">${x.pts}</td></tr>`).join("");
       return `<section class="card acc"><div class="sec-head"><h2>${esc(g.gname)}</h2><a class="more" href="#${g.lkey}">Ganze Gruppe</a></div>
         <div class="tbl-wrap"><table><thead><tr><th>#</th><th class="team">Team</th><th>Sp</th><th>Pkt</th></tr></thead><tbody>${top}</tbody></table></div></section>`; }).join("");
     const sc = scorers(skGames);
