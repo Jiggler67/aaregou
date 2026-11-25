@@ -348,6 +348,13 @@ a.rec:hover{border-color:var(--accent)}
 .pev .role{display:inline-flex;align-items:center;gap:5px}
 .pev .role .ki{width:15px;height:15px}
 .capb{display:inline-grid;place-items:center;width:17px;height:17px;border-radius:4px;background:var(--navy);color:#fff;font-size:10.5px;font-weight:800}
+/* Spieler: Stationen / Transfers */
+.moves{list-style:none;margin:0;padding:6px 0}
+.moves li{display:flex;gap:10px;align-items:flex-start;padding:8px 18px}
+.moves li > span{display:flex;flex-wrap:wrap;align-items:center;gap:6px;line-height:1.3}
+.moves li small{flex-basis:100%;color:var(--muted);font-size:12.5px}
+.moves .ki{margin-top:2px}
+.pev .tag{font-size:11px}
 /* Chancen: Platz-Matrix */
 a.chip{text-decoration:none}
 span.chip{cursor:default}
@@ -671,7 +678,8 @@ const crest = (t, cls = "") => t.logo ? `<span class="crest ${cls}"><img src="${
 const isOurs = t => t.leagues.size > 0;
 const teamLink = (t, label) => isOurs(t) ? `<a href="#team-${t.id}">${esc(label || t.short)}</a>` : `<span class="n">${esc(label || t.short)}</span>`;
 const fmtDate = g => `${g.wd} ${g.dstr}`;
-const playerHref = (name, t) => `#spieler-${t.id}-${encodeURIComponent(name)}`;
+// Link aufs (zusammengeführte) Spielerprofil; alle Teams eines Spielers zeigen auf dasselbe Profil
+const playerHref = (name, t) => { const p = S.alias && S.alias.get(t.id + "|" + name); return p ? p.href : `#spieler-${t.id}-${encodeURIComponent(name)}`; };
 const evTeam = (g, e) => { let t = e.s === "H" ? g.H : e.s === "A" ? g.A : null; if (t && e.t === "OG") t = t === g.H ? g.A : g.H; return t; };
 const evNames = e => e.t === "S" ? e.who.split(">").map(x => x.trim()) : [String(e.who || "").trim()];
 const norm = x => String(x).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -1178,11 +1186,44 @@ const ICO = {
   shield:svgI('<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>'),
   trophy:svgI('<path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 13v4M8 21h8M9.5 17h5v4h-5z"/>'),
   goal:svgI('<path d="M3 18V6h18v12"/><path d="M3 10h18M3 14h18M7.5 6v12M12 6v12M16.5 6v12" stroke-width="1" opacity=".55"/><circle cx="12" cy="21" r="1.2" fill="currentColor" stroke="none"/>'),
+  swap:svgI('<path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/>'),
   ball:'<span class="ic ball"></span>', yellow:'<span class="ic card-y"></span>', red:'<span class="ic card-r"></span>'
 };
+/* Stationen eines Spielers: pro Team Einsätze, Zeitraum und Rolle (Stammteam, Aushilfe, Ex-/neuer Verein) */
+const clubOf = t => t.name.replace(/\s*\(.*?\)/g, "").replace(/\s+[a-h]$/i, "").trim();
+const dShort = g => g.dstr.slice(0, 6);
+function playerStations(list) {
+  const by = new Map(); list.forEach(x => { if (!by.has(x.t)) by.set(x.t, []); by.get(x.t).push(x); });
+  const st = [...by].map(([t, L]) => { const ev = L.flatMap(x => x.evs);
+    return {t, L, n:L.length, start:L.filter(x => x.role === "start").length, goals:ev.filter(e => e.t === "G" || e.t === "P").length,
+      y:ev.filter(e => e.t === "Y").length, r:ev.filter(e => e.t === "YR" || e.t === "R").length, first:L[0].g, last:L[L.length - 1].g}; });
+  const main = [...st].sort((a, b) => b.n - a.n || b.start - a.start)[0];
+  const moves = [];
+  st.forEach(s => {
+    if (s === main) { s.role = "Stammteam"; return; }
+    const same = clubOf(s.t) === clubOf(main.t);
+    if (s.last.date < main.first.date) { s.role = same ? "Früheres Team" : "Ex-Verein"; moves.push({from:s, to:main, kind:same ? "Teamwechsel" : "Vereinswechsel"}); }
+    else if (s.first.date > main.last.date) { s.role = same ? "Neues Team" : "Neuer Verein"; moves.push({from:main, to:s, kind:same ? "Teamwechsel" : "Vereinswechsel"}); }
+    else s.role = same ? "Aushilfe" : "Aushilfe (Partnerverein)";
+  });
+  st.sort((a, b) => a.first.date - b.first.date);
+  moves.sort((a, b) => a.to.first.date - b.to.first.date);
+  return {st, main, moves};
+}
+function stationsCard(P, name) {
+  if (P.st.length < 2) return "";
+  const row = s => `<tr class="${isOurs(s.t) ? "clk" : ""}" ${isOurs(s.t) ? `data-href="#team-${s.t.id}"` : ""}><td class="team"><span class="t">${crest(s.t, "sm")}<span class="pl">${esc(s.t.name)}<small>${esc(s.role)}</small></span></span></td>
+    <td class="hide-sm">${dShort(s.first)}–${dShort(s.last)}</td><td>${s.n}</td><td class="hide-sm">${s.start}</td><td class="pts">${s.goals}</td><td>${s.y || ""}</td><td>${s.r || ""}</td></tr>`;
+  const moves = P.moves.map(m => `<li>${ICO.swap}<span><b>${esc(m.kind)}:</b> ${crest(m.from.t, "sm")}${esc(m.from.t.short)} → ${crest(m.to.t, "sm")}${esc(m.to.t.short)}<small>letztes Spiel ${m.from.last.dstr} · erstes Spiel ${m.to.first.dstr}</small></span></li>`).join("");
+  return `<section class="card acc"><div class="sec-head"><h2>Teams &amp; Stationen</h2><span class="sub">${esc(name)} hat diese Saison für ${P.st.length} Teams gespielt · Tore zählen nur für das Team, in dem sie fielen</span></div>
+    <div class="tbl-wrap"><table><thead><tr><th class="team">Team</th><th class="hide-sm">Zeitraum</th><th>Sp</th><th class="hide-sm">Startelf</th><th>Tore</th><th title="Gelb"><span class="ic card-y"></span></th><th title="Rot"><span class="ic card-r"></span></th></tr></thead><tbody>${P.st.map(row).join("")}</tbody></table></div>
+    ${moves ? `<div class="lu-sub">Transferhistorie</div><ul class="moves">${moves}</ul>` : ""}</section>`;
+}
 function viewPlayer(tid, name) {
-  const t = S.teams[tid]; if (!t) return false;
-  const list = playerGames(t, name); if (!list.length) return false;
+  const person = S.alias && S.alias.get(tid + "|" + name); if (!person) return false;
+  const list = person.parts.flatMap(a => playerGames(a.t, name).map(x => ({...x, t:a.t}))).sort((a, b) => a.g.date - b.g.date);
+  if (!list.length) return false;
+  const P = playerStations(list); const t = P.main.t; const multi = P.st.length > 1;
   const key = isOurs(t) ? [...t.leagues][0] : "eq"; const info = COMP_INFO[key];
   const evs = list.flatMap(x => x.evs.map(e => ({g:x.g, e})));
   const goals = evs.filter(x => x.g.played && (x.e.t === "G" || x.e.t === "P"));
@@ -1191,27 +1232,48 @@ function viewPlayer(tid, name) {
   const nr = (list.slice().reverse().find(x => x.p) || {}).p?.nr;
   document.title = `${name} · Aaregou`;
   const rows = list.map(x => { const role = x.role === "start" ? `<span class="role">${ICO.pitch}Startelf${x.p.pos ? " · " + esc(x.p.pos) : ""}${x.p.cap ? ' <span class="capb" title="Captain">C</span>' : ""}</span>` : x.role === "sub" ? `<span class="role">${ICO.bench}Ersatzbank</span>` : "";
-    return matchRow(x.g, {comp:true, me:t}).replace('class="m"', 'class="m has-pev"') + `<div class="pev">${role}${x.evs.sort((a, b) => a.sort - b.sort).map(e => evChip(e, name)).join("")}</div>`; }).join("");
-  app().innerHTML = `<div class="${info.color}">${hero(esc(name), [isOurs(t) ? `<a href="#team-${t.id}">${esc(t.short)}</a>` : esc(t.short), "Spieler"], `${esc(t.name)}${nr ? " · Nr. " + esc(nr) : ""} · Saison 2026/27`)}
+    const tm = multi ? `<span class="tag">${esc(x.t.short)}</span>` : "";
+    return matchRow(x.g, {comp:true, me:x.t}).replace('class="m"', 'class="m has-pev"') + `<div class="pev">${tm}${role}${x.evs.sort((a, b) => a.sort - b.sort).map(e => evChip(e, name)).join("")}</div>`; }).join("");
+  const others = P.st.filter(s => s !== P.main);
+  const alsoTxt = others.length ? ` · auch: ${others.map(s => esc(s.t.short)).join(", ")}` : "";
+  app().innerHTML = `<div class="${info.color}">${hero(esc(name), [isOurs(t) ? `<a href="#team-${t.id}">${esc(t.short)}</a>` : esc(t.short), "Spieler"], `${esc(t.name)}${nr ? " · Nr. " + esc(nr) : ""}${alsoTxt} · Saison 2026/27`)}
     ${isOurs(t) ? `<a class="back" href="#team-${t.id}">‹ ${esc(t.short)}</a>` : ""}
     <div class="grid">
       <section class="card acc">
-        <div class="team-head">${crest(t, "lg")}<div><h2>${esc(name)}</h2><div class="sub">${isOurs(t) ? teamLink(t, t.name) : esc(t.name)}</div></div></div>
+        <div class="team-head">${crest(t, "lg")}<div><h2>${esc(name)}</h2><div class="sub">${isOurs(t) ? teamLink(t, t.name) : esc(t.name)}${others.length ? ` <span class="tag">+ ${others.length} ${others.length === 1 ? "weiteres Team" : "weitere Teams"}</span>` : ""}</div></div></div>
         <div class="kpis icons">${[[ICO.shirt, "Einsätze", list.length], [ICO.pitch, "Startelf", list.filter(x => x.role === "start").length], [ICO.ball, "Tore", goals.length], [ICO.shield, "Meisterschaft", lg], [ICO.trophy, "Cup", cup], [ICO.goal, "Penaltys", cnt(x => x.e.t === "P")],
           [ICO.yellow, "Gelb", cnt(x => x.e.t === "Y")], [ICO.red, "Rot", cnt(x => x.e.t === "YR" || x.e.t === "R")]].map(([i, l, v]) => `<div><span>${i}${l}</span><b>${v}</b></div>`).join("")}</div>
       </section>
-      <section class="card"><div class="sec-head"><h2>Einsätze</h2><span class="sub">${list.length} Spiele</span></div><div class="matches">${rows}</div></section>
+      ${stationsCard(P, name)}
+      <section class="card"><div class="sec-head"><h2>Einsätze</h2><span class="sub">${list.length} Spiele${multi ? " · alle Teams" : ""}</span></div><div class="matches">${rows}</div></section>
     </div></div>` + foot();
   return true;
 }
+/* Ein Profil pro Person: Einträge (Team + Name) mit gleichem Namen werden zusammengeführt.
+   Die Matchcenter-ID gilt nur pro Team, darum über den Namen. Schutz vor Namensvettern:
+   wer am selben Tag für Teams zweier verschiedener Vereine im Einsatz war, bleibt getrennt. */
 function buildPlayers() {
-  const P = new Map();
-  S.games.forEach(g => g.ev.forEach(e => { const t = evTeam(g, e); if (!t || e.t === "S") return;
-    evNames(e).forEach(n => { if (!n) return; const k = t.id + "|" + n; if (!P.has(k)) P.set(k, {name:n, t, goals:0, q:norm(n)});
-      if ((e.t === "G" || e.t === "P") && g.played) P.get(k).goals++; }); }));
-  S.games.forEach(g => g.lu && ["H", "A"].forEach(sd => { const L = g.lu[sd]; if (!L) return; const t = sd === "H" ? g.H : g.A;
-    [...L.start, ...L.bench].forEach(p => { const k = t.id + "|" + p.name; if (!P.has(k)) P.set(k, {name:p.name, t, goals:0, q:norm(p.name)}); }); }));
-  S.players = [...P.values()];
+  const A = new Map();
+  const get = (t, n) => { const k = t.id + "|" + n; if (!A.has(k)) A.set(k, {k, t, name:n, dates:new Set(), tgs:new Set(), goals:0}); return A.get(k); };
+  S.games.forEach(g => {
+    if (g.lu) ["H", "A"].forEach(sd => { const L = g.lu[sd]; if (!L) return; const t = sd === "H" ? g.H : g.A;
+      [...L.start, ...L.bench].forEach(p => { const a = get(t, p.name); if (!p.out) { a.tgs.add(g.tg); a.dates.add(g.dstr); } }); });
+    g.ev.forEach(e => { const t = evTeam(g, e); if (!t || e.t === "S") return;
+      evNames(e).forEach(n => { if (!n) return; const a = get(t, n); a.tgs.add(g.tg); a.dates.add(g.dstr); if ((e.t === "G" || e.t === "P") && g.played) a.goals++; }); });
+  });
+  const byName = new Map(); A.forEach(a => { if (!byName.has(a.name)) byName.set(a.name, []); byName.get(a.name).push(a); });
+  S.alias = new Map(); S.players = [];
+  byName.forEach(list => {
+    list.sort((x, y) => y.tgs.size - x.tgs.size);
+    const cl = [];
+    // gleicher Verein (a/b-Teams): immer zusammen; anderer Verein: nur ohne Einsatz am selben Tag
+    list.forEach(a => { const c = cl.find(c => c.parts.some(p => clubOf(p.t) === clubOf(a.t))) || cl.find(c => ![...a.dates].some(d => c.dates.has(d)));
+      if (c) { c.parts.push(a); a.dates.forEach(d => c.dates.add(d)); } else cl.push({parts:[a], dates:new Set(a.dates)}); });
+    cl.forEach(c => { const main = c.parts[0];
+      const p = {name:main.name, t:main.t, parts:c.parts, teams:c.parts.filter(a => a.tgs.size).map(a => a.t), goals:c.parts.reduce((s, a) => s + a.goals, 0), q:norm(main.name), href:`#spieler-${main.t.id}-${encodeURIComponent(main.name)}`};
+      c.parts.forEach(a => S.alias.set(a.k, p));
+      if (p.teams.length) S.players.push(p); });
+  });
 }
 function runSearch(q) {
   const box = document.getElementById("sres"); q = norm(q.trim());
@@ -1222,7 +1284,7 @@ function runSearch(q) {
   const pl = S.players.filter(p => hit(p.q)).sort((a, b) => b.goals - a.goals || a.name.localeCompare(b.name, "de")).slice(0, 8);
   let html = "";
   if (teams.length) html += `<div class="grp">Teams</div>` + teams.map(t => `<a href="#team-${t.id}">${crest(t, "sm")}<span>${esc(t.short)}<small>${esc(COMP_INFO[[...t.leagues][0]].short)}</small></span></a>`).join("");
-  if (pl.length) html += `<div class="grp">Spieler</div>` + pl.map(p => `<a href="${playerHref(p.name, p.t)}">${crest(p.t, "sm")}<span>${esc(p.name)}<small>${esc(p.t.short)}${p.goals ? ` · ${p.goals} ${p.goals === 1 ? "Tor" : "Tore"}` : ""}</small></span></a>`).join("");
+  if (pl.length) html += `<div class="grp">Spieler</div>` + pl.map(p => `<a href="${p.href}">${crest(p.t, "sm")}<span>${esc(p.name)}<small>${p.teams.map(t => esc(t.short)).join(" · ")}${p.goals ? ` · ${p.goals} ${p.goals === 1 ? "Tor" : "Tore"}` : ""}</small></span></a>`).join("");
   box.innerHTML = html || `<div class="none">Nichts gefunden.</div>`; box.hidden = false;
 }
 function closeSearch() { const box = document.getElementById("sres"); box.hidden = true; }
