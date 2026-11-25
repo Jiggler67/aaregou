@@ -592,8 +592,8 @@ function eloAt(cutMs) {
   return e;
 }
 const predByElo = (he, ae) => { const d = (he + HOME_ADV) - ae; const E = 1 / (1 + Math.pow(10, -d / 400)); const pD = Math.min(0.26 * Math.exp(-Math.pow(d / 260, 2)), 1.6 * Math.min(E, 1 - E)); return {h:E - pD / 2, d:pD, a:1 - E - pD / 2}; };
-// Chancen überall als Platz-Wahrscheinlichkeiten. Auf-/Abstiegsplätze werden in der Kopfzeile markiert (YL ohne).
-const markZones = key => key === "yl" ? {} : (COMP_INFO[key].zones || {});
+// Chancen überall als Platz-Wahrscheinlichkeiten. Auf-/Abstiegsplätze werden wie in der Tabelle in der Kopfzeile markiert.
+const markZones = key => COMP_INFO[key].zones || {};
 function verlaufData(key, r) {
   const up = 0, down = 0, mz = markZones(key);
   const teams = r.table.map(x => x.t); const n = teams.length; const idx = new Map(teams.map((t, i) => [t, i]));
